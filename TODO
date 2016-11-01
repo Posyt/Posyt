@@ -1,0 +1,12 @@
+☐ comment App.js components back in
+☐ update to a new segment RN package and comment all tracking back in
+☐ swtich node-ddb-client and maybe minimongo-cache out for react-native-meteor
+☐ install branch and comment it back in
+☐ install DeviceInfo and comment it back in
+☐ install FBSDK and comment it back in
+☐ install SafariView and comment it back in
+☐ install codePush and comment it back in
+
+
+cmd + enter = add new todo
+cmd + d = check / uncheck
