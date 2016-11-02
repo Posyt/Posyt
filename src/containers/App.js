@@ -4,9 +4,9 @@ import {
   Scene,
   Router,
 } from 'react-native-router-flux';
-// import Tabs from './Tabs';
+import Tabs from './Tabs';
 // import ChatScreen from '../components/ChatScreen';
-// import NoNetworkBar from '../components/NoNetworkBar';
+import NoNetworkBar from '../components/NoNetworkBar';
 // import PushNotificationBar from '../components/PushNotificationBar';
 
 class App extends React.Component {
@@ -14,14 +14,14 @@ class App extends React.Component {
     return (
       <View style={{ backgroundColor: 'black', flex: 1 }}>
         <StatusBar hidden={false} barStyle="default" />
-        {/* <Router>
+        <Router>
           <Scene key="root" hideNavBar>
             <Scene key="tabs" component={Tabs} initial hideNavBar />
-            <Scene key="chat" component={ChatScreen} hideNavBar />
+            {/* <Scene key="chat" component={ChatScreen} hideNavBar /> */}
           </Scene>
         </Router>
         <NoNetworkBar />
-        <PushNotificationBar /> */}
+        {/* <PushNotificationBar /> */}
       </View>
     );
   }

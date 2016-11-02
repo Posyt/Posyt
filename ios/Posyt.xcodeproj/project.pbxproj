@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -23,6 +22,18 @@
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		C1C75BD3C1C24F5387B0CEDF /* rooney sans black italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0788B861D93A40859BE52C84 /* rooney sans black italic.otf */; };
+		B6648EE3F30A4536B7DCE373 /* rooney sans black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 12EFED3594314DCEAE07F41A /* rooney sans black.otf */; };
+		A45BF298454A45DDAB777376 /* rooney sans bold italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4DF80FA580E8485482A5B254 /* rooney sans bold italic.otf */; };
+		E29D03FC1CBF48D19A5ADEC1 /* rooney sans bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E4A08975050A4F28A2E8D195 /* rooney sans bold.otf */; };
+		D2E816380C4847F791DCCAE0 /* rooney sans heavy italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 334EC6D311E54B2FAEC84039 /* rooney sans heavy italic.otf */; };
+		2E4EC9E6FF894AAE95255B1B /* rooney sans heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = E9A2CABBD6A94B3D9793801E /* rooney sans heavy.otf */; };
+		9625356F49FE496F9BD078E5 /* rooney sans italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8CA924B2EDD04BAE846D3C46 /* rooney sans italic.otf */; };
+		A57612A688CE49BF809E2081 /* rooney sans light italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F43AEFF8F1C644189056E93E /* rooney sans light italic.otf */; };
+		564A059659BD49BA883345B5 /* rooney sans light.otf in Resources */ = {isa = PBXBuildFile; fileRef = A9FCCE55CB0747DA8DCC34ED /* rooney sans light.otf */; };
+		92F52B268D434FC8B5F4165A /* rooney sans medium italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = AF6921CBA4714B69B3D5B4CF /* rooney sans medium italic.otf */; };
+		707422383C1646AFB5D1F533 /* rooney sans medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AB1C937BF1364E3AAA899F04 /* rooney sans medium.otf */; };
+		76ADDFA890D0429283CA7E9B /* rooney sans.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6171E72E9BDD488F864CF883 /* rooney sans.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +138,18 @@
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = ../node_modules/react-native/React/React.xcodeproj; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = ../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = ../node_modules/react-native/Libraries/Text/RCTText.xcodeproj; sourceTree = "<group>"; };
+		0788B861D93A40859BE52C84 /* rooney sans black italic.otf */ = {isa = PBXFileReference; name = "rooney sans black italic.otf"; path = "../assets/fonts/RooneySans/rooney sans black italic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		12EFED3594314DCEAE07F41A /* rooney sans black.otf */ = {isa = PBXFileReference; name = "rooney sans black.otf"; path = "../assets/fonts/RooneySans/rooney sans black.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4DF80FA580E8485482A5B254 /* rooney sans bold italic.otf */ = {isa = PBXFileReference; name = "rooney sans bold italic.otf"; path = "../assets/fonts/RooneySans/rooney sans bold italic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E4A08975050A4F28A2E8D195 /* rooney sans bold.otf */ = {isa = PBXFileReference; name = "rooney sans bold.otf"; path = "../assets/fonts/RooneySans/rooney sans bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		334EC6D311E54B2FAEC84039 /* rooney sans heavy italic.otf */ = {isa = PBXFileReference; name = "rooney sans heavy italic.otf"; path = "../assets/fonts/RooneySans/rooney sans heavy italic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E9A2CABBD6A94B3D9793801E /* rooney sans heavy.otf */ = {isa = PBXFileReference; name = "rooney sans heavy.otf"; path = "../assets/fonts/RooneySans/rooney sans heavy.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8CA924B2EDD04BAE846D3C46 /* rooney sans italic.otf */ = {isa = PBXFileReference; name = "rooney sans italic.otf"; path = "../assets/fonts/RooneySans/rooney sans italic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F43AEFF8F1C644189056E93E /* rooney sans light italic.otf */ = {isa = PBXFileReference; name = "rooney sans light italic.otf"; path = "../assets/fonts/RooneySans/rooney sans light italic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A9FCCE55CB0747DA8DCC34ED /* rooney sans light.otf */ = {isa = PBXFileReference; name = "rooney sans light.otf"; path = "../assets/fonts/RooneySans/rooney sans light.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		AF6921CBA4714B69B3D5B4CF /* rooney sans medium italic.otf */ = {isa = PBXFileReference; name = "rooney sans medium italic.otf"; path = "../assets/fonts/RooneySans/rooney sans medium italic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		AB1C937BF1364E3AAA899F04 /* rooney sans medium.otf */ = {isa = PBXFileReference; name = "rooney sans medium.otf"; path = "../assets/fonts/RooneySans/rooney sans medium.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6171E72E9BDD488F864CF883 /* rooney sans.otf */ = {isa = PBXFileReference; name = "rooney sans.otf"; path = "../assets/fonts/RooneySans/rooney sans.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +316,7 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* PosytTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
+				32A371829BC644039DB3F02A /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -305,6 +329,26 @@
 				00E356EE1AD99517003FC87E /* PosytTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		32A371829BC644039DB3F02A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0788B861D93A40859BE52C84 /* rooney sans black italic.otf */,
+				12EFED3594314DCEAE07F41A /* rooney sans black.otf */,
+				4DF80FA580E8485482A5B254 /* rooney sans bold italic.otf */,
+				E4A08975050A4F28A2E8D195 /* rooney sans bold.otf */,
+				334EC6D311E54B2FAEC84039 /* rooney sans heavy italic.otf */,
+				E9A2CABBD6A94B3D9793801E /* rooney sans heavy.otf */,
+				8CA924B2EDD04BAE846D3C46 /* rooney sans italic.otf */,
+				F43AEFF8F1C644189056E93E /* rooney sans light italic.otf */,
+				A9FCCE55CB0747DA8DCC34ED /* rooney sans light.otf */,
+				AF6921CBA4714B69B3D5B4CF /* rooney sans medium italic.otf */,
+				AB1C937BF1364E3AAA899F04 /* rooney sans medium.otf */,
+				6171E72E9BDD488F864CF883 /* rooney sans.otf */,
+			);
+			name = Resources;
+			path = "";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -352,7 +396,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 610;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -509,6 +553,18 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				C1C75BD3C1C24F5387B0CEDF /* rooney sans black italic.otf in Resources */,
+				B6648EE3F30A4536B7DCE373 /* rooney sans black.otf in Resources */,
+				A45BF298454A45DDAB777376 /* rooney sans bold italic.otf in Resources */,
+				E29D03FC1CBF48D19A5ADEC1 /* rooney sans bold.otf in Resources */,
+				D2E816380C4847F791DCCAE0 /* rooney sans heavy italic.otf in Resources */,
+				2E4EC9E6FF894AAE95255B1B /* rooney sans heavy.otf in Resources */,
+				9625356F49FE496F9BD078E5 /* rooney sans italic.otf in Resources */,
+				A57612A688CE49BF809E2081 /* rooney sans light italic.otf in Resources */,
+				564A059659BD49BA883345B5 /* rooney sans light.otf in Resources */,
+				92F52B268D434FC8B5F4165A /* rooney sans medium italic.otf in Resources */,
+				707422383C1646AFB5D1F533 /* rooney sans medium.otf in Resources */,
+				76ADDFA890D0429283CA7E9B /* rooney sans.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
