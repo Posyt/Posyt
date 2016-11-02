@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-// import ScrollableTabView from '../components/ScrollableTabView';
-// import PosytTabBar from '../components/PosytTabBar';
+import ScrollableTabView from '../components/ScrollableTabView';
+import PosytTabBar from '../components/PosytTabBar';
 // import ConnectScreen from '../components/ConnectScreen';
 // import ConversationsScreen from '../components/ConversationsScreen';
 import {
@@ -31,13 +31,15 @@ class Tabs extends React.Component {
     return (
       <View style={styles.corners}>
         <View style={styles.container}>
-          {/* <ScrollableTabView
+          <ScrollableTabView
             renderTabBar={() => <PosytTabBar />}
             onChangeTab={(tab) => this.onChangeTab(tab)}
           >
-            <ConnectScreen tabLabel="documents" />
-            <ConversationsScreen tabLabel="chat" />
-          </ScrollableTabView> */}
+            <View tabLabel="documents" />
+            <View tabLabel="chat" />
+            {/* <ConnectScreen tabLabel="documents" /> */}
+            {/* <ConversationsScreen tabLabel="chat" /> */}
+          </ScrollableTabView>
         </View>
       </View>
     );
