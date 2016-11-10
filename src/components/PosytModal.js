@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Modal, View, Animated, TouchableWithoutFeedback, Dimensions, PixelRatio, PanResponder, DeviceEventEmitter, Easing } from 'react-native';
+import { StyleSheet, Modal, View, Animated, TouchableWithoutFeedback, Dimensions, PixelRatio, PanResponder, Keyboard, Easing } from 'react-native';
 import TimerMixin from 'react-timer-mixin';
 import reactMixin from 'react-mixin';
 // import { VibrancyView } from 'react-native-blur';
@@ -97,18 +97,23 @@ class PosytModal extends React.Component {
   }
 
   componentWillMount() {
-    DeviceEventEmitter.addListener('keyboardWillShow', e => {
+    this.keyboardWillShowListener = Keyboard.addListener('keyboardWillShow', (e) => {
       Animated.spring(
         this.state.screenHeight
         , { toValue: e.endCoordinates.screenY, speed: 4, bounciness: 8 }
       ).start();
     });
-    DeviceEventEmitter.addListener('keyboardWillHide', e => {
+    this.keyboardWillHideListener = Keyboard.addListener('keyboardWillHide', (e) => {
       Animated.spring(
         this.state.screenHeight
         , { toValue: e.endCoordinates.screenY, speed: 12, bounciness: 8 }
       ).start();
     });
+  }
+
+  componentWillUnmount() {
+    this.keyboardWillShowListener.remove();
+    this.keyboardWillHideListener.remove();
   }
 
   componentDidMount() {
