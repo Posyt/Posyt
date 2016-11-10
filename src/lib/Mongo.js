@@ -2,7 +2,7 @@
 import './process.polyfill';
 import {
   AsyncStorage,
-  AppStateIOS,
+  AppState,
 } from 'react-native';
 import Minimongo from 'minimongo-cache';
 import { changedCollection } from './actions';
@@ -46,7 +46,7 @@ class Mongo {
     setTimeout(() => {
       this._observeDDPCollections();
     }, 0);
-    AppStateIOS.addEventListener('change', () => this._handleAppStateChange());
+    AppState.addEventListener('change', () => this._handleAppStateChange());
   }
 
   persist() {
@@ -70,12 +70,12 @@ class Mongo {
   }
 
   _observeDDPCollections() {
-    for (const collectionName of this.collectionNames) {
-      const observer = ddp.observe(collectionName);
-      observer.added = (id) => this._added(collectionName, id);
-      observer.changed = (id) => this._changed(collectionName, id);
-      observer.removed = (id) => this.remove(collectionName, id);
-    }
+    // for (const collectionName of this.collectionNames) {
+    //   const observer = ddp.observe(collectionName);
+    //   observer.added = (id) => this._added(collectionName, id);
+    //   observer.changed = (id) => this._changed(collectionName, id);
+    //   observer.removed = (id) => this.remove(collectionName, id);
+    // }
   }
 
   _added(collectionName, id) {

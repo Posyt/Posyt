@@ -1,5 +1,5 @@
 import {
-  AppStateIOS,
+  AppState,
 } from 'react-native';
 import {
   newDeepLink,
@@ -13,7 +13,7 @@ class DeepLinker {
     // this.branch = branch;
     // // if (global.__DEV__) branch.setDebug();
     this._init();
-    AppStateIOS.addEventListener('change', () => this._handleAppStateChange());
+    AppState.addEventListener('change', () => this._handleAppStateChange());
   }
 
   _init() {
