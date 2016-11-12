@@ -100,18 +100,6 @@ class PosytTabBar extends React.Component {
     const numConversations = currentUser && currentUser.meta && currentUser.meta.numConversations || 0;
     const numMessages = currentUser && currentUser.meta && currentUser.meta.numMessages || 0;
 
-    let pointsButton;
-    pointsButton = [
-      <View style={styles.modalSeparator}/>
-      ,
-      <TouchableHighlight style={[styles.modalButton]} underlayColor={'#f5f5f5'} onPress={() => {
-          this.refs.posytModal.hide("left", () => this.refs.pointsModal.getWrappedInstance().show("right"));
-          // segment.screen('Viewed Virality Modal');
-      }}>
-        <Text style={styles.modalText}>{currentUser && currentUser.meta && currentUser.meta.points || 0}</Text>
-      </TouchableHighlight>
-    ]
-
     if (loggedIn) {
       posytModal = (
         <PosytModal key="posytModal" ref="posytModal" style={styles.modal}>
@@ -121,7 +109,7 @@ class PosytTabBar extends React.Component {
           }}>
             <Text style={styles.modalText}>Feeds</Text>
           </TouchableHighlight>
-          <View style={styles.modalSeparator}/>
+          <View style={styles.modalSeparator} />
           <View style={styles.modalCol}>
             <Text style={[styles.modalSubText, { marginTop: 10, marginBottom: -10, fontWeight: '400' }]}>Feedback</Text>
             <View style={styles.modalRow}>
@@ -136,7 +124,13 @@ class PosytTabBar extends React.Component {
               </TouchableOpacity>
             </View>
           </View>
-          {pointsButton}
+          <View style={styles.modalSeparator} />
+          <TouchableHighlight style={styles.modalButton} underlayColor={'#f5f5f5'} onPress={() => {
+              this.refs.posytModal.hide("left", () => this.refs.pointsModal.getWrappedInstance().show("right"));
+              // segment.screen('Viewed Virality Modal');
+          }}>
+            <Text style={styles.modalText}>{currentUser && currentUser.meta && currentUser.meta.points || 0}</Text>
+          </TouchableHighlight>
           <View style={styles.modalSeparator}/>
           <View style={[{ flexDirection: 'row' }]}>
             <TouchableHighlight style={[styles.modalButton, { height: 38, flex: 3 }]} underlayColor={'#f5f5f5'} onPress={() => {
@@ -154,31 +148,31 @@ class PosytTabBar extends React.Component {
           </View>
           <View style={styles.modalSeparator}/>
           <View style={[styles.modalRow, { marginHorizontal: 0 }]}>
-            <View style={[styles.modalCol, { marginTop: 0 }]}>
+            <View style={[styles.modalCol, { marginTop: 0, flex: 1 }]}>
               <Text style={[styles.modalSubText]}>{numPosyts}</Text>
               <Text style={styles.modalLightSubText}>{pluralize('Posyt', numPosyts)}</Text>
             </View>
             <View style={[styles.modalSeparator, { height: 38, width: 1 }]}/>
-            <View style={[styles.modalCol, { marginTop: 0 }]}>
+            <View style={[styles.modalCol, { marginTop: 0, flex: 1 }]}>
               <Text style={[styles.modalSubText]}>{numConversations}</Text>
               <Text style={styles.modalLightSubText}>{pluralize('Match', numConversations)}</Text>
             </View>
             <View style={[styles.modalSeparator, { height: 38, width: 1 }]}/>
-            <View style={[styles.modalCol, { marginTop: 0 }]}>
+            <View style={[styles.modalCol, { marginTop: 0, flex: 1 }]}>
               <Text style={[styles.modalSubText]}>{numMessages}</Text>
               <Text style={styles.modalLightSubText}>{pluralize('Message', numMessages)}</Text>
             </View>
           </View>
         </PosytModal>
-      )
+      );
     } else {
-      posytModal = [
+      posytModal = (
         <PosytModal key="posytModal" ref="posytModal" style={styles.modal}>
           <TouchableHighlight style={styles.modalButton} underlayColor={'#f5f5f5'} onPress={() => { this.refs.posytModal.hide("left", () => this.refs.loginModal.show("right")) }}>
             <Text style={styles.modalText}>Login</Text>
           </TouchableHighlight>
         </PosytModal>
-      ]
+      );
     }
 
     return [
@@ -190,7 +184,7 @@ class PosytTabBar extends React.Component {
             <Text style={[styles.modalSubText, { fontWeight: "700" }]}>Logging in...</Text>
           </TouchableHighlight>
         :
-          <View style={{flex: 1}}>
+          <View>
             <TouchableHighlight style={[styles.modalButton, { height: 38, backgroundColor: blue }]} underlayColor={'white'}>
               <Text style={[styles.modalSubText, { fontWeight: "700", color: 'white' }]}>Login with</Text>
             </TouchableHighlight>
@@ -351,8 +345,8 @@ const styles = StyleSheet.create({
   },
 
   modal: {
-    flex: 1,
-    alignSelf: 'center',
+    // flex: 1,
+    // alignSelf: 'center',
     width: 200,
   },
   modalButton: {
@@ -391,7 +385,7 @@ const styles = StyleSheet.create({
   },
   modalCol: {
     flexDirection: 'column',
-    flex: 1,
+    flex: 0,
   },
   modalIcon: {
     width: 22,
