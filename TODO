@@ -9,6 +9,7 @@
 ☐ install Shimmer and comment it back in
 ☐ comment DDP methods back in
 ☐ comment Mongo methods back in
+☐ make sure all modals render properly
 
 
 cmd + enter = add new todo
