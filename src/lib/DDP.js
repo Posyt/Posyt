@@ -37,39 +37,39 @@ class DDP {
   // Try to connect with the server or just resolve if already connected
   getConnection() {
     return new Promise((resolve, reject) => {
-      // if (this._connected) {
-      //   resolve(this._ddpClient);
-      // } else if (this._connecting) {
-      //   this._pollForConnection(resolve, reject);
-      // } else {
-      //   this._connecting = true;
-      //   this._ddpClient.connect((error, wasReconnect) => {
-      //     if (wasReconnect) {
-      //       if (global.__DEV__) console.log('DDP Reestablishment of a connection.');
-      //     }
-      //     // If autoReconnect is true, this back will be invoked each time
-      //     // a server connection is re-established
-      //     if (error) {
-      //       this._connected = false;
-      //       if (global.__DEV__) console.log('DDP connection error!');
-      //       reject(error);
-      //     } else {
-      //       this._connected = true;
-      //       if (global.__DEV__) console.log('DDP connected!');
-      //       // Try to resume the session
-      //       this.loginWithToken()
-      //       .then(() => {
-      //         this.refreshSubscriptions();
-      //         resolve(this._ddpClient);
-      //       })
-      //       .catch(() => {
-      //         this.refreshSubscriptions();
-      //         resolve(this._ddpClient);
-      //       });
-      //     }
-      //     this._connecting = false;
-      //   });
-      // }
+      if (this._connected) {
+        resolve(this._ddpClient);
+      } else if (this._connecting) {
+        this._pollForConnection(resolve, reject);
+      } else {
+        this._connecting = true;
+        this._ddpClient.connect((error, wasReconnect) => {
+          if (wasReconnect) {
+            if (global.__DEV__) console.log('DDP Reestablishment of a connection.');
+          }
+          // If autoReconnect is true, this back will be invoked each time
+          // a server connection is re-established
+          if (error) {
+            this._connected = false;
+            if (global.__DEV__) console.log('DDP connection error!');
+            reject(error);
+          } else {
+            this._connected = true;
+            if (global.__DEV__) console.log('DDP connected!');
+            // Try to resume the session
+            this.loginWithToken()
+            .then(() => {
+              this.refreshSubscriptions();
+              resolve(this._ddpClient);
+            })
+            .catch(() => {
+              this.refreshSubscriptions();
+              resolve(this._ddpClient);
+            });
+          }
+          this._connecting = false;
+        });
+      }
     });
   }
 
@@ -250,23 +250,23 @@ class DDP {
   }
 
   _initDDPClient() {
-    // this._ddpClient = new DDPClient({
-    //   // All properties optional, defaults shown
-    //   host: posytDomain,
-    //   port: posytPort,
-    //   ssl: posytSSL,
-    //   autoReconnect: true,
-    //   autoReconnectTimer: 500,
-    //   maintainCollections: true,
-    //   ddpVersion: '1',  // ['1', 'pre2', 'pre1'] available
-    //   // Use a full url instead of a set of `host`, `port` and `ssl`
-    //   // url: 'wss://example.com/websocket'
-    //   // socketConstructor: WebSocket // Another constructor to create new WebSockets
-    // });
-    // this.collections = this._ddpClient.collections;
-    // this._addOidToDDPClientEJSON();
-    // if (global.__DEV__) this._ddpClient.on('socket-close', function(code, message) { console.log('ddp socket close: %s %s', code, message); });
-    // if (global.__DEV__) this._ddpClient.on('socket-error', function(error) { console.log('ddp socket error: %j', error); });
+    this._ddpClient = new DDPClient({
+      // All properties optional, defaults shown
+      host: posytDomain,
+      port: posytPort,
+      ssl: posytSSL,
+      autoReconnect: true,
+      autoReconnectTimer: 500,
+      maintainCollections: true,
+      ddpVersion: '1',  // ['1', 'pre2', 'pre1'] available
+      // Use a full url instead of a set of `host`, `port` and `ssl`
+      // url: 'wss://example.com/websocket'
+      // socketConstructor: WebSocket // Another constructor to create new WebSockets
+    });
+    this.collections = this._ddpClient.collections;
+    this._addOidToDDPClientEJSON();
+    if (global.__DEV__) this._ddpClient.on('socket-close', function(code, message) { console.log('ddp socket close: %s %s', code, message); });
+    if (global.__DEV__) this._ddpClient.on('socket-error', function(error) { console.log('ddp socket error: %j', error); });
   }
 
   // Connect and close ddp on app state change
