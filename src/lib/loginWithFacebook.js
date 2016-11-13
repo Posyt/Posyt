@@ -30,14 +30,16 @@ export default function loginWithFacebook() {
   }, (error) => {
     if (global.__DEV__) console.log('fb login failed: ', error);
     // Actions.fbLogin.failed(result)
-    Alert.alert(
-      'Failed to Sign In',
-      error,
-      [
-        { text: 'Cancel', onPress: () => { if (global.__DEV__) console.log('fb login canceled') } },
-        { text: 'Retry', onPress: () => { loginWithFacebook() } },
-      ]
-    );
+    // TODO: add a failed to login toast
+    // NOTE: the alert does not work
+    // Alert.alert(
+    //   'Failed to Sign In',
+    //   error,
+    //   [
+    //     { text: 'Cancel', onPress: () => { if (global.__DEV__) console.log('fb login canceled') } },
+    //     { text: 'Retry', onPress: () => { loginWithFacebook() } },
+    //   ]
+    // );
   });
 }
 

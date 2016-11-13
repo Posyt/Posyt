@@ -10,6 +10,7 @@
 ☐ comment DDP methods back in
 ☐ comment Mongo methods back in
 ☐ make sure all modals render properly
+☐ render an error if facebook login fails - loginWithFacebook.js
 
 Android
 ☐ complete FBSDK install https://github.com/facebook/react-native-fbsdk#31-android-project
