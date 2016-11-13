@@ -124,7 +124,7 @@ class DDP {
 
   // Pass through observe
   observe(collectionName: string) {
-    // return this._ddpClient.observe(collectionName);
+    return this._ddpClient.observe(collectionName);
   }
 
   // Promised based method call

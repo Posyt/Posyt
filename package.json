@@ -6,11 +6,13 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
     "link": "react-native link",
-    "ios": "react-native run-ios; react-native log-ios",
+    "ios": "OS_ACTIVITY_MODE=disable react-native run-ios; react-native log-ios",
     "android": "react-native run-android; react-native log-android"
   },
   "rnpm": {
-    "assets": ["assets/fonts/RooneySans"]
+    "assets": [
+      "assets/fonts/RooneySans"
+    ]
   },
   "dependencies": {
     "buffer": "^5.0.0",
@@ -23,7 +25,8 @@
     "pluralize": "^3.0.0",
     "react": "15.3.2",
     "react-mixin": "^3.0.5",
-    "react-native": "0.36.0",
+    "react-native": "^0.36.0",
+    "react-native-fbsdk": "^0.4.0",
     "react-native-router-flux": "^3.36.0",
     "react-redux": "^4.4.5",
     "react-timer-mixin": "^0.13.3",

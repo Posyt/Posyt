@@ -70,12 +70,12 @@ class Mongo {
   }
 
   _observeDDPCollections() {
-    // for (const collectionName of this.collectionNames) {
-    //   const observer = ddp.observe(collectionName);
-    //   observer.added = (id) => this._added(collectionName, id);
-    //   observer.changed = (id) => this._changed(collectionName, id);
-    //   observer.removed = (id) => this.remove(collectionName, id);
-    // }
+    for (const collectionName of this.collectionNames) {
+      const observer = ddp.observe(collectionName);
+      observer.added = (id) => this._added(collectionName, id);
+      observer.changed = (id) => this._changed(collectionName, id);
+      observer.removed = (id) => this.remove(collectionName, id);
+    }
   }
 
   _added(collectionName, id) {

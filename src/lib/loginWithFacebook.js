@@ -1,7 +1,7 @@
 import React from 'react';
 import { Alert } from 'react-native';
 import { Buffer } from 'buffer';
-// import FBSDK from 'react-native-fbsdk';
+import FBSDK from 'react-native-fbsdk';
 import _ from 'lodash';
 import { posytUri } from './constants';
 import { ddp } from './DDP';
@@ -12,45 +12,45 @@ const FB_PERMISSIONS = ['email', 'public_profile']; //, 'user_friends']
 
 
 export default function loginWithFacebook() {
-  // // FBSDK.LoginManager.setLoginBehavior('native') // TODO: find the ideal behaviour https://github.com/facebook/react-native-fbsdk/blob/master/react-native-fbsdklogin/js/FBSDK.LoginManager.ios.js
-  // FBSDK.LoginManager.logInWithReadPermissions(FB_PERMISSIONS).catch((error) => {
-  //   if (global.__DEV__) console.log('fb login failed: ', error);
-  //   // Actions.fbLogin.failed(result)
-  //   Alert.alert(
-  //     'Failed to Sign In',
-  //     error,
-  //     [
-  //       { text: 'Cancel', onPress: () => { if (global.__DEV__) console.log('fb login canceled') } },
-  //       { text: 'Retry', onPress: () => { loginWithFacebook() } },
-  //     ]
-  //   );
-  // }).then((result) => {
-  //   if (result.isCancelled) {
-  //     if (global.__DEV__) console.log('fb login canceled');
-  //   } else {
-  //     if (global.__DEV__) console.log('fb logged in!');
-  //     FBSDK.AccessToken.getCurrentAccessToken().then((fbToken) => {
-  //       if (fbToken) {
-  //         // NOTE: completed is NOT called here -- Actions.fbLogin.completed(fbToken);
-  //         loginWithFBToken(fbToken)
-  //       } else {
-  //         if (global.__DEV__) console.log('fb access token not found');
-  //       }
-  //     });
-  //   }
-  // });
+  // FBSDK.LoginManager.setLoginBehavior('native') // TODO: find the ideal behaviour https://github.com/facebook/react-native-fbsdk/blob/master/react-native-fbsdklogin/js/FBSDK.LoginManager.ios.js
+  FBSDK.LoginManager.logInWithReadPermissions(FB_PERMISSIONS).then((result) => {
+    if (result.isCancelled) {
+      if (global.__DEV__) console.log('fb login canceled');
+    } else {
+      if (global.__DEV__) console.log('fb logged in!');
+      FBSDK.AccessToken.getCurrentAccessToken().then((fbToken) => {
+        if (fbToken) {
+          // NOTE: completed is NOT called here -- Actions.fbLogin.completed(fbToken);
+          loginWithFBToken(fbToken)
+        } else {
+          if (global.__DEV__) console.log('fb access token not found');
+        }
+      });
+    }
+  }, (error) => {
+    if (global.__DEV__) console.log('fb login failed: ', error);
+    // Actions.fbLogin.failed(result)
+    Alert.alert(
+      'Failed to Sign In',
+      error,
+      [
+        { text: 'Cancel', onPress: () => { if (global.__DEV__) console.log('fb login canceled') } },
+        { text: 'Retry', onPress: () => { loginWithFacebook() } },
+      ]
+    );
+  });
 }
 
 export function attemptLoginWithStashedToken() {
-  // // Try to login over ddp if fb already logged in
-  // FBSDK.AccessToken.getCurrentAccessToken().then((fbToken) => {
-  //   if (fbToken) {
-  //     if (global.__DEV__) console.log('fb credentials found');
-  //     loginWithFBToken(fbToken)
-  //   } else {
-  //     if (global.__DEV__) console.log('no fb credentials found');
-  //   }
-  // });
+  // Try to login over ddp if fb already logged in
+  FBSDK.AccessToken.getCurrentAccessToken().then((fbToken) => {
+    if (fbToken) {
+      if (global.__DEV__) console.log('fb credentials found');
+      loginWithFBToken(fbToken)
+    } else {
+      if (global.__DEV__) console.log('no fb credentials found');
+    }
+  });
 }
 
 // Everything needed to log in with facebook

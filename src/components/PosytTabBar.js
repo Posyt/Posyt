@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import pluralize from 'pluralize';
 // import segment from 'react-native-segment';
 // import Digits from 'react-native-digits';
-// import FBSDK from 'react-native-fbsdk';
+import FBSDK from 'react-native-fbsdk';
 import _ from 'lodash';
 import {
   red,
@@ -86,7 +86,7 @@ class PosytTabBar extends React.Component {
   }
 
   logout() {
-    // FBSDK.LoginManager.logOut();
+    FBSDK.LoginManager.logOut();
     // Digits.logout();
     ddp.logout();
   }
@@ -188,11 +188,11 @@ class PosytTabBar extends React.Component {
             <TouchableHighlight style={[styles.modalButton, { height: 38, backgroundColor: blue }]} underlayColor={'white'}>
               <Text style={[styles.modalSubText, { fontWeight: "700", color: 'white' }]}>Login with</Text>
             </TouchableHighlight>
-            <View style={styles.modalSeparator}/>
+            <View style={styles.modalSeparator} />
             <TouchableHighlight style={[styles.modalButton]} underlayColor={'#f5f5f5'} onPress={ () => { this.refs.loginModal.hide("top", () => loginWithFacebook()) }}>
               <Text style={[styles.modalText]}>Facebook</Text>
             </TouchableHighlight>
-            <View style={styles.modalSeparator}/>
+            <View style={styles.modalSeparator} />
             <TouchableHighlight style={[styles.modalButton]} underlayColor={'#f5f5f5'} onPress={ () => { this.refs.loginModal.hide("top", () => this.setState({ showDigits: true })) }}>
               <Text style={[styles.modalText]}>Phone Number</Text>
             </TouchableHighlight>
