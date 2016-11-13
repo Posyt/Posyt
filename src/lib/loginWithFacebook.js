@@ -18,10 +18,10 @@ export default function loginWithFacebook() {
       if (global.__DEV__) console.log('fb login canceled');
     } else {
       if (global.__DEV__) console.log('fb logged in!');
-      FBSDK.AccessToken.getCurrentAccessToken().then((fbToken) => {
-        if (fbToken) {
-          // NOTE: completed is NOT called here -- Actions.fbLogin.completed(fbToken);
-          loginWithFBToken(fbToken)
+      FBSDK.AccessToken.getCurrentAccessToken().then((response) => {
+        if (response) {
+          // NOTE: completed is NOT called here -- Actions.fbLogin.completed(response);
+          loginWithFBToken(response.accessToken)
         } else {
           if (global.__DEV__) console.log('fb access token not found');
         }
@@ -45,58 +45,61 @@ export default function loginWithFacebook() {
 
 export function attemptLoginWithStashedToken() {
   // Try to login over ddp if fb already logged in
-  FBSDK.AccessToken.getCurrentAccessToken().then((fbToken) => {
-    if (fbToken) {
+  FBSDK.AccessToken.getCurrentAccessToken().then((response) => {
+    if (response) {
       if (global.__DEV__) console.log('fb credentials found');
-      loginWithFBToken(fbToken)
+      loginWithFBToken(response.accessToken)
     } else {
       if (global.__DEV__) console.log('no fb credentials found');
     }
   });
 }
 
-// Everything needed to log in with facebook
-function generateState(loginStyle, credentialToken, redirectUrl) {
-  return new Buffer(JSON.stringify(
-    {
-      loginStyle,
-      credentialToken,
-      redirectUrl,
-    }
-  )).toString('base64');
-}
-
-function constructMeteorFacebookOauthUrl(fbToken) {
-  const expiresIn = (new Date(fbToken.expirationTime)).getTime() -
-                  (new Date).getTime();
-  const state = generateState('popup', fbToken.accessToken);
-  // TODO: extract host and ssl into config/constants
-  const url = posytUri+'/_oauth/facebook/?accessToken='+
-            fbToken.accessToken+'&expiresIn='+expiresIn+'&state='+state;
-  return url;
-}
-
-function parseMeteorFacebookResponseHTML(response) {
-  const re = new RegExp("<div id=\"config\" style=\"display:none;\">(.*?)</div>");
-  const found = re.exec(response._bodyText);
-  const config = JSON.parse(found[1]);
-  return config
-}
+// // Everything needed to log in with facebook
+// function generateState(loginStyle, credentialToken, redirectUrl) {
+//   return new Buffer(JSON.stringify(
+//     {
+//       loginStyle,
+//       credentialToken,
+//       redirectUrl,
+//     }
+//   )).toString('base64');
+// }
+//
+// function constructMeteorFacebookOauthUrl(fbToken) {
+//   const expiresIn = (new Date(fbToken.expirationTime)).getTime() -
+//                   (new Date).getTime();
+//   const state = generateState('popup', fbToken.accessToken);
+//   // TODO: extract host and ssl into config/constants
+//   const url = posytUri+'/_oauth/facebook/?accessToken='+
+//             fbToken.accessToken+'&expiresIn='+expiresIn+'&state='+state;
+//   return url;
+// }
+//
+// function parseMeteorFacebookResponseHTML(response) {
+//   const re = new RegExp("<div id=\"config\" style=\"display:none;\">(.*?)</div>");
+//   const found = re.exec(response._bodyText);
+//   const config = JSON.parse(found[1]);
+//   return config
+// }
 
 function loginWithFBToken(fbToken) {
-  if (global.__DEV__) console.log("getting FB login options...");
-  const url = constructMeteorFacebookOauthUrl(fbToken);
-  // TODO: MAYBE: may not be a problem anymore. If this fetch fails automatically prompt a new fb login (just once) and then try again with new credentials.
-  fetch(url).then((response) => {
-    const config = parseMeteorFacebookResponseHTML(response);
-    const loginOptions = {
-      oauth: {
-        credentialToken: config.credentialToken,
-        credentialSecret: config.credentialSecret,
-      },
-    };
-    ddp.login(loginOptions).catch((error) => {
-			// TODO: MAYBE: do something on failed login
-    });
+  if (global.__DEV__) console.log("getting FB login options...", fbToken);
+  ddp.login({ fbsdk: { accessToken: fbToken } }).catch((error) => {
+    // TODO: MAYBE: do something on failed login
   });
+  // const url = constructMeteorFacebookOauthUrl(fbToken);
+  // // TODO: MAYBE: may not be a problem anymore. If this fetch fails automatically prompt a new fb login (just once) and then try again with new credentials.
+  // fetch(url).then((response) => {
+  //   const config = parseMeteorFacebookResponseHTML(response);
+  //   const loginOptions = {
+  //     oauth: {
+  //       credentialToken: config.credentialToken,
+  //       credentialSecret: config.credentialSecret,
+  //     },
+  //   };
+  //   ddp.login(loginOptions).catch((error) => {
+	// 		// TODO: MAYBE: do something on failed login
+  //   });
+  // });
 }
