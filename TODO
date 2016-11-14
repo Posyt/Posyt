@@ -1,3 +1,4 @@
+☐ install segment, branch, and LinearGradient
 ☐ comment App.js components back in
 ☐ update to a new segment RN package and comment all tracking back in
 ☐ swtich node-ddb-client and maybe minimongo-cache out for react-native-meteor
@@ -8,7 +9,7 @@
 ☐ install codePush and comment it back in
 ☐ install Shimmer and comment it back in
 ☐ comment DDP methods back in
-☐ comment Mongo methods back in
+✔ comment Mongo methods back in @done(2016-11-13 20:47)
 ☐ make sure all modals render properly
 ☐ render an error if facebook login fails - loginWithFacebook.js
 
