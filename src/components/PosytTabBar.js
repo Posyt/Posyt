@@ -209,7 +209,7 @@ class PosytTabBar extends React.Component {
           <Text style={[styles.modalText]}>OK</Text>
         </TouchableHighlight>
       </PosytModal>
-      ,
+      // ,
       // <Digits
       //   key="digits"
       //   visible={showDigits}
@@ -218,7 +218,7 @@ class PosytTabBar extends React.Component {
       //   onError={this.handleDigitsError.bind(this)}
       //   onLogin={this.handleDigitsLogin.bind(this)}
       // />
-      // ,
+      ,
       <UsernameModal key="usernameModal" ref="usernameModal" />
       ,
       <FeedsModal key="feedsModal" ref="feedsModal" />

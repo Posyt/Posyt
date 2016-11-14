@@ -95,28 +95,26 @@ const ScrollableTabView = React.createClass({
         <ScrollView
           horizontal
           pagingEnabled
-          keyboardShouldPersistTaps
-          style={[styles.scrollableContentIOS, this.props.removeTopMargin && { marginTop: 0 } ]}
-          contentContainerStyle={styles.scrollableContentContainerIOS}
+          automaticallyAdjustContentInsets={false}
           contentOffset={{x:this.props.initialPage * this.state.container.width}}
           ref={(scrollView) => { this.scrollView = scrollView }}
           onScroll={(e) => {
-            var offsetX = e.nativeEvent.contentOffset.x;
+            const offsetX = e.nativeEvent.contentOffset.x;
+            console.log(e.nativeEvent)
             this._updateScrollValue(offsetX / this.state.container.width);
           }}
-          onMomentumScrollBegin={(e) => {
-            var offsetX = e.nativeEvent.contentOffset.x;
-            this._updateSelectedPage(parseInt(offsetX / this.state.container.width));
-          }}
-          onMomentumScrollEnd={(e) => {
-            var offsetX = e.nativeEvent.contentOffset.x;
-            this._updateSelectedPage(parseInt(offsetX / this.state.container.width));
-          }}
+          onMomentumScrollBegin={this._onMomentumScrollBeginAndEnd}
+          onMomentumScrollEnd={this._onMomentumScrollBeginAndEnd}
           scrollEventThrottle={16}
+          scrollsToTop={false}
           showsHorizontalScrollIndicator={false}
           scrollEnabled={!this.props.locked && this.props.visible && !this.props.locked}
           directionalLockEnabled
-          alwaysBounceVertical={false}>
+          alwaysBounceVertical={false}
+          keyboardShouldPersistTaps
+          style={[styles.scrollableContentIOS, this.props.removeTopMargin && { marginTop: 0 } ]}
+          contentContainerStyle={styles.scrollableContentContainerIOS}
+        >
           {this._children().map((child,idx) => {
             return <View
               key={child.props.tabLabel + '_' + idx}
@@ -146,6 +144,14 @@ const ScrollableTabView = React.createClass({
          })}
         </ViewPagerAndroid>
       );
+    }
+  },
+
+  _onMomentumScrollBeginAndEnd(e) {
+    const offsetX = e.nativeEvent.contentOffset.x;
+    const page = Math.round(offsetX / this.state.container.width);
+    if (this.state.currentPage !== page) {
+      this._updateSelectedPage(page);
     }
   },
 

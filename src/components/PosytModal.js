@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     width,
     height,
     backgroundColor: 'transparent',
+    // backgroundColor: 'red',
     // opacity: 0,
   },
   shaker: {

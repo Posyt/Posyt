@@ -13,8 +13,8 @@ const SOURCES = _.sortBy(['Hacker News', 'Imgur', 'Product Hunt', 'The Verge', '
 
 const styles = StyleSheet.create({
   modal: {
-    flex: 1,
-    alignSelf: 'center',
+    // flex: 1,
+    // alignSelf: 'center',
     width: 200,
   },
   modalButton: {
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#eee',
   },
   scrollView: {
-    height: 230,
+    height: 280,
   },
 });
 

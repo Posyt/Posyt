@@ -36,7 +36,7 @@ class Tabs extends React.Component {
             onChangeTab={(tab) => this.onChangeTab(tab)}
           >
             <View tabLabel="documents" />
-            <View tabLabel="chat" />
+            <View tabLabel="chat" style={{ flex: 1, backgroundColor: 'tan' }} />
             {/* <ConnectScreen tabLabel="documents" /> */}
             {/* <ConversationsScreen tabLabel="chat" /> */}
           </ScrollableTabView>

@@ -11,8 +11,8 @@ import PosytModal from './PosytModal';
 
 const styles = StyleSheet.create({
   modal: {
-    flex: 1,
-    alignSelf: 'center',
+    // flex: 1,
+    // alignSelf: 'center',
     width: 200,
   },
   modalButton: {
@@ -56,9 +56,6 @@ class PointsModal extends React.Component {
 
   show(direction) {
     this.refs.pointsModal.show(direction);
-  }
-
-  componentWillReceiveProps(nextProps) {
   }
 
   render() {
