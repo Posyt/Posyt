@@ -100,7 +100,6 @@ const ScrollableTabView = React.createClass({
           ref={(scrollView) => { this.scrollView = scrollView }}
           onScroll={(e) => {
             const offsetX = e.nativeEvent.contentOffset.x;
-            console.log(e.nativeEvent)
             this._updateScrollValue(offsetX / this.state.container.width);
           }}
           onMomentumScrollBegin={this._onMomentumScrollBeginAndEnd}
