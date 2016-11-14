@@ -211,13 +211,13 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   scrollableContentContainerIOS: {
-    flex: 1,
+    // flex: 1,
   },
   scrollableContentIOS: {
     marginTop: 65,
     backgroundColor: 'transparent',
     overflow: 'visible',
-    flexDirection: 'column',
+    // flexDirection: 'column',
   },
   scrollableContentAndroid: {
     flex: 1,
