@@ -5,12 +5,12 @@ import {
 } from 'react-native';
 import { Provider } from 'react-redux';
 import App from './containers/App';
-// import {
-//   segmentWriteKey,
-// } from './lib/constants';
+import {
+  segmentWriteKey,
+} from './lib/constants';
 import { store } from './lib/store';
 import { setPlatform } from './lib/actions';
-// import segment from 'react-native-segment';
+import segment from './lib/segment';
 // import codePush from "react-native-code-push";
 
 export default function posyt(platform) {
@@ -19,7 +19,7 @@ export default function posyt(platform) {
       super(props);
       store.dispatch(setPlatform(platform));
       const debug = false; // global.__DEV__;
-      // segment.setupWithConfiguration(segmentWriteKey, debug);
+      segment.setupWithConfiguration(segmentWriteKey, debug);
     }
 
     componentDidMount() {

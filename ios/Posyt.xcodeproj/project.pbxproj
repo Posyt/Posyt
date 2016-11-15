@@ -28,6 +28,8 @@
 		707422383C1646AFB5D1F533 /* rooney sans medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AB1C937BF1364E3AAA899F04 /* rooney sans medium.otf */; };
 		76ADDFA890D0429283CA7E9B /* rooney sans.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6171E72E9BDD488F864CF883 /* rooney sans.otf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		8E0914771DDAB11D00FD5BDB /* Analytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E0914761DDAB11D00FD5BDB /* Analytics.framework */; };
+		8E09147D1DDAB27900FD5BDB /* RNSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E09147C1DDAB27900FD5BDB /* RNSegment.m */; };
 		8ED678F61DD7805800125C26 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ED678F21DD7805800125C26 /* Bolts.framework */; };
 		8ED678F71DD7805800125C26 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ED678F31DD7805800125C26 /* FBSDKCoreKit.framework */; };
 		8ED678F81DD7805800125C26 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ED678F41DD7805800125C26 /* FBSDKLoginKit.framework */; };
@@ -207,6 +209,9 @@
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		8CA924B2EDD04BAE846D3C46 /* rooney sans italic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "rooney sans italic.otf"; path = "../assets/fonts/RooneySans/rooney sans italic.otf"; sourceTree = "<group>"; };
 		8E09146F1DD80F5000FD5BDB /* Posyt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Posyt.entitlements; path = Posyt/Posyt.entitlements; sourceTree = "<group>"; };
+		8E0914761DDAB11D00FD5BDB /* Analytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Analytics.framework; path = Carthage/Build/iOS/Analytics.framework; sourceTree = "<group>"; };
+		8E09147B1DDAB27900FD5BDB /* RNSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNSegment.h; sourceTree = "<group>"; };
+		8E09147C1DDAB27900FD5BDB /* RNSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNSegment.m; sourceTree = "<group>"; };
 		8ED678F21DD7805800125C26 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../../../Documents/FacebookSDK/Bolts.framework; sourceTree = "<group>"; };
 		8ED678F31DD7805800125C26 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		8ED678F41DD7805800125C26 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -242,6 +247,7 @@
 				133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */,
 				00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */,
 				8ED678F81DD7805800125C26 /* FBSDKLoginKit.framework in Frameworks */,
+				8E0914771DDAB11D00FD5BDB /* Analytics.framework in Frameworks */,
 				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				8ED678F91DD7805800125C26 /* FBSDKShareKit.framework in Frameworks */,
@@ -387,6 +393,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				8E09147A1DDAB27900FD5BDB /* RNSegment */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
 				00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */,
@@ -442,9 +449,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		8E09147A1DDAB27900FD5BDB /* RNSegment */ = {
+			isa = PBXGroup;
+			children = (
+				8E09147B1DDAB27900FD5BDB /* RNSegment.h */,
+				8E09147C1DDAB27900FD5BDB /* RNSegment.m */,
+			);
+			path = RNSegment;
+			sourceTree = "<group>";
+		};
 		8ED678F11DD77A6600125C26 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8E0914761DDAB11D00FD5BDB /* Analytics.framework */,
 				8ED678F21DD7805800125C26 /* Bolts.framework */,
 				8ED678F31DD7805800125C26 /* FBSDKCoreKit.framework */,
 				8ED678F41DD7805800125C26 /* FBSDKLoginKit.framework */,
@@ -482,6 +499,7 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				8E0914791DDAB20A00FD5BDB /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -756,6 +774,20 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/packager/react-native-xcode.sh";
 		};
+		8E0914791DDAB20A00FD5BDB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Analytics.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -771,6 +803,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E09147D1DDAB27900FD5BDB /* RNSegment.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
@@ -846,7 +879,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 6Y3L6NDDE8;
-				FRAMEWORK_SEARCH_PATHS = "~/Documents/FacebookSDK";
+				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"~/Documents/FacebookSDK",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -876,7 +913,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6Y3L6NDDE8;
-				FRAMEWORK_SEARCH_PATHS = "~/Documents/FacebookSDK";
+				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"~/Documents/FacebookSDK",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,

@@ -19,7 +19,7 @@ import DDPClient from 'node-ddp-client';
 import { store } from './store';
 // import { deepLinker } from './DeepLinker';
 import _ from 'lodash';
-// import segment from 'react-native-segment';
+import segment from './segment';
 
 class DDP {
   constructor() {
@@ -200,17 +200,17 @@ class DDP {
         store.dispatch(loginSuccess(user));
 
         // deepLinker.branch.setIdentity(result.id);
-        // segment.identify(result.id, {
-        //   username: _.get(user, 'username'),
-        //   numPosyts: _.get(user, 'meta.numPosyts'),
-        //   numConversations: _.get(user, 'meta.numConversations'),
-        //   numUnreadConversations: _.get(user, 'meta.numUnreadConversations'),
-        //   numMessages: _.get(user, 'meta.numMessages'),
-        //   numLeads: _.get(user, 'meta.numLeads'),
-        //   email: _.get(user, 'emails[0].address'),
-        //   phone: _.get(user, 'phones[0].number'),
-        //   createdAt: _.get(user, 'createdAt'),
-        // });
+        segment.identify(result.id, {
+          username: _.get(user, 'username'),
+          numPosyts: _.get(user, 'meta.numPosyts'),
+          numConversations: _.get(user, 'meta.numConversations'),
+          numUnreadConversations: _.get(user, 'meta.numUnreadConversations'),
+          numMessages: _.get(user, 'meta.numMessages'),
+          numLeads: _.get(user, 'meta.numLeads'),
+          email: _.get(user, 'emails[0].address'),
+          phone: _.get(user, 'phones[0].number'),
+          createdAt: _.get(user, 'createdAt'),
+        });
 
         resolve(result);
       }).catch((error) => {
@@ -239,7 +239,7 @@ class DDP {
         this.authToken = null;
         store.dispatch(logoutSuccess());
         // deepLinker.branch.logout();
-        // segment.reset();
+        segment.reset();
         resolve(res);
       }).catch((err) => {
         if (global.__DEV__) console.log('Log out err', err);

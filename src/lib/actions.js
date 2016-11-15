@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import { Actions } from 'react-native-router-flux';
 import { ddp } from './DDP';
-// import segment from 'react-native-segment';
+import segment from './segment';
 
 /*
  * action types
@@ -220,24 +220,24 @@ export function sendMessage(attrs, opts = {}) {
   return dispatch => {
     if (opts.retry) {
       dispatch(retryingMessageCreate(attrs));
-      // segment.track('Message Send A - Retry', attrs);
+      segment.track('Message Send A - Retry', attrs);
     } else if (opts.delete) {
       dispatch(removeMessageFromCache(attrs));
-      // segment.track('Message Send B - Delete', attrs);
+      segment.track('Message Send B - Delete', attrs);
     } else {
       dispatch(cacheMessage(attrs));
-      // segment.track('Message Send 1 - Cache Locally', attrs);
+      segment.track('Message Send 1 - Cache Locally', attrs);
     }
     dispatch(updateChat());
     if (opts.delete) return; // Don't try to persist on delete
     ddp.call('messages/create', [_.pick(attrs, ['content', 'conversationId', 'location'])])
     .then(() => {
-      // segment.track('Message Send 2 - Save Success', attrs);
+      segment.track('Message Send 2 - Save Success', attrs);
     }).catch((err) => {
       setTimeout(() => {
         dispatch(messageCreateFailed(attrs));
         dispatch(updateChat());
-        // segment.track('Message Send 2 - Save Failed', { ...attrs, error: err.reason });
+        segment.track('Message Send 2 - Save Failed', { ...attrs, error: err.reason });
       }, 500);
     });
   };

@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity, TouchableHighlight, Animated, PushNotificationIOS } from 'react-native';
 import { connect } from 'react-redux';
 import pluralize from 'pluralize';
-// import segment from 'react-native-segment';
+import segment from '../lib/segment';
 // import Digits from 'react-native-digits';
 import FBSDK from 'react-native-fbsdk';
 import _ from 'lodash';
@@ -105,7 +105,7 @@ class PosytTabBar extends React.Component {
         <PosytModal key="posytModal" ref="posytModal" style={styles.modal}>
           <TouchableHighlight style={styles.modalButton} underlayColor={'#f5f5f5'} onPress={() => {
               this.refs.posytModal.hide("left", () => this.refs.feedsModal.getWrappedInstance().show("right"));
-              // segment.screen('Viewed Feeds Modal');
+              segment.screen('Viewed Feeds Modal');
           }}>
             <Text style={styles.modalText}>Feeds</Text>
           </TouchableHighlight>
@@ -127,7 +127,7 @@ class PosytTabBar extends React.Component {
           <View style={styles.modalSeparator} />
           <TouchableHighlight style={styles.modalButton} underlayColor={'#f5f5f5'} onPress={() => {
               this.refs.posytModal.hide("left", () => this.refs.pointsModal.getWrappedInstance().show("right"));
-              // segment.screen('Viewed Virality Modal');
+              segment.screen('Viewed Virality Modal');
           }}>
             <Text style={styles.modalText}>{currentUser && currentUser.meta && currentUser.meta.points || 0}</Text>
           </TouchableHighlight>
@@ -135,7 +135,7 @@ class PosytTabBar extends React.Component {
           <View style={[{ flexDirection: 'row' }]}>
             <TouchableHighlight style={[styles.modalButton, { height: 38, flex: 3 }]} underlayColor={'#f5f5f5'} onPress={() => {
                 this.refs.posytModal.hide("left", () => this.refs.usernameModal.getWrappedInstance().show("right"));
-                // segment.screen('Viewed Username Modal');
+                segment.screen('Viewed Username Modal');
             }}>
               <Text style={styles.modalSubText}>{currentUser && currentUser.username}</Text>
             </TouchableHighlight>
@@ -253,7 +253,7 @@ class PosytTabBar extends React.Component {
         </TouchableOpacity>
         <TouchableOpacity key='pulb' onPress={() => {
             this.refs.posytModal.show();
-            // segment.screen('Viewed Posyt Modal');
+            segment.screen('Viewed Posyt Modal');
           }}
           style={[styles.tab]}
         >

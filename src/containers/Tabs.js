@@ -7,7 +7,7 @@ import PosytTabBar from '../components/PosytTabBar';
 import {
   lightGrey,
 } from '../lib/constants';
-// import segment from 'react-native-segment';
+import segment from '../lib/segment';
 
 const styles = StyleSheet.create({
   corners: {
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
 class Tabs extends React.Component {
   onChangeTab({ i }) {
     const tabs = { 0: 'Viewed Cards', 1: 'Viewed Conversations' };
-    // segment.screen(tabs[i]);
+    segment.screen(tabs[i]);
   }
 
   render() {
