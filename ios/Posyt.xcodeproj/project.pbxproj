@@ -26,6 +26,7 @@
 		4DE675F23C814E2C88E49835 /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C33A5973B3F144EC91DD05C4 /* libBVLinearGradient.a */; };
 		564A059659BD49BA883345B5 /* rooney sans light.otf in Resources */ = {isa = PBXBuildFile; fileRef = A9FCCE55CB0747DA8DCC34ED /* rooney sans light.otf */; };
 		65A89F92BAFD4F49A9DB2A4A /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D3A4F85ED44C9AB28B271C /* libRCTFBSDK.a */; };
+		6687FBBB2F2242E2AB26DF59 /* libSafariViewManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A195F4A51B47B69B371C5E /* libSafariViewManager.a */; };
 		66D22FA462634AD2B2F353A0 /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A12F27FF741DA827AD68A /* libRNDeviceInfo.a */; };
 		707422383C1646AFB5D1F533 /* rooney sans medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AB1C937BF1364E3AAA899F04 /* rooney sans medium.otf */; };
 		76ADDFA890D0429283CA7E9B /* rooney sans.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6171E72E9BDD488F864CF883 /* rooney sans.otf */; };
@@ -154,6 +155,13 @@
 			remoteGlobalIDString = DA5891D81BA9A9FC002B4DB2;
 			remoteInfo = RNDeviceInfo;
 		};
+		8E0915F21DDBA94000FD5BDB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 057E2B13080F4D0099A15E05 /* SafariViewManager.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = SafariViewManager;
+		};
 		8EDE97F61DD50B600005DB23 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */;
@@ -215,6 +223,7 @@
 		00E356EE1AD99517003FC87E /* PosytTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PosytTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* PosytTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PosytTests.m; sourceTree = "<group>"; };
+		057E2B13080F4D0099A15E05 /* SafariViewManager.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = SafariViewManager.xcodeproj; path = "../node_modules/react-native-safari-view/SafariViewManager.xcodeproj"; sourceTree = "<group>"; };
 		0788B861D93A40859BE52C84 /* rooney sans black italic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "rooney sans black italic.otf"; path = "../assets/fonts/RooneySans/rooney sans black italic.otf"; sourceTree = "<group>"; };
 		12EFED3594314DCEAE07F41A /* rooney sans black.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "rooney sans black.otf"; path = "../assets/fonts/RooneySans/rooney sans black.otf"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
@@ -228,6 +237,7 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Posyt/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		334EC6D311E54B2FAEC84039 /* rooney sans heavy italic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "rooney sans heavy italic.otf"; path = "../assets/fonts/RooneySans/rooney sans heavy italic.otf"; sourceTree = "<group>"; };
+		49A195F4A51B47B69B371C5E /* libSafariViewManager.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libSafariViewManager.a; sourceTree = "<group>"; };
 		4DF80FA580E8485482A5B254 /* rooney sans bold italic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "rooney sans bold italic.otf"; path = "../assets/fonts/RooneySans/rooney sans bold italic.otf"; sourceTree = "<group>"; };
 		6171E72E9BDD488F864CF883 /* rooney sans.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "rooney sans.otf"; path = "../assets/fonts/RooneySans/rooney sans.otf"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
@@ -290,6 +300,7 @@
 				65A89F92BAFD4F49A9DB2A4A /* libRCTFBSDK.a in Frameworks */,
 				4DE675F23C814E2C88E49835 /* libBVLinearGradient.a in Frameworks */,
 				66D22FA462634AD2B2F353A0 /* libRNDeviceInfo.a in Frameworks */,
+				6687FBBB2F2242E2AB26DF59 /* libSafariViewManager.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +454,7 @@
 				8E09155D1DDB8BA200FD5BDB /* RNBranch.xcodeproj */,
 				D8D81F92C74F41F793BA7CA8 /* BVLinearGradient.xcodeproj */,
 				D9EF244BD59E43988B86FD91 /* RNDeviceInfo.xcodeproj */,
+				057E2B13080F4D0099A15E05 /* SafariViewManager.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -516,6 +528,14 @@
 			isa = PBXGroup;
 			children = (
 				8E0915CB1DDBA83F00FD5BDB /* libRNDeviceInfo.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8E0915DA1DDBA93F00FD5BDB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8E0915F31DDBA94000FD5BDB /* libSafariViewManager.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -668,6 +688,10 @@
 					ProductGroup = 8E0915B31DDBA83F00FD5BDB /* Products */;
 					ProjectRef = D9EF244BD59E43988B86FD91 /* RNDeviceInfo.xcodeproj */;
 				},
+				{
+					ProductGroup = 8E0915DA1DDBA93F00FD5BDB /* Products */;
+					ProjectRef = 057E2B13080F4D0099A15E05 /* SafariViewManager.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -774,6 +798,13 @@
 			fileType = archive.ar;
 			path = libRNDeviceInfo.a;
 			remoteRef = 8E0915CA1DDBA83F00FD5BDB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8E0915F31DDBA94000FD5BDB /* libSafariViewManager.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSafariViewManager.a;
+			remoteRef = 8E0915F21DDBA94000FD5BDB /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		8EDE97F71DD50B600005DB23 /* libRCTImage-tvOS.a */ = {
@@ -947,6 +978,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Posyt.app/Posyt";
@@ -963,6 +995,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -994,6 +1027,7 @@
 					"$(SRCROOT)/../node_modules/react-native-branch/ios",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
+					"$(SRCROOT)/../node_modules/react-native-safari-view",
 				);
 				INFOPLIST_FILE = Posyt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -1031,6 +1065,7 @@
 					"$(SRCROOT)/../node_modules/react-native-branch/ios",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
+					"$(SRCROOT)/../node_modules/react-native-safari-view",
 				);
 				INFOPLIST_FILE = Posyt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -1087,6 +1122,7 @@
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
+					"$(SRCROOT)/../node_modules/react-native-safari-view",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -1130,6 +1166,7 @@
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
+					"$(SRCROOT)/../node_modules/react-native-safari-view",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
