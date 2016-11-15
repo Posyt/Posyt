@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Text, TouchableHighlight, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-// import Shimmer from 'react-native-shimmer';
+import Shimmer from 'react-native-shimmer';
 import {
   grey,
   lightGrey,
@@ -63,9 +63,9 @@ class PointsModal extends React.Component {
     return (
       <PosytModal key="pointsModal" ref="pointsModal" style={styles.modal}>
         <View style={[styles.modalButton, { height: 160, paddingLeft: 10, paddingRight: 10 }]}>
-          {/* <Shimmer pauseDuration={2500} speed={30}> */}
+          <Shimmer pauseDuration={2500} speed={30}>
             <Text style={[styles.modalSubText, { fontWeight: '600' }]}>Points {currentUser && currentUser.meta && currentUser.meta.points}</Text>
-          {/* </Shimmer> */}
+          </Shimmer>
           <Text style={[styles.modalSubText, { fontSize: 15, lineHeight: 18, marginTop: -3, fontWeight: '400', textAlign: 'left' }]}>Help your posyts reach more people 🎉</Text>
           <Text style={[styles.modalSubText, { fontWeight: '400', textAlign: 'right' }]}>✏️ write a posyt 👉 +1</Text>
           <Text style={[styles.modalSubText, { fontWeight: '400', textAlign: 'right' }]}>💚 get a like 👉 +1</Text>

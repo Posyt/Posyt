@@ -6,8 +6,8 @@
 ✔ install FBSDK and comment it back in @done(2016-11-12 20:40)
 ✔ install SafariView and comment it back in @done(2016-11-15 15:38)
 ☐ install codePush and comment it back in
-☐ install Shimmer and comment it back in
-☐ comment DDP methods back in
+✔ install Shimmer and comment it back in @done(2016-11-15 15:42)
+✔ comment DDP methods back in @done(2016-11-15 15:42)
 ✔ comment Mongo methods back in @done(2016-11-13 20:47)
 ☐ make sure all modals render properly
 ☐ render an error if facebook login fails - loginWithFacebook.js

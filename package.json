@@ -32,6 +32,7 @@
     "react-native-linear-gradient": "^1.5.15",
     "react-native-router-flux": "^3.36.0",
     "react-native-safari-view": "^1.2.0",
+    "react-native-shimmer": "^0.1.0",
     "react-redux": "^4.4.5",
     "react-timer-mixin": "^0.13.3",
     "redux": "^3.6.0",
