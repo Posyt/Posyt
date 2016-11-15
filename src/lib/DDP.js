@@ -17,7 +17,7 @@ import {
 } from './constants';
 import DDPClient from 'node-ddp-client';
 import { store } from './store';
-// import { deepLinker } from './DeepLinker';
+import { deepLinker } from './DeepLinker';
 import _ from 'lodash';
 import segment from './segment';
 
@@ -199,7 +199,7 @@ class DDP {
         // TODO: MAYBE: FIX: If this gets called before the other components are listening they will not get the completed events. find a way to make sure they are listening. Or trigger them another way...
         store.dispatch(loginSuccess(user));
 
-        // deepLinker.branch.setIdentity(result.id);
+        deepLinker.branch.setIdentity(result.id);
         segment.identify(result.id, {
           username: _.get(user, 'username'),
           numPosyts: _.get(user, 'meta.numPosyts'),
@@ -238,7 +238,7 @@ class DDP {
         this.userId = undefined;
         this.authToken = null;
         store.dispatch(logoutSuccess());
-        // deepLinker.branch.logout();
+        deepLinker.branch.logout();
         segment.reset();
         resolve(res);
       }).catch((err) => {

@@ -2,7 +2,7 @@
 ☐ comment App.js components back in
 ✔ update to a new segment RN package and comment all tracking back in @done(2016-11-14 22:15)
 ☐ swtich node-ddb-client and maybe minimongo-cache out for react-native-meteor
-☐ install branch and comment it back in
+✔ install branch and comment it back in @done(2016-11-15 14:26)
 ☐ install DeviceInfo and comment it back in
 ✔ install FBSDK and comment it back in @done(2016-11-12 20:40)
 ☐ install SafariView and comment it back in
