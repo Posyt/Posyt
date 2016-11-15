@@ -233,14 +233,14 @@ class Compose extends React.Component {
       this.open = true;
       const placeholders = [
         'Write something... (It\'s all anonymous)',
-        'Share an idea...',
-        'Share what you\'re working on...',
-        'Ask for help with something...',
-        'Share what you want to learn...',
-        'Share something you just learned...',
-        'Send a wish into the world...',
-        'Tell the void what you want to talk about...',
-        'Share an interesting link...',
+        'e.g. Share an idea...',
+        'e.g. Share what you\'re working on...',
+        'e.g. Ask for help with something...',
+        'e.g. Share what you want to learn...',
+        'e.g. Share something you just learned...',
+        'e.g. Send a wish into the world...',
+        'e.g. Tell the void what you want to talk about...',
+        'e.g. Share an interesting link...',
       ];
       const placeholder = _.sample(placeholders);
       this.setState({ placeholder });

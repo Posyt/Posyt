@@ -10,13 +10,15 @@
 ✔ comment DDP methods back in @done(2016-11-15 15:42)
 ✔ comment Mongo methods back in @done(2016-11-13 20:47)
 ✔ make sure all modals render properly @done(2016-11-15 16:35)
-☐ render an error if facebook login fails - loginWithFacebook.js
+☐ install digits
+☐ install crashlytics
 ☐ make sure compose works
 ☐ make sure cards work
 ☐ make sure conversations list works
 ☐ make sure chat works
 ☐ make sure push works
 ☐ make sure deep link share works
+☐ render an error if facebook login fails - loginWithFacebook.js
 
 Android
 ☐ complete FBSDK install https://github.com/facebook/react-native-fbsdk#31-android-project
