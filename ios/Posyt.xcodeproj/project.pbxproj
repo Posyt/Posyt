@@ -26,6 +26,7 @@
 		4DE675F23C814E2C88E49835 /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C33A5973B3F144EC91DD05C4 /* libBVLinearGradient.a */; };
 		564A059659BD49BA883345B5 /* rooney sans light.otf in Resources */ = {isa = PBXBuildFile; fileRef = A9FCCE55CB0747DA8DCC34ED /* rooney sans light.otf */; };
 		65A89F92BAFD4F49A9DB2A4A /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D3A4F85ED44C9AB28B271C /* libRCTFBSDK.a */; };
+		66D22FA462634AD2B2F353A0 /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A12F27FF741DA827AD68A /* libRNDeviceInfo.a */; };
 		707422383C1646AFB5D1F533 /* rooney sans medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AB1C937BF1364E3AAA899F04 /* rooney sans medium.otf */; };
 		76ADDFA890D0429283CA7E9B /* rooney sans.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6171E72E9BDD488F864CF883 /* rooney sans.otf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
@@ -146,6 +147,13 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = BVLinearGradient;
 		};
+		8E0915CA1DDBA83F00FD5BDB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9EF244BD59E43988B86FD91 /* RNDeviceInfo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DA5891D81BA9A9FC002B4DB2;
+			remoteInfo = RNDeviceInfo;
+		};
 		8EDE97F61DD50B600005DB23 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */;
@@ -240,7 +248,9 @@
 		AF6921CBA4714B69B3D5B4CF /* rooney sans medium italic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "rooney sans medium italic.otf"; path = "../assets/fonts/RooneySans/rooney sans medium italic.otf"; sourceTree = "<group>"; };
 		B6D3A4F85ED44C9AB28B271C /* libRCTFBSDK.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTFBSDK.a; sourceTree = "<group>"; };
 		C33A5973B3F144EC91DD05C4 /* libBVLinearGradient.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libBVLinearGradient.a; sourceTree = "<group>"; };
+		D76A12F27FF741DA827AD68A /* libRNDeviceInfo.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNDeviceInfo.a; sourceTree = "<group>"; };
 		D8D81F92C74F41F793BA7CA8 /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
+		D9EF244BD59E43988B86FD91 /* RNDeviceInfo.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNDeviceInfo.xcodeproj; path = "../node_modules/react-native-device-info/RNDeviceInfo.xcodeproj"; sourceTree = "<group>"; };
 		DC10FA50379D4090A895B6D5 /* RCTFBSDK.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDK.xcodeproj; path = "../node_modules/react-native-fbsdk/ios/RCTFBSDK.xcodeproj"; sourceTree = "<group>"; };
 		E4A08975050A4F28A2E8D195 /* rooney sans bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "rooney sans bold.otf"; path = "../assets/fonts/RooneySans/rooney sans bold.otf"; sourceTree = "<group>"; };
 		E9A2CABBD6A94B3D9793801E /* rooney sans heavy.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "rooney sans heavy.otf"; path = "../assets/fonts/RooneySans/rooney sans heavy.otf"; sourceTree = "<group>"; };
@@ -279,6 +289,7 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				65A89F92BAFD4F49A9DB2A4A /* libRCTFBSDK.a in Frameworks */,
 				4DE675F23C814E2C88E49835 /* libBVLinearGradient.a in Frameworks */,
+				66D22FA462634AD2B2F353A0 /* libRNDeviceInfo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +442,7 @@
 				DC10FA50379D4090A895B6D5 /* RCTFBSDK.xcodeproj */,
 				8E09155D1DDB8BA200FD5BDB /* RNBranch.xcodeproj */,
 				D8D81F92C74F41F793BA7CA8 /* BVLinearGradient.xcodeproj */,
+				D9EF244BD59E43988B86FD91 /* RNDeviceInfo.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -496,6 +508,14 @@
 			isa = PBXGroup;
 			children = (
 				8E0915921DDB9D6B00FD5BDB /* libBVLinearGradient.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8E0915B31DDBA83F00FD5BDB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8E0915CB1DDBA83F00FD5BDB /* libRNDeviceInfo.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -644,6 +664,10 @@
 					ProductGroup = 8E09155E1DDB8BA200FD5BDB /* Products */;
 					ProjectRef = 8E09155D1DDB8BA200FD5BDB /* RNBranch.xcodeproj */;
 				},
+				{
+					ProductGroup = 8E0915B31DDBA83F00FD5BDB /* Products */;
+					ProjectRef = D9EF244BD59E43988B86FD91 /* RNDeviceInfo.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -743,6 +767,13 @@
 			fileType = archive.ar;
 			path = libBVLinearGradient.a;
 			remoteRef = 8E0915911DDB9D6B00FD5BDB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8E0915CB1DDBA83F00FD5BDB /* libRNDeviceInfo.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNDeviceInfo.a;
+			remoteRef = 8E0915CA1DDBA83F00FD5BDB /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		8EDE97F71DD50B600005DB23 /* libRCTImage-tvOS.a */ = {
@@ -915,6 +946,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Posyt.app/Posyt";
@@ -931,6 +963,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -960,6 +993,7 @@
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-branch/ios",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
 				);
 				INFOPLIST_FILE = Posyt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -996,6 +1030,7 @@
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-branch/ios",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
 				);
 				INFOPLIST_FILE = Posyt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -1051,6 +1086,7 @@
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -1093,6 +1129,7 @@
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;

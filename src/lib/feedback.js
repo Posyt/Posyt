@@ -2,7 +2,7 @@ import React from 'react';
 import { ActionSheetIOS, AsyncStorage, AlertIOS, PixelRatio, Dimensions } from 'react-native';
 import segment from './segment';
 import { ddp } from './DDP';
-// import DeviceInfo from 'react-native-device-info';
+import DeviceInfo from 'react-native-device-info';
 import openURL from './openURL';
 
 
@@ -11,15 +11,15 @@ function save(attrs) {
   if (!attributes.meta) attributes.meta = {};
   attributes.meta.pixelRatio = PixelRatio.get();
   attributes.meta.dimensions = Dimensions.get('window');
-  // attributes.meta.version = DeviceInfo.getVersion();
-  // attributes.meta.readableVersion = DeviceInfo.getReadableVersion();
-  // attributes.meta.bundleId = DeviceInfo.getBundleId();
-  // attributes.meta.deviceName = DeviceInfo.getDeviceName();
-  // attributes.meta.systemVersion = DeviceInfo.getSystemVersion();
-  // attributes.meta.manufacturer = DeviceInfo.getManufacturer();
-  // attributes.meta.model = DeviceInfo.getModel();
-  // attributes.meta.deviceLocale = DeviceInfo.getDeviceLocale();
-  // attributes.meta.deviceCountry = DeviceInfo.getDeviceCountry();
+  attributes.meta.version = DeviceInfo.getVersion();
+  attributes.meta.readableVersion = DeviceInfo.getReadableVersion();
+  attributes.meta.bundleId = DeviceInfo.getBundleId();
+  attributes.meta.deviceName = DeviceInfo.getDeviceName();
+  attributes.meta.systemVersion = DeviceInfo.getSystemVersion();
+  attributes.meta.manufacturer = DeviceInfo.getManufacturer();
+  attributes.meta.model = DeviceInfo.getModel();
+  attributes.meta.deviceLocale = DeviceInfo.getDeviceLocale();
+  attributes.meta.deviceCountry = DeviceInfo.getDeviceCountry();
   // TODO: add more meta info like iOS version
   ddp.call('feelings/create', [attributes]).then((result) => {
     if (global.__DEV__) console.log("feeling submited!", result);

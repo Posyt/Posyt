@@ -1,9 +1,8 @@
 ✔ install segment, branch, and LinearGradient @done(2016-11-15 15:08)
 ☐ comment App.js components back in
 ✔ update to a new segment RN package and comment all tracking back in @done(2016-11-14 22:15)
-☐ swtich node-ddb-client and maybe minimongo-cache out for react-native-meteor
 ✔ install branch and comment it back in @done(2016-11-15 14:26)
-☐ install DeviceInfo and comment it back in
+✔ install DeviceInfo and comment it back in @done(2016-11-15 15:34)
 ✔ install FBSDK and comment it back in @done(2016-11-12 20:40)
 ☐ install SafariView and comment it back in
 ☐ install codePush and comment it back in
@@ -18,6 +17,9 @@ Android
 
 Eventually
 ☐ upgrade to RN0.37 - it really breaks the modals though :(
+
+Maybe
+☐ swtich node-ddb-client and maybe minimongo-cache out for react-native-meteor
 
 cmd + enter = add new todo
 cmd + d = check / uncheck
