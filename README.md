@@ -10,6 +10,7 @@ NOTE: release-react will bundle the main.jsbundle as well, so you don't need to 
 
 	code-push release-react Posyt ios -d "Production" -des "CHANGELOG..." --rollout "100%"
 
+
 ## Packaging
 
 	XCode Product > Scheme > Edit Scheme -- set Build Configuration to Release and uncheck debug
@@ -19,3 +20,9 @@ NOTE: release-react will bundle the main.jsbundle as well, so you don't need to 
 
 	XCode Set target to iPhone in top bar, Select the Posyt project in left bar, Product > Archive
 	Fabric should automatically find the new build and prompt you to distribute it to testers, if not run archive again
+
+
+## Gotchas
+
+### Branch
+  https://github.com/BranchMetrics/react-native-branch-deep-linking/issues/18#issuecomment-231533316
