@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Text, TouchableHighlight, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import LinearGradient from 'react-native-linear-gradient';
 import {
   grey,
   lightGrey,
@@ -44,7 +45,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#eee',
   },
   scrollView: {
-    height: 280,
+    height: 290,
+  },
+  scrollViewBottomPadding: {
+    height: 50,
+  },
+  gradient: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: 50,
   },
 });
 
@@ -96,7 +107,15 @@ class FeedsModal extends React.Component {
               </View>
             );
           })}
+          <View style={styles.scrollViewBottomPadding} />
         </ScrollView>
+        <LinearGradient
+          start={[0, 0]}
+          end={[0, 1]}
+          colors={['rgba(255,255,255,0)', 'rgba(255,255,255,1)']}
+          style={styles.gradient}
+          pointerEvents="none"
+        />
       </PosytModal>
     )
   }
