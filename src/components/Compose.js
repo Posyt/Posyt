@@ -121,8 +121,8 @@ const styles = StyleSheet.create({
   },
 
   modal: {
-    flex: 1,
-    alignSelf: 'center',
+    // flex: 1,
+    // alignSelf: 'center',
     width: 200,
   },
   modalButton: {
