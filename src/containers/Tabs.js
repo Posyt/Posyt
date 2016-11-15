@@ -2,8 +2,8 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import ScrollableTabView from '../components/ScrollableTabView';
 import PosytTabBar from '../components/PosytTabBar';
-// import ConnectScreen from '../components/ConnectScreen';
-// import ConversationsScreen from '../components/ConversationsScreen';
+import ConnectScreen from '../components/ConnectScreen';
+import ConversationsScreen from '../components/ConversationsScreen';
 import {
   lightGrey,
 } from '../lib/constants';
@@ -35,10 +35,8 @@ class Tabs extends React.Component {
             renderTabBar={() => <PosytTabBar />}
             onChangeTab={(tab) => this.onChangeTab(tab)}
           >
-            <View tabLabel="documents" />
-            <View tabLabel="chat" style={{ flex: 1, backgroundColor: 'tan' }} />
-            {/* <ConnectScreen tabLabel="documents" /> */}
-            {/* <ConversationsScreen tabLabel="chat" /> */}
+            <ConnectScreen tabLabel="documents" />
+            <ConversationsScreen tabLabel="chat" />
           </ScrollableTabView>
         </View>
       </View>
