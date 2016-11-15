@@ -67,6 +67,7 @@ class PosytModal extends React.Component {
       pan: new Animated.ValueXY(),
       screenHeight: new Animated.Value(height),
       shake: new Animated.Value(0.0),
+      opacity: new Animated.Value(1.0),
     }
     this.state.panResponder = PanResponder.create({
       onStartShouldSetPanResponder: (e, g) => true,
@@ -132,6 +133,13 @@ class PosytModal extends React.Component {
     // TODO: if onRelease is defined then only animate back if it returns true
     if (Math.abs(g.dx) + Math.abs(g.dy) > THRESHOLD) {
       const gg = { dx: g.dx, dy: g.dy };
+      Animated.timing(this.state.opacity, {
+        toValue: 0,
+        duration: 200,
+        easing: Easing.in(Easing.ease),
+      }).start(() => {
+        this.state.opacity.setValue(1.0);
+      });
       setTimeout(() => {
         if (this.props.alwaysVisible) {
           this.state.pan.setValue({ x: gg.dx * 3 * -1, y: gg.dy * 3 * -1 });
@@ -175,9 +183,18 @@ class PosytModal extends React.Component {
   hide(direction = this.state.direction, cb) {
     this.requestAnimationFrame(() => {
       if (this.props.alwaysVisible && direction === 'top') direction = 'bottom';
-      Animated.spring(this.state.pan, {
-        toValue: this.panCoordsFromDirection(direction),
-      }).start();
+      Animated.parallel([
+        Animated.spring(this.state.pan, {
+          toValue: this.panCoordsFromDirection(direction),
+        }),
+        Animated.timing(this.state.opacity, {
+          toValue: 0,
+          duration: 200,
+          easing: Easing.in(Easing.ease),
+        }),
+      ]).start(() => {
+        this.state.opacity.setValue(1.0);
+      });
       setTimeout(() => {
         if (this.props.alwaysVisible) {
           this.show();
@@ -227,7 +244,7 @@ class PosytModal extends React.Component {
   }
 
   render() {
-    const { visible, touchNormalY, pan, screenHeight, shake, direction } = this.state;
+    const { visible, touchNormalY, pan, screenHeight, shake, direction, opacity } = this.state;
     const { style, onDismiss } = this.props;
 
     const contentAnim = {
@@ -259,7 +276,7 @@ class PosytModal extends React.Component {
         visible={visible}
         transparent
       >
-        <Animated.View style={[styles.container, { height: screenHeight }]}>
+        <Animated.View style={[styles.container, { height: screenHeight, opacity }]}>
           <TouchableWithoutFeedback onPress={() => this.hide(direction, onDismiss)}>
             <View blurType="xlight" style={styles.underlay} />
           </TouchableWithoutFeedback>
