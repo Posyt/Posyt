@@ -19,9 +19,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//#if DEBUG
-//  [RNBranch useTestInstance];
-//#endif
+#if DEBUG
+  [RNBranch useTestInstance];
+#endif
   [RNBranch initSessionWithLaunchOptions:launchOptions isReferrable:YES];
   
   [[FBSDKApplicationDelegate sharedInstance] application:application
