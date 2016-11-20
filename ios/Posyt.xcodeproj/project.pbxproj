@@ -35,6 +35,11 @@
 		8E09147D1DDAB27900FD5BDB /* RNSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E09147C1DDAB27900FD5BDB /* RNSegment.m */; };
 		8E0914F01DDB8A9A00FD5BDB /* Branch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E0914EF1DDB8A9A00FD5BDB /* Branch.framework */; };
 		8E0915751DDB8BCB00FD5BDB /* libRNBranch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E0915741DDB8BA200FD5BDB /* libRNBranch.a */; };
+		8EA2F7BC1DE1509500B869B1 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA2F7BA1DE1509500B869B1 /* Fabric.framework */; };
+		8EA2F7BD1DE1509500B869B1 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA2F7BB1DE1509500B869B1 /* Crashlytics.framework */; };
+		8EA2F7C11DE1516D00B869B1 /* DigitsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA2F7BE1DE1516D00B869B1 /* DigitsKit.framework */; };
+		8EA2F7C21DE1516D00B869B1 /* DigitsKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8EA2F7BF1DE1516D00B869B1 /* DigitsKitResources.bundle */; };
+		8EA2F7C31DE1516D00B869B1 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA2F7C01DE1516D00B869B1 /* TwitterCore.framework */; };
 		8ED678F61DD7805800125C26 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ED678F21DD7805800125C26 /* Bolts.framework */; };
 		8ED678F71DD7805800125C26 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ED678F31DD7805800125C26 /* FBSDKCoreKit.framework */; };
 		8ED678F81DD7805800125C26 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ED678F41DD7805800125C26 /* FBSDKLoginKit.framework */; };
@@ -259,6 +264,11 @@
 		8E09147C1DDAB27900FD5BDB /* RNSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNSegment.m; sourceTree = "<group>"; };
 		8E0914EF1DDB8A9A00FD5BDB /* Branch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Branch.framework; path = Carthage/Build/iOS/Branch.framework; sourceTree = "<group>"; };
 		8E09155D1DDB8BA200FD5BDB /* RNBranch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNBranch.xcodeproj; path = "../node_modules/react-native-branch/ios/RNBranch.xcodeproj"; sourceTree = "<group>"; };
+		8EA2F7BA1DE1509500B869B1 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		8EA2F7BB1DE1509500B869B1 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		8EA2F7BE1DE1516D00B869B1 /* DigitsKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DigitsKit.framework; sourceTree = "<group>"; };
+		8EA2F7BF1DE1516D00B869B1 /* DigitsKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DigitsKitResources.bundle; path = DigitsKit.framework/Versions/A/Resources/DigitsKitResources.bundle; sourceTree = "<group>"; };
+		8EA2F7C01DE1516D00B869B1 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
 		8ED678F21DD7805800125C26 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../../../Documents/FacebookSDK/Bolts.framework; sourceTree = "<group>"; };
 		8ED678F31DD7805800125C26 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		8ED678F41DD7805800125C26 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -290,6 +300,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EA2F7BC1DE1509500B869B1 /* Fabric.framework in Frameworks */,
 				8E0915751DDB8BCB00FD5BDB /* libRNBranch.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				8ED678F71DD7805800125C26 /* FBSDKCoreKit.framework in Frameworks */,
@@ -298,7 +309,9 @@
 				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
 				133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */,
 				00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */,
+				8EA2F7C11DE1516D00B869B1 /* DigitsKit.framework in Frameworks */,
 				8ED678F81DD7805800125C26 /* FBSDKLoginKit.framework in Frameworks */,
+				8EA2F7BD1DE1509500B869B1 /* Crashlytics.framework in Frameworks */,
 				8E0914F01DDB8A9A00FD5BDB /* Branch.framework in Frameworks */,
 				8E0914771DDAB11D00FD5BDB /* Analytics.framework in Frameworks */,
 				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
@@ -312,6 +325,7 @@
 				66D22FA462634AD2B2F353A0 /* libRNDeviceInfo.a in Frameworks */,
 				6687FBBB2F2242E2AB26DF59 /* libSafariViewManager.a in Frameworks */,
 				DE1E3C34E0684D2CB4130C1F /* libRNShimmer.a in Frameworks */,
+				8EA2F7C31DE1516D00B869B1 /* TwitterCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,6 +577,11 @@
 		8ED678F11DD77A6600125C26 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8EA2F7BE1DE1516D00B869B1 /* DigitsKit.framework */,
+				8EA2F7BF1DE1516D00B869B1 /* DigitsKitResources.bundle */,
+				8EA2F7C01DE1516D00B869B1 /* TwitterCore.framework */,
+				8EA2F7BA1DE1509500B869B1 /* Fabric.framework */,
+				8EA2F7BB1DE1509500B869B1 /* Crashlytics.framework */,
 				8E0914EF1DDB8A9A00FD5BDB /* Branch.framework */,
 				8E0914761DDAB11D00FD5BDB /* Analytics.framework */,
 				8ED678F21DD7805800125C26 /* Bolts.framework */,
@@ -603,6 +622,7 @@
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				8E0914791DDAB20A00FD5BDB /* ShellScript */,
+				8EA2F7B91DE1504D00B869B1 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -906,6 +926,7 @@
 				C1C75BD3C1C24F5387B0CEDF /* rooney sans black italic.otf in Resources */,
 				B6648EE3F30A4536B7DCE373 /* rooney sans black.otf in Resources */,
 				A45BF298454A45DDAB777376 /* rooney sans bold italic.otf in Resources */,
+				8EA2F7C21DE1516D00B869B1 /* DigitsKitResources.bundle in Resources */,
 				E29D03FC1CBF48D19A5ADEC1 /* rooney sans bold.otf in Resources */,
 				D2E816380C4847F791DCCAE0 /* rooney sans heavy italic.otf in Resources */,
 				2E4EC9E6FF894AAE95255B1B /* rooney sans heavy.otf in Resources */,
@@ -949,6 +970,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		8EA2F7B91DE1504D00B869B1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 1a61bbedfade65343c5cf92301d8a848b7a44fa9 feafce4f2292020f1b7ffdf644a79a135d4a424c6c0135bea9969ebe98f7f9b1";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1051,6 +1085,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"~/Documents/FacebookSDK",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1090,6 +1125,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"~/Documents/FacebookSDK",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

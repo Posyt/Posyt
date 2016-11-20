@@ -14,11 +14,17 @@
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "RNBranch.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+#import <DigitsKit/DigitsKit.h>
+
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  [Fabric with:@[[Crashlytics class], [Digits class]]];
+
 #if DEBUG
   [RNBranch useTestInstance];
 #endif
