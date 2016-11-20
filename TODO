@@ -19,6 +19,7 @@
 ☐ make sure push works
 ☐ make sure deep link share works
 ☐ render an error if facebook login fails - loginWithFacebook.js
+☐ add an empty message to conversations list before you've had any matches
 
 Android
 ☐ complete FBSDK install https://github.com/facebook/react-native-fbsdk#31-android-project
