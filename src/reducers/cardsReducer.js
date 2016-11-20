@@ -37,12 +37,12 @@ function updateCards(state, action) {
   // const leads = user && user.meta && _.sortBy(user.meta.leads, o => o.type) || [];
   const leads = user && user.meta && user.meta.leads || [];
   const typeToDb = { article: mongo.db.articles, posyt: mongo.db.posyts };
-  const cards = [...state.unshiftedCards, ..._.compact(leads.map(l => {
+  const cards = _.uniqBy([...state.unshiftedCards, ..._.compact(leads.map((l) => {
     if (_.find(state.swiped, { _type: l.type, _id: l.id })) return null;
     if (_.find(state.unshiftedCards, { _type: l.type, _id: l.id })) return null;
     const card = typeToDb[l.type].findOne({ _id: l.id });
     return card && { ...card, _type: l.type };
-  }))];
+  }))], '_id');
   // TODO: leave the top 3 cards at the top
   return {
     leads,
