@@ -2,10 +2,10 @@ import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity, TouchableHighlight, Animated, PushNotificationIOS } from 'react-native';
 import { connect } from 'react-redux';
 import pluralize from 'pluralize';
-import segment from '../lib/segment';
-// import Digits from 'react-native-digits';
+import { DigitsManager } from 'react-native-fabric-digits';
 import FBSDK from 'react-native-fbsdk';
 import _ from 'lodash';
+import segment from '../lib/segment';
 import {
   red,
   blue,
@@ -73,21 +73,42 @@ class PosytTabBar extends React.Component {
     ).start();
   }
 
+  loginWithFacebook = () => {
+    loginWithFacebook();
+    // TODO: show loading text until ddp.login returns success or error
+  }
 
-  handleDigitsError(err) {
+  showDigits = () => {
+    const digitsOptions = { appearance: { accentColor: { hex: red, alpha: 1 } } };
+    this.refs.loginModal.hide('top', () => {
+      this.setState({ showDigits: true }, () => {
+        setTimeout(() => {
+          DigitsManager.launchAuthentication(digitsOptions)
+            .then(this.handleDigitsLogin)
+            .catch(this.handleDigitsError);
+        }, 300);
+      });
+    });
+  }
+
+  handleDigitsError = (err) => {
     this.setState({ showDigits: false });
     if (global.__DEV__) console.warn('Digits login failed', err);
   }
 
-  handleDigitsLogin(credentials) {
+  handleDigitsLogin = (credentials) => {
     this.setState({ showDigits: false });
-    if (global.__DEV__) console.log('Digits login successful', credentials);
-    ddp.login({ digits: credentials });
+    const digits = { ...credentials };
+    delete digits.consumerKey;
+    delete digits.consumerSecret;
+    if (global.__DEV__) console.log('Digits login successful', digits);
+    ddp.login({ digits });
+    // TODO: show loading text until ddp.login returns success or error
   }
 
   logout() {
     FBSDK.LoginManager.logOut();
-    // Digits.logout();
+    DigitsManager.logout();
     ddp.logout();
   }
 
@@ -178,7 +199,7 @@ class PosytTabBar extends React.Component {
     return [
       posytModal
       ,
-      <PosytModal key="loginModal" ref="loginModal" style={styles.modal} alwaysVisible={!loggedIn}>
+      <PosytModal key="loginModal" ref="loginModal" style={styles.modal} alwaysVisible={!showDigits && !loggedIn}>
         {loggedIn ?
           <TouchableHighlight style={[styles.modalButton, { height: 38 }]} underlayColor={'white'}>
             <Text style={[styles.modalSubText, { fontWeight: "700" }]}>Logging in...</Text>
@@ -189,11 +210,11 @@ class PosytTabBar extends React.Component {
               <Text style={[styles.modalSubText, { fontWeight: "700", color: 'white' }]}>Login with</Text>
             </TouchableHighlight>
             <View style={styles.modalSeparator} />
-            <TouchableHighlight style={[styles.modalButton]} underlayColor={'#f5f5f5'} onPress={ () => { this.refs.loginModal.hide("top", () => loginWithFacebook()) }}>
+            <TouchableHighlight style={[styles.modalButton]} underlayColor={'#f5f5f5'} onPress={ () => { this.refs.loginModal.hide("top", this.loginWithFacebook) }}>
               <Text style={[styles.modalText]}>Facebook</Text>
             </TouchableHighlight>
             <View style={styles.modalSeparator} />
-            <TouchableHighlight style={[styles.modalButton]} underlayColor={'#f5f5f5'} onPress={ () => { this.refs.loginModal.hide("top", () => this.setState({ showDigits: true })) }}>
+            <TouchableHighlight style={[styles.modalButton]} underlayColor={'#f5f5f5'} onPress={this.showDigits}>
               <Text style={[styles.modalText]}>Phone Number</Text>
             </TouchableHighlight>
           </View>

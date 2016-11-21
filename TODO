@@ -29,6 +29,7 @@ Eventually
 
 Maybe
 ☐ swtich node-ddb-client and maybe minimongo-cache out for react-native-meteor
+☐ use facebook account kit https://github.com/underscopeio/react-native-facebook-account-kit
 
 cmd + enter = add new todo
 cmd + d = check / uncheck

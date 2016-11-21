@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -53,6 +52,7 @@
 		D2E816380C4847F791DCCAE0 /* rooney sans heavy italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 334EC6D311E54B2FAEC84039 /* rooney sans heavy italic.otf */; };
 		DE1E3C34E0684D2CB4130C1F /* libRNShimmer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A74E2883E624649B7CE89D5 /* libRNShimmer.a */; };
 		E29D03FC1CBF48D19A5ADEC1 /* rooney sans bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E4A08975050A4F28A2E8D195 /* rooney sans bold.otf */; };
+		E587680504B24C54AD22E1A1 /* libRCTDigitsManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6F8F7FBDDA9422B9AE94C14 /* libRCTDigitsManager.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,6 +175,13 @@
 			remoteGlobalIDString = 5D7E4C681C88C61600B72F0C;
 			remoteInfo = RNShimmer;
 		};
+		8EA2F7D91DE1523300B869B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18ECA28FCE8041D49E147672 /* RCTDigitsManager.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4D8BECAE1BDFF0FB000A1462;
+			remoteInfo = RCTDigitsManager;
+		};
 		8EDE97F61DD50B600005DB23 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */;
@@ -249,6 +256,7 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Posyt/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Posyt/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		18ECA28FCE8041D49E147672 /* RCTDigitsManager.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTDigitsManager.xcodeproj; path = "../node_modules/react-native-fabric-digits/ios/RCTDigitsManager.xcodeproj"; sourceTree = "<group>"; };
 		230131DFEB5241E38452E358 /* RNShimmer.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNShimmer.xcodeproj; path = "../node_modules/react-native-shimmer/ios/RNShimmer.xcodeproj"; sourceTree = "<group>"; };
 		334EC6D311E54B2FAEC84039 /* rooney sans heavy italic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "rooney sans heavy italic.otf"; path = "../assets/fonts/RooneySans/rooney sans heavy italic.otf"; sourceTree = "<group>"; };
 		49A195F4A51B47B69B371C5E /* libSafariViewManager.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libSafariViewManager.a; sourceTree = "<group>"; };
@@ -277,6 +285,7 @@
 		AB1C937BF1364E3AAA899F04 /* rooney sans medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "rooney sans medium.otf"; path = "../assets/fonts/RooneySans/rooney sans medium.otf"; sourceTree = "<group>"; };
 		AF6921CBA4714B69B3D5B4CF /* rooney sans medium italic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "rooney sans medium italic.otf"; path = "../assets/fonts/RooneySans/rooney sans medium italic.otf"; sourceTree = "<group>"; };
 		B6D3A4F85ED44C9AB28B271C /* libRCTFBSDK.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTFBSDK.a; sourceTree = "<group>"; };
+		B6F8F7FBDDA9422B9AE94C14 /* libRCTDigitsManager.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTDigitsManager.a; sourceTree = "<group>"; };
 		C33A5973B3F144EC91DD05C4 /* libBVLinearGradient.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libBVLinearGradient.a; sourceTree = "<group>"; };
 		D76A12F27FF741DA827AD68A /* libRNDeviceInfo.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNDeviceInfo.a; sourceTree = "<group>"; };
 		D8D81F92C74F41F793BA7CA8 /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
@@ -326,6 +335,7 @@
 				6687FBBB2F2242E2AB26DF59 /* libSafariViewManager.a in Frameworks */,
 				DE1E3C34E0684D2CB4130C1F /* libRNShimmer.a in Frameworks */,
 				8EA2F7C31DE1516D00B869B1 /* TwitterCore.framework in Frameworks */,
+				E587680504B24C54AD22E1A1 /* libRCTDigitsManager.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,6 +491,7 @@
 				D9EF244BD59E43988B86FD91 /* RNDeviceInfo.xcodeproj */,
 				057E2B13080F4D0099A15E05 /* SafariViewManager.xcodeproj */,
 				230131DFEB5241E38452E358 /* RNShimmer.xcodeproj */,
+				18ECA28FCE8041D49E147672 /* RCTDigitsManager.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -570,6 +581,14 @@
 			isa = PBXGroup;
 			children = (
 				8E09161C1DDBAA1800FD5BDB /* libRNShimmer.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8EA2F7D41DE1523300B869B1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8EA2F7DA1DE1523300B869B1 /* libRCTDigitsManager.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -679,6 +698,10 @@
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
 					ProjectRef = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
+				},
+				{
+					ProductGroup = 8EA2F7D41DE1523300B869B1 /* Products */;
+					ProjectRef = 18ECA28FCE8041D49E147672 /* RCTDigitsManager.xcodeproj */;
 				},
 				{
 					ProductGroup = 8E0914591DD8004300FD5BDB /* Products */;
@@ -856,6 +879,13 @@
 			fileType = archive.ar;
 			path = libRNShimmer.a;
 			remoteRef = 8E09161B1DDBAA1800FD5BDB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8EA2F7DA1DE1523300B869B1 /* libRCTDigitsManager.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTDigitsManager.a;
+			remoteRef = 8EA2F7D91DE1523300B869B1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		8EDE97F71DD50B600005DB23 /* libRCTImage-tvOS.a */ = {
@@ -1045,6 +1075,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Posyt.app/Posyt";
@@ -1061,6 +1092,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1097,6 +1129,7 @@
 					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-safari-view",
 					"$(SRCROOT)/../node_modules/react-native-shimmer/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-fabric-digits/ios/**",
 				);
 				INFOPLIST_FILE = Posyt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -1137,6 +1170,7 @@
 					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-safari-view",
 					"$(SRCROOT)/../node_modules/react-native-shimmer/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-fabric-digits/ios/**",
 				);
 				INFOPLIST_FILE = Posyt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -1195,6 +1229,7 @@
 					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-safari-view",
 					"$(SRCROOT)/../node_modules/react-native-shimmer/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-fabric-digits/ios/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -1240,6 +1275,7 @@
 					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-safari-view",
 					"$(SRCROOT)/../node_modules/react-native-shimmer/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-fabric-digits/ios/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
