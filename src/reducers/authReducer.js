@@ -13,6 +13,7 @@ import { mongo } from '../lib/Mongo';
 
 const initialState = {
   loggedIn: false,
+  loggingIn: false,
   currentUser: null,
   error: null,
 };
@@ -20,30 +21,38 @@ const initialState = {
 export default function authReducer(state = initialState, action) {
   switch (action.type) {
     case LOGIN_REQUEST:
+      return {
+        ...state,
+        loggingIn: true,
+        error: null,
+      };
     case LOGOUT_REQUEST:
       return {
         ...state,
         error: null,
       };
-
     case LOGIN_SUCCESS:
       return {
         ...state,
         loggedIn: true,
+        loggingIn: false,
         currentUser: action.payload.user,
       };
-
     case LOGOUT_SUCCESS:
       return {
         ...state,
         loggedIn: false,
         currentUser: null,
       };
-
     case LOGOUT_FAILURE:
+      return {
+        ...state,
+        error: action.payload.error,
+      };
     case LOGIN_FAILURE:
       return {
         ...state,
+        loggingIn: false,
         error: action.payload.error,
       };
     case CHANGED_COLLECTION:

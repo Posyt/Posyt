@@ -75,13 +75,12 @@ class PosytTabBar extends React.Component {
 
   loginWithFacebook = () => {
     loginWithFacebook();
-    // TODO: show loading text until ddp.login returns success or error
   }
 
   showDigits = () => {
     const digitsOptions = { appearance: { accentColor: { hex: red, alpha: 1 } } };
     this.refs.loginModal.hide('top', () => {
-      this.setState({ showDigits: true }, () => {
+      this.setState({ showAnotherModal: true }, () => {
         setTimeout(() => {
           DigitsManager.launchAuthentication(digitsOptions)
             .then(this.handleDigitsLogin)
@@ -92,18 +91,17 @@ class PosytTabBar extends React.Component {
   }
 
   handleDigitsError = (err) => {
-    this.setState({ showDigits: false });
+    this.setState({ showAnotherModal: false });
     if (global.__DEV__) console.warn('Digits login failed', err);
   }
 
   handleDigitsLogin = (credentials) => {
-    this.setState({ showDigits: false });
+    this.setState({ showAnotherModal: false });
     const digits = { ...credentials };
     delete digits.consumerKey;
     delete digits.consumerSecret;
     if (global.__DEV__) console.log('Digits login successful', digits);
-    ddp.login({ digits });
-    // TODO: show loading text until ddp.login returns success or error
+    ddp.login({ digits })
   }
 
   logout() {
@@ -113,8 +111,8 @@ class PosytTabBar extends React.Component {
   }
 
   renderPosytModal() {
-    const { loggedIn, currentUser } = this.props;
-    const { showDigits } = this.state;
+    const { loggedIn, loggingIn, currentUser } = this.props;
+    const { showAnotherModal } = this.state;
     let posytModal;
 
     const numPosyts = currentUser && currentUser.meta && currentUser.meta.numPosyts || 0;
@@ -199,8 +197,8 @@ class PosytTabBar extends React.Component {
     return [
       posytModal
       ,
-      <PosytModal key="loginModal" ref="loginModal" style={styles.modal} alwaysVisible={!showDigits && !loggedIn}>
-        {loggedIn ?
+      <PosytModal key="loginModal" ref="loginModal" style={styles.modal} alwaysVisible={!loggedIn && !showAnotherModal}>
+        {(loggingIn || loggedIn) ?
           <TouchableHighlight style={[styles.modalButton, { height: 38 }]} underlayColor={'white'}>
             <Text style={[styles.modalSubText, { fontWeight: "700" }]}>Logging in...</Text>
           </TouchableHighlight>
@@ -230,15 +228,6 @@ class PosytTabBar extends React.Component {
           <Text style={[styles.modalText]}>OK</Text>
         </TouchableHighlight>
       </PosytModal>
-      // ,
-      // <Digits
-      //   key="digits"
-      //   visible={showDigits}
-      //   accentColor={red}
-      //   backgroundColor="#ffffff"
-      //   onError={this.handleDigitsError.bind(this)}
-      //   onLogin={this.handleDigitsLogin.bind(this)}
-      // />
       ,
       <UsernameModal key="usernameModal" ref="usernameModal" />
       ,
@@ -424,6 +413,7 @@ function mapStateToProps(state) {
   return {
     visible: state.tabBar.visible,
     loggedIn: state.auth.loggedIn,
+    loggingIn: state.auth.loggingIn,
     currentUser: state.auth.currentUser,
   };
 }
