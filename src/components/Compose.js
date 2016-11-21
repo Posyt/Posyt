@@ -1,5 +1,20 @@
 import React from 'react';
-import {StyleSheet, View, Text, Image, TextInput, TouchableOpacity, Animated, Dimensions, PanResponder, PixelRatio, AsyncStorage, Alert, Easing} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  TextInput,
+  TouchableOpacity,
+  Animated,
+  Dimensions,
+  PanResponder,
+  PixelRatio,
+  AsyncStorage,
+  Alert,
+  Easing,
+  Keyboard,
+} from 'react-native';
 import {
   red,
   lightGrey,
@@ -10,7 +25,6 @@ import {
 } from '../lib/actions.js';
 import { connect } from 'react-redux';
 import { ddp } from '../lib/DDP';
-import RCTDeviceEventEmitter from 'RCTDeviceEventEmitter';
 import PosytModal from './PosytModal';
 import _ from 'lodash';
 import TimerMixin from 'react-timer-mixin';
@@ -216,9 +230,9 @@ class Compose extends React.Component {
 
   componentWillMount() {
     this._subscriptions = [];
-    this._subscriptions.push(RCTDeviceEventEmitter.addListener('keyboardWillShow', (frames) => this.updateKeyboardSpace(frames)));
-    // this._subscriptions.push(RCTDeviceEventEmitter.addListener('keyboardDidShow', (frames) => this.updateKeyboardSpace(frames)));
-    // this._subscriptions.push(RCTDeviceEventEmitter.addListener('keyboardWillHide', (frames) => this.resetKeyboardSpace(frames)));
+    this._subscriptions.push(Keyboard.addListener('keyboardWillShow', (frames) => this.updateKeyboardSpace(frames)));
+    // this._subscriptions.push(Keyboard.addListener('keyboardDidShow', (frames) => this.updateKeyboardSpace(frames)));
+    // this._subscriptions.push(Keyboard.addListener('keyboardWillHide', (frames) => this.resetKeyboardSpace(frames)));
   }
 
   componentWillUnmount() {

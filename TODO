@@ -10,8 +10,8 @@
 ✔ comment DDP methods back in @done(2016-11-15 15:42)
 ✔ comment Mongo methods back in @done(2016-11-13 20:47)
 ✔ make sure all modals render properly @done(2016-11-15 16:35)
-☐ install digits
-☐ install crashlytics
+✔ install digits @done(2016-11-20 20:23)
+✔ install crashlytics @done(2016-11-20 20:23)
 ☐ make sure compose works
 ☐ make sure cards work
 ☐ make sure conversations list works

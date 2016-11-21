@@ -1,5 +1,19 @@
 import React from 'react';
-import {StyleSheet, View, Text, ListView, PixelRatio, TouchableOpacity, Dimensions, Animated, TextInput, LayoutAnimation, Image, AsyncStorage} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  ListView,
+  PixelRatio,
+  TouchableOpacity,
+  Dimensions,
+  Animated,
+  TextInput,
+  LayoutAnimation,
+  Image,
+  AsyncStorage,
+  Keyboard,
+} from 'react-native';
 import {
   pageChat,
   updateChat,
@@ -15,7 +29,6 @@ import {
 import { connect } from 'react-redux';
 import { ddp } from '../lib/DDP';
 import InvertibleScrollView from 'react-native-invertible-scroll-view';
-import RCTDeviceEventEmitter from 'RCTDeviceEventEmitter';
 import TimerMixin from 'react-timer-mixin';
 import reactMixin from 'react-mixin';
 import Bubble from './Bubble';
@@ -139,9 +152,9 @@ class ChatScreen extends React.Component {
 
   componentWillMount() {
     this._subscriptions = [];
-    this._subscriptions.push(RCTDeviceEventEmitter.addListener('keyboardWillShow', (frames) => this.updateKeyboardSpace(frames)));
-    this._subscriptions.push(RCTDeviceEventEmitter.addListener('keyboardWillHide', (frames) => this.updateKeyboardSpace(frames)));
-    // this._subscriptions.push(RCTDeviceEventEmitter.addListener('keyboardWillChangeFrame', (frames) => this.updateKeyboardSpace(frames)));
+    this._subscriptions.push(Keyboard.addListener('keyboardWillShow', (frames) => this.updateKeyboardSpace(frames)));
+    this._subscriptions.push(Keyboard.addListener('keyboardWillHide', (frames) => this.updateKeyboardSpace(frames)));
+    // this._subscriptions.push(Keyboard.addListener('keyboardWillChangeFrame', (frames) => this.updateKeyboardSpace(frames)));
   }
 
   componentDidMount() {
