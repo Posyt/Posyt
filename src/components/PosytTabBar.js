@@ -1,5 +1,14 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image, TouchableOpacity, TouchableHighlight, Animated, PushNotificationIOS } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  TouchableHighlight,
+  Animated,
+  // PushNotificationIOS,
+} from 'react-native';
 import { connect } from 'react-redux';
 import pluralize from 'pluralize';
 import { DigitsManager } from 'react-native-fabric-digits';
@@ -244,7 +253,7 @@ class PosytTabBar extends React.Component {
     const { currentUser } = this.props;
     const numUnreadConversations = currentUser && currentUser.meta && currentUser.meta.numUnreadConversations;
 
-    if (_.isInteger(numUnreadConversations)) PushNotificationIOS.setApplicationIconBadgeNumber(numUnreadConversations);
+    // if (_.isInteger(numUnreadConversations)) PushNotificationIOS.setApplicationIconBadgeNumber(numUnreadConversations);
 
     const tabsAnimStyle = {
       top: hideAnim.interpolate({

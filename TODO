@@ -20,6 +20,7 @@
 ☐ make sure deep link share works
 ☐ render an error if facebook login fails - loginWithFacebook.js
 ☐ add an empty message to conversations list before you've had any matches
+☐ Install PushNotificationsIOS and make sure PushNotificationBar works
 
 Android
 ☐ complete FBSDK install https://github.com/facebook/react-native-fbsdk#31-android-project
