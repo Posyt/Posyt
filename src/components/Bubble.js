@@ -1,22 +1,28 @@
 import React from 'react';
-import {StyleSheet, View, Text, Image, PixelRatio, TouchableWithoutFeedback, TouchableHighlight, Alert} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  PixelRatio,
+  TouchableWithoutFeedback,
+  TouchableHighlight,
+  Alert,
+} from 'react-native';
+import _ from 'lodash';
+import Lightbox from 'react-native-lightbox';
+import { connect } from 'react-redux';
+import moment from 'moment';
 import {
   red,
   blue,
   grey,
-  lightGrey,
-  lightBlack,
 } from '../lib/constants';
 import {
   sendMessage,
 } from '../lib/actions';
-import _ from 'lodash';
-import Lightbox from 'react-native-lightbox';
 import openURL from '../lib/openURL';
-import { connect } from 'react-redux';
-import LinearGradient from 'react-native-linear-gradient';
 import LinkifyText from './LinkifyText';
-import moment from 'moment';
 
 const styles = StyleSheet.create({
   bubbleWrap: {

@@ -4,7 +4,6 @@ import {
   View,
   Text,
   ListView,
-  PixelRatio,
   TouchableOpacity,
   Dimensions,
   Animated,
@@ -14,6 +13,10 @@ import {
   AsyncStorage,
   Keyboard,
 } from 'react-native';
+import { connect } from 'react-redux';
+import InvertibleScrollView from 'react-native-invertible-scroll-view';
+import TimerMixin from 'react-timer-mixin';
+import reactMixin from 'react-mixin';
 import {
   pageChat,
   updateChat,
@@ -23,17 +26,13 @@ import {
 } from '../lib/actions';
 import {
   grey,
-  green,
   red,
 } from '../lib/constants';
-import { connect } from 'react-redux';
 import { ddp } from '../lib/DDP';
-import InvertibleScrollView from 'react-native-invertible-scroll-view';
-import TimerMixin from 'react-timer-mixin';
-import reactMixin from 'react-mixin';
-import Bubble from './Bubble';
 import segment from '../lib/segment';
 import { promptForFeedback } from '../lib/feedback';
+import Bubble from './Bubble';
+
 const { height, width } = Dimensions.get('window');
 
 
@@ -334,10 +333,11 @@ class ChatScreen extends React.Component {
             selectionColor={red}
             onLayout={(e) => {
               this.setState({
-                inputHeight: Math.min(e.nativeEvent.contentSize.height, 200),
+                inputHeight: Math.min(e.nativeEvent.layout.height, 200),
               });
             }}
             onChange={(e) => {
+              console.log(e.nativeEvent)
               this.setState({
                 text: e.nativeEvent.text,
                 inputHeight: Math.min(e.nativeEvent.contentSize.height, 200),
