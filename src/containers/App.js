@@ -7,7 +7,7 @@ import {
 import Tabs from './Tabs';
 import ChatScreen from '../components/ChatScreen';
 import NoNetworkBar from '../components/NoNetworkBar';
-// import PushNotificationBar from '../components/PushNotificationBar';
+import PushNotificationBar from '../components/PushNotificationBar';
 
 class App extends React.Component {
   render() {
@@ -21,7 +21,7 @@ class App extends React.Component {
           </Scene>
         </Router>
         <NoNetworkBar />
-        {/* <PushNotificationBar /> */}
+        <PushNotificationBar />
       </View>
     );
   }

@@ -1,5 +1,15 @@
 import React from 'react';
-import { StyleSheet, View, Text, Dimensions, StatusBar, PushNotificationIOS, PixelRatio, TouchableOpacity, Animated } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  Dimensions,
+  StatusBar,
+  PushNotificationIOS,
+  PixelRatio,
+  TouchableOpacity,
+  Animated
+} from 'react-native';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import {
@@ -129,7 +139,7 @@ class PushNotificationBar extends React.Component {
     this.handleOpenFromPush();
     PushNotificationIOS.addEventListener('notification', this.onNotification);
     // NOTE: COMMENT OUT: TESTING ONLY:
-    // if (global.__DEV__) renderTestNotifications();
+    if (global.__DEV__) renderTestNotifications();
   }
 
   componentWillUnmount() {
@@ -137,6 +147,7 @@ class PushNotificationBar extends React.Component {
   }
 
   onNotification(notification) {
+    if (global.__DEV__) console.log('PushNotification:', notification);
     const data = notification && notification.getData();
     // Don't show notifications if you're already viewing that conversation
     if (data && data.conversationId && data.conversationId !== this.props.conversationId) {
@@ -161,8 +172,9 @@ class PushNotificationBar extends React.Component {
   }
 
   handleOpenFromPush() {
-    const notification = PushNotificationIOS.popInitialNotification();
-    this.onPressNotification(notification);
+    PushNotificationIOS.getInitialNotification((notification) => {
+      this.onPressNotification(notification);
+    });
   }
 
   animateNotificationOn(notification) {

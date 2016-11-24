@@ -8,7 +8,7 @@ import {
   Image,
   Text,
   ActionSheetIOS,
-  // PushNotificationIOS,
+  PushNotificationIOS,
   AsyncStorage,
   Alert,
 } from 'react-native';
@@ -313,24 +313,24 @@ class Cards extends React.Component {
 
   async requestPushNotificationPermissions() {
     const permission = await AsyncStorage.getItem('push/permission');
-    // if (permission === null) {
-    //   segment.track('Card Swipe - Push Permission 1 - Requested');
-    //   Alert.alert(
-    //     'Notify me when I match with someone',
-    //     'Notifications are sent when you get a new match and when someone messages you. You\'ll match with someone when you like a lot of the same cards.',
-    //     [
-    //       { text: 'Not now', onPress: () => {
-    //         AsyncStorage.setItem('push/permission', 'false|'+(new Date).toString());
-    //         segment.track('Card Swipe - Push Permission 2 - Denied');
-    //       } },
-    //       { text: 'OK', onPress: () => {
-    //         AsyncStorage.setItem('push/permission', 'true|'+(new Date).toString());
-    //         segment.track('Card Swipe - Push Permission 2 - Granted');
-    //         PushNotificationIOS.requestPermissions();
-    //       } },
-    //     ],
-    //   );
-    // }
+    if (permission === null) {
+      segment.track('Card Swipe - Push Permission 1 - Requested');
+      Alert.alert(
+        'Notify me when I match with someone',
+        'Notifications are sent when you get a new match and when someone messages you. You\'ll match with someone when you like a lot of the same cards.',
+        [
+          { text: 'Not now', onPress: () => {
+            AsyncStorage.setItem('push/permission', 'false|'+(new Date).toString());
+            segment.track('Card Swipe - Push Permission 2 - Denied');
+          } },
+          { text: 'OK', onPress: () => {
+            AsyncStorage.setItem('push/permission', 'true|'+(new Date).toString());
+            segment.track('Card Swipe - Push Permission 2 - Granted');
+            PushNotificationIOS.requestPermissions();
+          } },
+        ],
+      );
+    }
   }
 
   render() {

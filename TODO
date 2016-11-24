@@ -1,5 +1,5 @@
 ✔ install segment, branch, and LinearGradient @done(2016-11-15 15:08)
-☐ comment App.js components back in
+✔ comment App.js components back in @done(2016-11-23 13:05)
 ✔ update to a new segment RN package and comment all tracking back in @done(2016-11-14 22:15)
 ✔ install branch and comment it back in @done(2016-11-15 14:26)
 ✔ install DeviceInfo and comment it back in @done(2016-11-15 15:34)
@@ -27,6 +27,8 @@ Android
 
 Eventually
 ☐ upgrade to RN0.37 - it really breaks the modals though :(
+☐ ask for push permission again if denied the first time
+  ☐ ask again if the user said yes the the first prompt, but no to the real push prompt
 
 Maybe
 ☐ swtich node-ddb-client and maybe minimongo-cache out for react-native-meteor

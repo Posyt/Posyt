@@ -31,7 +31,7 @@ class DDP {
     this._subs = {}; // cache subs in case connection is refreshed and subs need to be replayed
     this._initDDPClient();
     this.getConnection();
-    AppState.addEventListener('change', () => this._handleAppStateChange());
+    AppState.addEventListener('change', this._handleAppStateChange);
   }
 
   // Try to connect with the server or just resolve if already connected
@@ -270,7 +270,7 @@ class DDP {
   }
 
   // Connect and close ddp on app state change
-  _handleAppStateChange(currentAppState) {
+  _handleAppStateChange = (currentAppState) => {
     if (global.__DEV__) console.log('app state changed to ', currentAppState);
     if (currentAppState === 'active') {
       this._connected = false;
@@ -283,7 +283,7 @@ class DDP {
     }
   }
 
-  // Poll for ddp connection every 20ms while _connecting
+  // Poll for ddp connection every 100ms while _connecting
   _pollForConnection(resolve, reject) {
     setTimeout(() => {
       if (global.__DEV__) console.log('DDP polling for connection');
@@ -296,7 +296,7 @@ class DDP {
           reject({});
         }
       }
-    }, 20);
+    }, 100);
   }
 
   _addOidToDDPClientEJSON() {

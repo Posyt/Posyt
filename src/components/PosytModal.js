@@ -75,7 +75,8 @@ class PosytModal extends React.Component {
         if (this.props.disableSwipe) return false;
         if (this.props.disableVerticalSwipe) return Math.abs(g.dx) > Math.abs(g.dy);
         if (this.props.disableHorizontalSwipe) return Math.abs(g.dx) < Math.abs(g.dy);
-        return true;
+        return Math.abs(g.dx) > 1 || Math.abs(g.dy) > 1;
+        // return true; // https://github.com/facebook/react-native/issues/3082
       },
       onPanResponderGrant: (e, g) => {
         this.longTimer = setTimeout(() => this.longPress = true, 150);

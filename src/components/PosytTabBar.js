@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   TouchableHighlight,
   Animated,
-  // PushNotificationIOS,
+  PushNotificationIOS,
 } from 'react-native';
 import { connect } from 'react-redux';
 import pluralize from 'pluralize';
@@ -253,7 +253,7 @@ class PosytTabBar extends React.Component {
     const { currentUser } = this.props;
     const numUnreadConversations = currentUser && currentUser.meta && currentUser.meta.numUnreadConversations;
 
-    // if (_.isInteger(numUnreadConversations)) PushNotificationIOS.setApplicationIconBadgeNumber(numUnreadConversations);
+    if (_.isInteger(numUnreadConversations)) PushNotificationIOS.setApplicationIconBadgeNumber(numUnreadConversations);
 
     const tabsAnimStyle = {
       top: hideAnim.interpolate({

@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -34,6 +35,7 @@
 		8E09147D1DDAB27900FD5BDB /* RNSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E09147C1DDAB27900FD5BDB /* RNSegment.m */; };
 		8E0914F01DDB8A9A00FD5BDB /* Branch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E0914EF1DDB8A9A00FD5BDB /* Branch.framework */; };
 		8E0915751DDB8BCB00FD5BDB /* libRNBranch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E0915741DDB8BA200FD5BDB /* libRNBranch.a */; };
+		8E8529281DE609C800885E81 /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E85291A1DE6098700885E81 /* libRCTPushNotification.a */; };
 		8EA2F7BC1DE1509500B869B1 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA2F7BA1DE1509500B869B1 /* Fabric.framework */; };
 		8EA2F7BD1DE1509500B869B1 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA2F7BB1DE1509500B869B1 /* Crashlytics.framework */; };
 		8EA2F7C11DE1516D00B869B1 /* DigitsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA2F7BE1DE1516D00B869B1 /* DigitsKit.framework */; };
@@ -175,6 +177,13 @@
 			remoteGlobalIDString = 5D7E4C681C88C61600B72F0C;
 			remoteInfo = RNShimmer;
 		};
+		8E8529191DE6098700885E81 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8E85290A1DE6098600885E81 /* RCTPushNotification.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RCTPushNotification;
+		};
 		8EA2F7D91DE1523300B869B1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 18ECA28FCE8041D49E147672 /* RCTDigitsManager.xcodeproj */;
@@ -272,6 +281,7 @@
 		8E09147C1DDAB27900FD5BDB /* RNSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNSegment.m; sourceTree = "<group>"; };
 		8E0914EF1DDB8A9A00FD5BDB /* Branch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Branch.framework; path = Carthage/Build/iOS/Branch.framework; sourceTree = "<group>"; };
 		8E09155D1DDB8BA200FD5BDB /* RNBranch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNBranch.xcodeproj; path = "../node_modules/react-native-branch/ios/RNBranch.xcodeproj"; sourceTree = "<group>"; };
+		8E85290A1DE6098600885E81 /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
 		8EA2F7BA1DE1509500B869B1 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		8EA2F7BB1DE1509500B869B1 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		8EA2F7BE1DE1516D00B869B1 /* DigitsKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DigitsKit.framework; sourceTree = "<group>"; };
@@ -309,6 +319,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E8529281DE609C800885E81 /* libRCTPushNotification.a in Frameworks */,
 				8EA2F7BC1DE1509500B869B1 /* Fabric.framework in Frameworks */,
 				8E0915751DDB8BCB00FD5BDB /* libRNBranch.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
@@ -492,6 +503,7 @@
 				057E2B13080F4D0099A15E05 /* SafariViewManager.xcodeproj */,
 				230131DFEB5241E38452E358 /* RNShimmer.xcodeproj */,
 				18ECA28FCE8041D49E147672 /* RCTDigitsManager.xcodeproj */,
+				8E85290A1DE6098600885E81 /* RCTPushNotification.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -581,6 +593,14 @@
 			isa = PBXGroup;
 			children = (
 				8E09161C1DDBAA1800FD5BDB /* libRNShimmer.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8E85290B1DE6098600885E81 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8E85291A1DE6098700885E81 /* libRCTPushNotification.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -722,6 +742,10 @@
 				{
 					ProductGroup = 00C302D41ABCB9D200DB3ED1 /* Products */;
 					ProjectRef = 00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */;
+				},
+				{
+					ProductGroup = 8E85290B1DE6098600885E81 /* Products */;
+					ProjectRef = 8E85290A1DE6098600885E81 /* RCTPushNotification.xcodeproj */;
 				},
 				{
 					ProductGroup = 139105B71AF99BAD00B5F7CC /* Products */;
@@ -879,6 +903,13 @@
 			fileType = archive.ar;
 			path = libRNShimmer.a;
 			remoteRef = 8E09161B1DDBAA1800FD5BDB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8E85291A1DE6098700885E81 /* libRCTPushNotification.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTPushNotification.a;
+			remoteRef = 8E8529191DE6098700885E81 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		8EA2F7DA1DE1523300B869B1 /* libRCTDigitsManager.a */ = {
@@ -1124,12 +1155,13 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
-					"$(SRCROOT)/../node_modules/react-native-branch/ios",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-safari-view",
 					"$(SRCROOT)/../node_modules/react-native-shimmer/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-fabric-digits/ios/**",
+					"$(SRCROOT)/../node_modules/react-native/Libraries/PushNotificationIOS/**",
+					"$(SRCROOT)/../node_modules/react-native-branch/ios",
 				);
 				INFOPLIST_FILE = Posyt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -1165,12 +1197,13 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
-					"$(SRCROOT)/../node_modules/react-native-branch/ios",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-safari-view",
 					"$(SRCROOT)/../node_modules/react-native-shimmer/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-fabric-digits/ios/**",
+					"$(SRCROOT)/../node_modules/react-native/Libraries/PushNotificationIOS/**",
+					"$(SRCROOT)/../node_modules/react-native-branch/ios",
 				);
 				INFOPLIST_FILE = Posyt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;

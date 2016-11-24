@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
     tintColor: 'black',
+    opacity: 0.6,
   },
   rightButton: {
     marginRight: 6,
@@ -337,7 +338,6 @@ class ChatScreen extends React.Component {
               });
             }}
             onChange={(e) => {
-              console.log(e.nativeEvent)
               this.setState({
                 text: e.nativeEvent.text,
                 inputHeight: Math.min(e.nativeEvent.contentSize.height, 200),
