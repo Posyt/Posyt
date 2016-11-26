@@ -95,7 +95,7 @@ function MessageBubble({ message }) {
       message.isMine && { color: 'white' },
     ]}>
       <Shimmer pauseDuration={200} speed={23} animationOpacity={0.4}>
-        <Text style={{ fontWeight: '500', fontSize: 10, lineHeight: 17, opacity: 0.8, letterSpacing: 6, marginLeft: -6 }}>●●●</Text>
+        <Text style={{ fontWeight: '500', fontSize: 10, lineHeight: 17, opacity: 0.8, letterSpacing: 5, marginLeft: -5 }}>●●●</Text>
       </Shimmer>
     </View>
   );
