@@ -37,6 +37,7 @@ function renderTestNotifications() {
         firstName: 'Chris',
         content: 'FBI Cracks Down on Tech Companies for Encrypting all Communication',
         type: 'match',
+        remote: true,
       });
       setTimeout(() => {
         require('RCTDeviceEventEmitter').emit('remoteNotificationReceived', {
@@ -50,6 +51,7 @@ function renderTestNotifications() {
           firstName: 'Chris',
           content: 'Whoa',
           type: 'message',
+          remote: true,
         });
         // setTimeout(() => {
         //   require('RCTDeviceEventEmitter').emit('remoteNotificationReceived', {
@@ -63,6 +65,7 @@ function renderTestNotifications() {
         //     firstName: 'Chris',
         //     content: 'What\'s up?',
         //     type: 'message',
+        //     remote: true,
         //   });
         //   setTimeout(() => {
         //     require('RCTDeviceEventEmitter').emit('remoteNotificationReceived', {
@@ -76,6 +79,7 @@ function renderTestNotifications() {
         //       firstName: 'Chris',
         //       content: 'What\'s up?',
         //       type: 'message',
+        //       remote: true,
         //     });
         //   }, 4000);
         // }, 1000);
@@ -139,7 +143,8 @@ class PushNotificationBar extends React.Component {
     this.handleOpenFromPush();
     PushNotificationIOS.addEventListener('notification', this.onNotification);
     // NOTE: COMMENT OUT: TESTING ONLY:
-    if (global.__DEV__) renderTestNotifications();
+    // if (global.__DEV__) PushNotificationIOS.requestPermissions();
+    // if (global.__DEV__) renderTestNotifications();
   }
 
   componentWillUnmount() {
@@ -147,7 +152,7 @@ class PushNotificationBar extends React.Component {
   }
 
   onNotification(notification) {
-    if (global.__DEV__) console.log('PushNotification:', notification);
+    // if (global.__DEV__) console.log('PushNotification:', notification);
     const data = notification && notification.getData();
     // Don't show notifications if you're already viewing that conversation
     if (data && data.conversationId && data.conversationId !== this.props.conversationId) {

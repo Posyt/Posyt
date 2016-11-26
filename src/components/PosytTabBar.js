@@ -319,6 +319,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingBottom: 10,
+    position: 'relative',
   },
   iconLeft: {
     width: 30,
@@ -344,8 +345,9 @@ const styles = StyleSheet.create({
     height: 20,
     borderRadius: 10,
     overflow: 'hidden',
-    top: -10,
-    right: -9,
+    top: -6,
+    right: 45,
+    position: 'absolute',
   },
   unreadText: {
     marginHorizontal: 7,
