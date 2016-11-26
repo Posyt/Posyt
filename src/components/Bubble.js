@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import _ from 'lodash';
 import Lightbox from 'react-native-lightbox';
+import Shimmer from 'react-native-shimmer';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import {
@@ -73,8 +74,9 @@ const styles = StyleSheet.create({
   },
 
   bouncingDots: {
-    height: 25,
-    width: 50,
+    height: 15,
+    width: 30,
+    opacity: 0.5,
   },
 
   posytText: {
@@ -87,7 +89,16 @@ const styles = StyleSheet.create({
 
 
 function MessageBubble({ message }) {
-  if (message.isTypingIndicator) return <Image style={styles.bouncingDots} source={require('../../assets/images/bouncing_dots.gif')} />;
+  // if (message.isTypingIndicator) return <Image style={styles.bouncingDots} source={require('../../assets/images/bouncing_dots.gif')} />;
+  if (message.isTypingIndicator) return (
+    <View style={[styles.messageText,
+      message.isMine && { color: 'white' },
+    ]}>
+      <Shimmer pauseDuration={200} speed={23} animationOpacity={0.4}>
+        <Text style={{ fontWeight: '500', fontSize: 10, lineHeight: 17, opacity: 0.8, letterSpacing: 6, marginLeft: -6 }}>●●●</Text>
+      </Shimmer>
+    </View>
+  );
   return (
     <LinkifyText style={[styles.messageText,
       message.isMine && { color: 'white' },
@@ -304,7 +315,6 @@ class Bubble extends React.Component {
             !showDate && !data.isParticipants && !data.previousIsParticipants && !data.isFirst && { borderTopLeftRadius: 4, borderTopRightRadius: 4 },
             !willShowNextDate && !data.isParticipants && !data.nextIsParticipants && !data.isLast && { borderBottomLeftRadius: 4, borderBottomRightRadius: 4 },
             data.state === 'failed' && data._type === 'message' && { marginRight: 24 },
-            data.isTypingIndicator && { backgroundColor: 'transparent', borderColor: 'transparent', paddingLeft: 3, paddingBottom: 2 },
           ]}>
             {this.renderBubbleType()}
           </View>
