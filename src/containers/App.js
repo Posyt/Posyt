@@ -7,6 +7,7 @@ import {
 import Tabs from './Tabs';
 import ChatScreen from '../components/ChatScreen';
 import NoNetworkBar from '../components/NoNetworkBar';
+import NoServerBar from '../components/NoServerBar';
 import PushNotificationBar from '../components/PushNotificationBar';
 
 class App extends React.Component {
@@ -20,6 +21,7 @@ class App extends React.Component {
             <Scene key="chat" component={ChatScreen} hideNavBar />
           </Scene>
         </Router>
+        <NoServerBar />
         <NoNetworkBar />
         <PushNotificationBar />
       </View>

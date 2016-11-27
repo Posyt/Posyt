@@ -3,6 +3,9 @@ import {
   AppState,
 } from 'react-native';
 import {
+  ddpConnectRequest,
+  ddpConnectSuccess,
+  ddpConnectFailure,
   loginRequest,
   loginSuccess,
   loginFailure,
@@ -43,6 +46,7 @@ class DDP {
         this._pollForConnection(resolve, reject);
       } else {
         this._connecting = true;
+        store.dispatch(ddpConnectRequest());
         this._ddpClient.connect((error, wasReconnect) => {
           if (wasReconnect) {
             if (global.__DEV__) console.log('DDP Reestablishment of a connection.');
@@ -52,10 +56,12 @@ class DDP {
           if (error) {
             this._connected = false;
             if (global.__DEV__) console.log('DDP connection error!');
+            store.dispatch(ddpConnectFailure());
             reject(error);
           } else {
             this._connected = true;
             if (global.__DEV__) console.log('DDP connected!');
+            store.dispatch(ddpConnectSuccess());
             // Try to resume the session
             this.loginWithToken()
             .then(() => {
@@ -265,8 +271,9 @@ class DDP {
     });
     this.collections = this._ddpClient.collections;
     this._addOidToDDPClientEJSON();
-    if (global.__DEV__) this._ddpClient.on('socket-close', function(code, message) { console.log('ddp socket close: %s %s', code, message); });
-    if (global.__DEV__) this._ddpClient.on('socket-error', function(error) { console.log('ddp socket error: %j', error); });
+    // NOTE: these logs can get very noisy. Leave commented out in normal development
+    // if (global.__DEV__) this._ddpClient.on('socket-close', function(code, message) { console.log('ddp socket close: %s %s', code, message); });
+    // if (global.__DEV__) this._ddpClient.on('socket-error', function(error) { console.log('ddp socket error: %j', error); });
   }
 
   // Connect and close ddp on app state change
@@ -284,11 +291,11 @@ class DDP {
   }
 
   // Poll for ddp connection every 100ms while _connecting
-  _pollForConnection(resolve, reject) {
+  _pollForConnection(resolve, reject, timeout = 50) {
     setTimeout(() => {
       if (global.__DEV__) console.log('DDP polling for connection');
       if (this._connecting) {
-        this._pollForConnection(resolve, reject);
+        this._pollForConnection(resolve, reject, Math.min(timeout + 50, 10000));
       } else {
         if (this._connected) {
           resolve(this._ddpClient);
@@ -296,10 +303,11 @@ class DDP {
           reject({});
         }
       }
-    }, 100);
+    }, timeout);
   }
 
   _addOidToDDPClientEJSON() {
+    // if (global.__DEV__) console.log('DDP oid type exists:', this._ddpClient.EJSON._getTypes().oid);
     this._ddpClient.EJSON.addType('oid', (oid) => oid);
   }
 }

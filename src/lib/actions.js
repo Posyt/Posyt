@@ -11,6 +11,10 @@ export const SET_PLATFORM = 'SET_PLATFORM';
 
 export const CHANGED_COLLECTION = 'CHANGED_COLLECTION';
 
+export const DDP_CONNECT_REQUEST = 'DDP_CONNECT_REQUEST';
+export const DDP_CONNECT_SUCCESS = 'DDP_CONNECT_SUCCESS';
+export const DDP_CONNECT_FAILURE = 'DDP_CONNECT_FAILURE';
+
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
@@ -69,6 +73,22 @@ export function changedCollection(collectionName, changeType, id) {
 export function popScene() {
   return dispatch => {
     Actions.pop();
+  };
+}
+
+export function ddpConnectRequest() {
+  return {
+    type: DDP_CONNECT_REQUEST,
+  };
+}
+export function ddpConnectSuccess() {
+  return {
+    type: DDP_CONNECT_SUCCESS,
+  };
+}
+export function ddpConnectFailure() {
+  return {
+    type: DDP_CONNECT_FAILURE,
   };
 }
 

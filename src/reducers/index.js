@@ -1,3 +1,4 @@
+import ddp from './ddpReducer';
 import auth from './authReducer';
 import device from './deviceReducer';
 import tabBar from './tabBarReducer';
@@ -15,6 +16,7 @@ import { combineReducers } from 'redux';
  * EVERY TIME there is a basic action
  */
 const rootReducer = combineReducers({
+  ddp,
   auth,
   device,
   tabBar,
