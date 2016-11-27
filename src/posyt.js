@@ -4,6 +4,7 @@ import {
   AppRegistry,
 } from 'react-native';
 import { Provider } from 'react-redux';
+import codePush from 'react-native-code-push';
 import App from './containers/App';
 import {
   segmentWriteKey,
@@ -11,7 +12,6 @@ import {
 import { store } from './lib/store';
 import { setPlatform } from './lib/actions';
 import segment from './lib/segment';
-// import codePush from "react-native-code-push";
 
 export default function posyt(platform) {
   class Posyt extends React.Component {
@@ -20,10 +20,6 @@ export default function posyt(platform) {
       store.dispatch(setPlatform(platform));
       const debug = false; // global.__DEV__;
       segment.setupWithConfiguration(segmentWriteKey, debug);
-    }
-
-    componentDidMount() {
-      // codePush.sync();
     }
 
     render() {
@@ -35,5 +31,5 @@ export default function posyt(platform) {
     }
   }
 
-  AppRegistry.registerComponent('Posyt', () => Posyt);
+  AppRegistry.registerComponent('Posyt', () => codePush(Posyt));
 }

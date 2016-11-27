@@ -1,3 +1,4 @@
 <resources>
+    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">m3wWV3dHuKPTLiNFNOdkUHFrBeEQEJqvI-CZW</string>
     <string name="app_name">Posyt</string>
 </resources>
