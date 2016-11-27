@@ -212,7 +212,6 @@ class Compose extends React.Component {
         { toValue: { x: 0, y: 0 } },
       ),
     ]).start(); // reset the pan to 0,0
-    console.log(g)
     if (g.dx < 100 && g.dx > -100 && g.vx < 2.0 && g.vx > -0.4) {
       if (this.longPress) {
         // TODO: smooth this animation out. try to apply the current dy and vy to the open animation
