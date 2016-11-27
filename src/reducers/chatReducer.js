@@ -48,7 +48,7 @@ function updateChat(state, action) {
     // compare cachedMessages to recent messages and remove dupes from cached messages
     return !(m.state === 'sending' && first5Messages.map(mm => mm.content).includes(m.content))
   });
-  const lookingFor = { lastDelivered: true, lastRead: true };
+  const lookingFor = { lastDelivered: true, lastRead: true, lastReadAndIsMine: true };
   const me = _.find(participants, { id: ddp.userId }) || {};
   const otherUser = _.find(participants, { id: _.without(convo.participantIds, ddp.userId)[0] }) || {};
   const typingBubbles = otherUser.isTyping ? [{ _type: 'message', content: '· · ·', ownerId: otherUser._id, date: new Date, isTypingIndicator: true }] : [];
@@ -66,8 +66,9 @@ function updateChat(state, action) {
     const isFirst = i + 1 === a.length;
     const isLastDelivered = lookingFor.lastDelivered && b._type === 'message' && b._id && isMine;
     if (isLastDelivered) lookingFor.lastDelivered = false;
-    const isLastRead = lookingFor.lastRead && b._type === 'message' && b._id && isMine && otherUser.isCurrent;
-    if (isLastRead) lookingFor.lastRead = false;
+    if (lookingFor.lastRead && b._type === 'message' && b._id && otherUser.lastReadMessageId === b._id) lookingFor.lastRead = false;
+    const isLastRead = !lookingFor.lastRead && lookingFor.lastReadAndIsMine && b._type === 'message' && b._id && isMine;
+    if (isLastRead) lookingFor.lastReadAndIsMine = false;
     return { ...b, isMine, previousDate, nextDate, nextIsSameOwner, previousIsSameOwner, isParticipants, nextIsParticipants, previousIsParticipants, isLast, isFirst, isLastDelivered, isLastRead };
   });
   if (messages && messages[0] && me.lastReadMessageId !== messages[0]._id) ddp.call('conversations/setLastRead', [messages[0]._id, convo._id]);
