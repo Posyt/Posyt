@@ -144,6 +144,7 @@ class ChatScreen extends React.Component {
       text: '',
       screenY: height,
       inputHeight: 45,
+      listHeight: 400,
       scrollY: new Animated.Value(0),
     };
     this.listHeight = 999;
@@ -254,13 +255,12 @@ class ChatScreen extends React.Component {
 
   render() {
     const { dataSource, dispatch, conversationId } = this.props;
-    const { text, inputHeight, scrollY } = this.state;
+    const { text, inputHeight, scrollY, listHeight } = this.state;
     const canSend = text.length;
 
-    const listViewHeight = this.refs.listView && this.refs.listView.scrollProperties.offset || 999;
     const dividerTopAnim = {
       opacity: scrollY.interpolate({
-        inputRange: [listViewHeight - 20, listViewHeight],
+        inputRange: [listHeight - 20, listHeight],
         outputRange: [0.5, 0],
         extrapolate: 'clamp',
       }),
@@ -286,6 +286,7 @@ class ChatScreen extends React.Component {
         <ListView
           ref="listView"
           style={styles.listView}
+          onLayout={(e) => { this.setState({ listHeight: e.nativeEvent.layout.height }); }}
           renderScrollComponent={props => <InvertibleScrollView {...props} inverted />}
           dataSource={dataSource}
           renderRow={this.renderRow.bind(this)}
@@ -298,9 +299,14 @@ class ChatScreen extends React.Component {
           onEndReachedThreshold={300}
           keyboardDismissMode="interactive"
           keyboardShouldPersistTaps={true}
-          onScroll={Animated.event(
-            [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }]
-          )}
+          onScroll={(e) => {
+            Animated.event(
+              [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }]
+            )(e);
+            if (e.nativeEvent.contentOffset.y > listHeight + 20) {
+              this.setState({ listHeight: e.nativeEvent.contentOffset.y });
+            }
+          }}
           scrollEventThrottle={16}
           enableEmptySections={true}
         />
