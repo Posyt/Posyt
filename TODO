@@ -12,6 +12,7 @@
 ✔ make sure all modals render properly @done(2016-11-15 16:35)
 ✔ install digits @done(2016-11-20 20:23)
 ✔ install crashlytics @done(2016-11-20 20:23)
+☐ fix broken .babelrc https://github.com/facebook/react-native/issues/5747#issuecomment-251836397
 ☐ make sure compose works
 ☐ make sure cards work
 ☐ make sure conversations list works

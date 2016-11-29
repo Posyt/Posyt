@@ -1,12 +1,14 @@
 import React from 'react';
 import { Text } from 'react-native';
-import { tokenize } from 'linkifyjs'; // NOTE: TODO: consider replacing with https://github.com/gregjacobs/Autolinker.js if you need to link phone numbers and other things too
+import LinkifyIt from 'linkify-it';
 import _ from 'lodash';
 import {
   gold,
 } from '../lib/constants';
 import { shadeColor } from '../lib/utils';
 import openURL from '../lib/openURL';
+
+const linkify = new LinkifyIt();
 
 class LinkifyText extends React.Component {
   highlightText(text) {
@@ -36,20 +38,30 @@ class LinkifyText extends React.Component {
   }
 
   render() {
-    const tokens = tokenize(this.props.children || '');
+    const text = this.props.children || '';
+    const links = linkify.match(text);
     let result = [];
-    // TODO: make sure link underlining works on Android
-    tokens.forEach((t, i) => {
-      if (t.isLink) {
+
+    if (!links) {
+      result = result.concat(this.highlightText(text.toString()));
+    } else {
+      let lastIndex = 0;
+      // TODO: make sure link underlining works on Android
+      links.forEach((link, i) => {
+        if (link.index > lastIndex) {
+          result.push(this.highlightText(text.substring(lastIndex, link.index)));
+        }
         result.push(
-          <Text key={i} onPress={() => this.onOpenURL(t.toHref('http'))} style={{ textDecorationLine: 'underline' }}>
-            {this.highlightText(t.toString())}
+          <Text key={i} onPress={() => this.onOpenURL(link.url)} style={{ textDecorationLine: 'underline' }}>
+            {this.highlightText(link.text)}
           </Text>
         );
-      } else {
-        result = result.concat(this.highlightText(t.toString()));
+        lastIndex = link.lastIndex;
+      });
+      if (lastIndex < text.length) {
+        result.push(this.highlightText(text.substring(lastIndex)));
       }
-    });
+    }
 
     return (
       <Text style={this.props.style}>

@@ -170,12 +170,12 @@ class ChatScreen extends React.Component {
   }
 
   componentWillUnmount() {
-    this.promptForRating();
-    ddp.unsubscribe(this.subId);
     this._subscriptions.forEach(
       (subscription) => subscription.remove()
     );
     this._subscriptions = null;
+    this.promptForRating();
+    ddp.unsubscribe(this.subId);
     this.props.dispatch(leaveChat());
   }
 
@@ -248,6 +248,11 @@ class ChatScreen extends React.Component {
     });
   }
 
+  back = () => {
+    this.refs.input.blur();
+    this.props.dispatch(popScene());
+  }
+
   renderParticipants() {
     const { participants } = this.props;
     const notMe = participants.filter(p => p._id !== ddp.userId);
@@ -294,7 +299,7 @@ class ChatScreen extends React.Component {
     return (
       <View style={[styles.container, { height: screenY }]}>
         <View style={styles.navBar}>
-          <TouchableOpacity style={styles.backButton} onPress={() => dispatch(popScene())}>
+          <TouchableOpacity style={styles.backButton} onPress={this.back}>
             <Image source={require('../../assets/images/back_solid.png')} style={styles.backImage} />
           </TouchableOpacity>
           {this.renderParticipants()}
