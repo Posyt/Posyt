@@ -8,10 +8,9 @@ import {
   Dimensions,
   Animated,
   TextInput,
-  LayoutAnimation,
   Image,
   AsyncStorage,
-  Keyboard,
+  KeyboardAvoidingView,
 } from 'react-native';
 import { connect } from 'react-redux';
 import InvertibleScrollView from 'react-native-invertible-scroll-view';
@@ -150,13 +149,6 @@ class ChatScreen extends React.Component {
     this.listHeight = 999;
   }
 
-  componentWillMount() {
-    this._subscriptions = [];
-    this._subscriptions.push(Keyboard.addListener('keyboardWillShow', (frames) => this.updateKeyboardSpace(frames)));
-    this._subscriptions.push(Keyboard.addListener('keyboardWillHide', (frames) => this.updateKeyboardSpace(frames)));
-    // this._subscriptions.push(Keyboard.addListener('keyboardWillChangeFrame', (frames) => this.updateKeyboardSpace(frames)));
-  }
-
   componentDidMount() {
     this.subscribe(this.props.conversationId, this.props.limit);
     segment.screen('Viewed Chat');
@@ -170,10 +162,6 @@ class ChatScreen extends React.Component {
   }
 
   componentWillUnmount() {
-    this._subscriptions.forEach(
-      (subscription) => subscription.remove()
-    );
-    this._subscriptions = null;
     this.promptForRating();
     ddp.unsubscribe(this.subId);
     this.props.dispatch(leaveChat());
@@ -190,16 +178,6 @@ class ChatScreen extends React.Component {
       AsyncStorage.setItem('feedback/prompted', (new Date).toString());
       promptForFeedback();
     }
-  }
-
-  updateKeyboardSpace(frames) {
-    LayoutAnimation.configureNext(LayoutAnimation.create(
-      frames.duration,
-      LayoutAnimation.Types[frames.easing]
-    ));
-    this.setState({
-      screenY: frames.endCoordinates.screenY,
-    });
   }
 
   getCurrentPosition() {
@@ -276,7 +254,7 @@ class ChatScreen extends React.Component {
 
   render() {
     const { dataSource, dispatch, conversationId } = this.props;
-    const { screenY, text, inputHeight, scrollY } = this.state;
+    const { text, inputHeight, scrollY } = this.state;
     const canSend = text.length;
 
     const listViewHeight = this.refs.listView && this.refs.listView.scrollProperties.offset || 999;
@@ -297,7 +275,7 @@ class ChatScreen extends React.Component {
     };
 
     return (
-      <View style={[styles.container, { height: screenY }]}>
+      <KeyboardAvoidingView style={[styles.container]} behavior="padding">
         <View style={styles.navBar}>
           <TouchableOpacity style={styles.backButton} onPress={this.back}>
             <Image source={require('../../assets/images/back_solid.png')} style={styles.backImage} />
@@ -356,7 +334,7 @@ class ChatScreen extends React.Component {
             <Text style={[styles.sendText, canSend && { color: red }]}>Send</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }
