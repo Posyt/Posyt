@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import {
   TOP_CARD_EXPANDED,
   TOP_CARD_CONTRACTED,
@@ -5,8 +6,8 @@ import {
   UNPOP_LAST_CARD,
   UNSHIFT_CARD,
   CHANGED_COLLECTION,
+  LOGIN_SUCCESS,
 } from '../lib/actions';
-import _ from 'lodash';
 import { ddp } from '../lib/DDP';
 import { mongo } from '../lib/Mongo';
 
@@ -23,7 +24,7 @@ const initialState = {
 function cardsDidChange(state, action) {
   if (!/posyts|articles|users/.test(action.payload.collectionName)) return false;
   if (!state.leads.length) return true; // Leads are the starting place, so try hard to get them
-  if (action.payload.collectionName === 'users' && action.payload.id === ddp.userId) return true;
+  if (action.payload.collectionName === 'users' && (!ddp.userId || action.payload.id === ddp.userId)) return true;
   if (action.payload.collectionName === 'articles' && _.find(state.leads, { type: 'article', id: action.payload.id }) ) return true;
   if (action.payload.collectionName === 'posyts' && _.find(state.leads, { type: 'posyt', id: action.payload.id }) ) return true;
   return false;
@@ -107,12 +108,16 @@ export default function cardsReducer(state = initialState, action) {
         ...updateCards(newState, action),
       };
     case CHANGED_COLLECTION:
-      if (cardsDidChange(state, action)) {
-        return {
-          ...state,
-          ...updateCards(state, action),
-        };
-      }
+      if (!cardsDidChange(state, action)) return state;
+      return {
+        ...state,
+        ...updateCards(state, action),
+      };
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        ...updateCards(state, action),
+      };
     default:
       return state;
   }

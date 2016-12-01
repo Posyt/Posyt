@@ -2,6 +2,13 @@ import {
   AsyncStorage,
   AppState,
 } from 'react-native';
+import DDPClient from 'node-ddp-client';
+import _ from 'lodash';
+import {
+  posytDomain,
+  posytPort,
+  posytSSL,
+} from './constants';
 import {
   ddpConnectRequest,
   ddpConnectSuccess,
@@ -13,15 +20,8 @@ import {
   logoutSuccess,
   logoutFailure,
 } from './actions';
-import {
-  posytDomain,
-  posytPort,
-  posytSSL,
-} from './constants';
-import DDPClient from 'node-ddp-client';
 import { store } from './store';
 import { deepLinker } from './DeepLinker';
-import _ from 'lodash';
 import segment from './segment';
 
 class DDP {

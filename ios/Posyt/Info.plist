@@ -31,7 +31,7 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>CodePushDeploymentKey</key>
-	<string>m3wWV3dHuKPTLiNFNOdkUHFrBeEQEJqvI-CZW</string>
+	<string>Rlb4SNsxmxQ4zL1hdYJtf6bynIBFEJqvI-CZW</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -84,7 +84,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>You control which photos get uploaded and where they're used</string>
+	<string>You control which photos get uploaded and where they&apos;re used</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>rooney sans black italic.otf</string>

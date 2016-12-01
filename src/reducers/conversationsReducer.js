@@ -1,6 +1,7 @@
 import {
   CHANGED_COLLECTION,
   PAGE_CONVERSATIONS,
+  LOGIN_SUCCESS,
 } from '../lib/actions';
 import { ddp } from '../lib/DDP';
 import { mongo } from '../lib/Mongo';
@@ -37,6 +38,11 @@ export default function conversationsReducer(state = initialState, action) {
   switch (action.type) {
     case CHANGED_COLLECTION:
       if (!conversationsDidChange(state, action)) return state;
+      return {
+        ...state,
+        ...updateConversations(state, action),
+      };
+    case LOGIN_SUCCESS:
       return {
         ...state,
         ...updateConversations(state, action),

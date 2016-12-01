@@ -1,6 +1,13 @@
 // import { Alert } from 'react-native';
 import FBSDK from 'react-native-fbsdk';
 import { ddp } from './DDP';
+import {
+  loginRequest,
+  loginFailure,
+  logoutRequest,
+  logoutFailure,
+} from './actions';
+import { store } from './store';
 
 const FB_PERMISSIONS = ['email', 'public_profile']; //, 'user_friends']
 // 'user_actions.news', 'user_likes', 'user_location'];
@@ -8,10 +15,12 @@ const FB_PERMISSIONS = ['email', 'public_profile']; //, 'user_friends']
 
 
 export default function loginWithFacebook() {
+  store.dispatch(loginRequest());
   // FBSDK.LoginManager.setLoginBehavior('native') // TODO: find the ideal behaviour https://github.com/facebook/react-native-fbsdk/blob/master/react-native-fbsdklogin/js/FBSDK.LoginManager.ios.js
   FBSDK.LoginManager.logInWithReadPermissions(FB_PERMISSIONS).then((result) => {
     if (result.isCancelled) {
       if (global.__DEV__) console.log('fb login canceled');
+      store.dispatch(loginFailure('Facebook login canceled'));
     } else {
       if (global.__DEV__) console.log('fb logged in!');
       FBSDK.AccessToken.getCurrentAccessToken().then((response) => {
@@ -20,6 +29,7 @@ export default function loginWithFacebook() {
           loginWithFBToken(response.accessToken)
         } else {
           if (global.__DEV__) console.log('fb access token not found');
+          store.dispatch(loginFailure('Facebook credentials not found'));
         }
       });
     }
