@@ -9,6 +9,7 @@ import {
   Animated,
   TextInput,
   Image,
+  PixelRatio,
   AsyncStorage,
   KeyboardAvoidingView,
 } from 'react-native';
@@ -47,8 +48,8 @@ const styles = StyleSheet.create({
     height: 60,
     paddingTop: 20,
     backgroundColor: 'white',
-    // borderBottomWidth: 1 / PixelRatio.get(),
-    // borderColor: grey,
+    borderBottomWidth: 1 / PixelRatio.get(),
+    borderColor: grey,
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -144,10 +145,8 @@ class ChatScreen extends React.Component {
       text: '',
       screenY: height,
       inputHeight: 45,
-      listHeight: 400,
       scrollY: new Animated.Value(0),
     };
-    this.listHeight = 999;
   }
 
   componentDidMount() {
@@ -255,16 +254,16 @@ class ChatScreen extends React.Component {
 
   render() {
     const { dataSource, dispatch, conversationId } = this.props;
-    const { text, inputHeight, scrollY, listHeight } = this.state;
+    const { text, inputHeight, scrollY } = this.state;
     const canSend = text.length;
 
-    const dividerTopAnim = {
-      opacity: scrollY.interpolate({
-        inputRange: [listHeight - 20, listHeight],
-        outputRange: [0.5, 0],
-        extrapolate: 'clamp',
-      }),
-    };
+    // const dividerTopAnim = {
+    //   opacity: scrollY.interpolate({
+    //     inputRange: [listHeight - 20, listHeight],
+    //     outputRange: [0.5, 0],
+    //     extrapolate: 'clamp',
+    //   }),
+    // };
 
     const dividerBottomAnim = {
       opacity: scrollY.interpolate({
@@ -286,7 +285,6 @@ class ChatScreen extends React.Component {
         <ListView
           ref="listView"
           style={styles.listView}
-          onLayout={(e) => { this.setState({ listHeight: e.nativeEvent.layout.height }); }}
           renderScrollComponent={props => <InvertibleScrollView {...props} inverted />}
           dataSource={dataSource}
           renderRow={this.renderRow.bind(this)}
@@ -296,21 +294,16 @@ class ChatScreen extends React.Component {
               dispatch(updateChat());
             });
           }}
-          onEndReachedThreshold={300}
+          onEndReachedThreshold={600}
           keyboardDismissMode="interactive"
           keyboardShouldPersistTaps={true}
-          onScroll={(e) => {
-            Animated.event(
-              [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }]
-            )(e);
-            if (e.nativeEvent.contentOffset.y > listHeight + 20) {
-              this.setState({ listHeight: e.nativeEvent.contentOffset.y });
-            }
-          }}
+          onScroll={Animated.event(
+            [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }]
+          )}
           scrollEventThrottle={16}
           enableEmptySections={true}
         />
-        <Animated.Image source={require('../../assets/images/divider.png')} style={[styles.dividerTop, dividerTopAnim]} />
+        {/* <Animated.Image source={require('../../assets/images/divider.png')} style={[styles.dividerTop, dividerTopAnim]} /> */}
         <View style={[styles.chatBar, { height: inputHeight }]}>
           <Animated.Image source={require('../../assets/images/divider.png')} style={[styles.dividerBottom, dividerBottomAnim]} />
           <TextInput style={[styles.input]}
