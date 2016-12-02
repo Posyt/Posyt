@@ -72,6 +72,11 @@ const styles = StyleSheet.create({
     height: 3,
     backgroundColor: 'white',
   },
+  messageText: {
+    fontSize: 14,
+    paddingBottom: 2,
+    marginBottom: -2,
+  },
 
   bouncingDots: {
     height: 15,
