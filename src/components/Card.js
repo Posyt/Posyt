@@ -1,15 +1,19 @@
 import React from 'react';
-import {StyleSheet, View, Text, Image, Animated, PanResponder, PixelRatio} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  Animated,
+  PanResponder,
+  PixelRatio,
+} from 'react-native';
+import { connect } from 'react-redux';
 import {
   setTabBarLocked,
-} from '../lib/actions.js';
+} from '../lib/actions';
 import {
-  red,
-  green,
   blue,
-  gold,
-} from '../lib/constants.js';
-import { connect } from 'react-redux';
+} from '../lib/constants';
 import CardPosyt from './CardPosyt';
 import CardArticle from './CardArticle';
 
@@ -117,17 +121,26 @@ class Card extends React.Component {
       ]
     }
 
-    const swipeIconFlagAnim = {
+    const swipeIconReportAnim = {
       opacity: Animated.add(pan.y, Animated.multiply(panXAbs, new Animated.Value(-1))).interpolate({
         inputRange: [SWIPE_ICON_THRESHOLD*2, threshold],
         outputRange: [0.0, 1.0],
         extrapolate: 'clamp'
       }),
+      transform: [
+        {
+          scale: Animated.add(pan.y, Animated.multiply(panXAbs, new Animated.Value(-1))).interpolate({
+            inputRange: [SWIPE_ICON_THRESHOLD*2, threshold],
+            outputRange: [2.0, 1.0],
+            extrapolate: 'clamp'
+          }),
+        },
+      ],
     }
-    const swipeIconHeartAnim = {
+    const swipeIconLikeAnim = {
       opacity: pan.x.interpolate({
         inputRange: [SWIPE_ICON_THRESHOLD, threshold],
-        outputRange: [0.0, 3.0],
+        outputRange: [0.0, 1.0],
         extrapolate: 'clamp'
       }),
       transform: [
@@ -145,11 +158,11 @@ class Card extends React.Component {
             extrapolate: 'clamp'
           })
         },
-        {rotateZ: '2deg'},
+        { rotateZ: '2deg' },
         {
           scale: pan.x.interpolate({
-            inputRange: [SWIPE_ICON_THRESHOLD, threshold/2, threshold-10, threshold-5, threshold, threshold+10, threshold+20, threshold+40, threshold+60],
-            outputRange: [0.1, 1.4, 0.9, 1.1, 0.92, 1.08, 0.95, 1.05, 1.0],
+            inputRange: [SWIPE_ICON_THRESHOLD, threshold],
+            outputRange: [3.0, 1.0],
             extrapolate: 'clamp'
           })
         }
@@ -158,7 +171,7 @@ class Card extends React.Component {
     const swipeIconSkipAnim = {
       opacity: pan.x.interpolate({
         inputRange: [-threshold, -SWIPE_ICON_THRESHOLD],
-        outputRange: [3.0, 0.0],
+        outputRange: [1.0, 0.0],
         extrapolate: 'clamp'
       }),
       transform: [
@@ -172,26 +185,49 @@ class Card extends React.Component {
         {
           rotateY: pan.x.interpolate({
             inputRange: [-threshold, -SWIPE_ICON_THRESHOLD],
-            outputRange: ['0deg', '89deg'],
+            outputRange: ['0deg', '-89deg'],
             extrapolate: 'clamp'
           })
         },
-        {rotateZ: '-2deg'},
+        { rotateZ: '-2deg' },
         {
-          scale: Animated.multiply(pan.x, new Animated.Value(-1)).interpolate({
-            inputRange: [0, SWIPE_ICON_THRESHOLD, threshold/1.2, threshold],
-            outputRange: [1.0, 0.1, 1.4, 1.0],
+          scale: pan.x.interpolate({
+            inputRange: [-threshold, -SWIPE_ICON_THRESHOLD],
+            outputRange: [1.0, 3.0],
             extrapolate: 'clamp'
-          })
+          }),
         }
       ]
     }
-    const swipeIconForwardAnim = {
+    const swipeIconShareAnim = {
       opacity: Animated.add(pan.y, Animated.multiply(panXAbs, new Animated.Value(1))).interpolate({
         inputRange: [-threshold, -SWIPE_ICON_THRESHOLD*2],
         outputRange: [1.0, 0.0],
         extrapolate: 'clamp'
       }),
+      transform: [
+        {
+          rotateZ: Animated.add(pan.y, Animated.multiply(panXAbs, new Animated.Value(1))).interpolate({
+            inputRange: [-threshold*2.2, -threshold*2.0, -threshold*1.8, -threshold*1.6, -threshold*1.4, -threshold*1.2, -threshold, -SWIPE_ICON_THRESHOLD*2],
+            outputRange: ['0deg', '10deg', '-10deg', '10deg', '-10deg', '10deg', '0deg', '0deg'],
+            extrapolate: 'clamp'
+          })
+        },
+        {
+          scale: Animated.add(pan.y, Animated.multiply(panXAbs, new Animated.Value(1))).interpolate({
+            inputRange: [-threshold, -SWIPE_ICON_THRESHOLD*2],
+            outputRange: [0.5, 0.0],
+            // extrapolate: 'clamp'
+          })
+        },
+        {
+          translateY: Animated.add(pan.y, Animated.multiply(panXAbs, new Animated.Value(1))).interpolate({
+            inputRange: [-threshold, -SWIPE_ICON_THRESHOLD*2],
+            outputRange: [-10.0, 0.0],
+            // extrapolate: 'clamp'
+          })
+        },
+      ],
     }
 
     let sharedBy;
@@ -222,21 +258,29 @@ class Card extends React.Component {
         </View>
         <View style={styles.swipeIconsWrap} pointerEvents={'none'}>
           <View style={[styles.swipeIconsRow]}>
-            <View style={[styles.swipeIconWrap, styles.swipeIconWrapFlag]}>
-              <Animated.Image source={require('../../assets/images/flag.png')} style={[styles.swipeIcon, styles.swipeIconFlag, swipeIconFlagAnim]} />
+            <View style={[styles.swipeIconWrap, styles.swipeIconWrapReport]}>
+              <Animated.Text style={[styles.swipeIcon, styles.swipeIconReport, swipeIconReportAnim]}>️️
+                👮
+              </Animated.Text>
             </View>
           </View>
           <View style={[styles.swipeIconsRow]}>
-            <View style={[styles.swipeIconWrap, styles.swipeIconWrapHeart]}>
-              <Animated.Image source={require('../../assets/images/heart.png')} style={[styles.swipeIcon, styles.swipeIconHeart, swipeIconHeartAnim]} />
+            <View style={[styles.swipeIconWrap, styles.swipeIconWrapLike]}>
+              <Animated.Text style={[styles.swipeIcon, styles.swipeIconLike, swipeIconLikeAnim]}>
+                😀
+              </Animated.Text>
             </View>
             <View style={[styles.swipeIconWrap, styles.swipeIconWrapSkip]}>
-              <Animated.Image source={require('../../assets/images/skip.png')} style={[styles.swipeIcon, styles.swipeIconSkip, swipeIconSkipAnim]} />
+              <Animated.Text style={[styles.swipeIcon, styles.swipeIconSkip, swipeIconSkipAnim]}>
+                😐
+              </Animated.Text>
             </View>
           </View>
           <View style={[styles.swipeIconsRow]}>
-            <View style={[styles.swipeIconWrap, styles.swipeIconWrapForward]}>
-              <Animated.Image source={require('../../assets/images/forward.png')} style={[styles.swipeIcon, styles.swipeIconForward, swipeIconForwardAnim]} />
+            <View style={[styles.swipeIconWrap, styles.swipeIconWrapShare]}>
+              <Animated.Text style={[styles.swipeIcon, styles.swipeIconShare, swipeIconShareAnim]}>
+                🎉
+              </Animated.Text>
             </View>
           </View>
         </View>
@@ -313,35 +357,32 @@ const styles = StyleSheet.create({
   swipeIconWrap: {
     flex: 1,
     // shadowColor: 'black',
-    // shadowOffset: { width: 1, height: 1},
+    // shadowOffset: { width: 1, height: 1 },
     // shadowOpacity: 0.8,
     // shadowRadius: 2,
   },
   swipeIcon: {
-    width: 50,
-    height: 50,
     opacity: 0,
+    fontSize: 60,
+    paddingBottom: 2,
+    marginBottom: -2,
   },
 
-  swipeIconWrapFlag: {
+  swipeIconWrapReport: {
     marginTop: 30,
     alignItems: 'center',
     justifyContent: 'flex-start',
-    // shadowColor: gold,
   },
-  swipeIconFlag: {
-    tintColor: gold,
+  swipeIconReport: {
   },
 
-  swipeIconWrapHeart: {
+  swipeIconWrapLike: {
     marginLeft: 40,
     marginTop: -100,
     alignItems: 'flex-start',
     justifyContent: 'center',
-    // shadowColor: green,
   },
-  swipeIconHeart: {
-    tintColor: green,
+  swipeIconLike: {
   },
 
   swipeIconWrapSkip: {
@@ -349,22 +390,17 @@ const styles = StyleSheet.create({
     marginTop: -100,
     alignItems: 'flex-end',
     justifyContent: 'center',
-    // shadowColor: red,
   },
   swipeIconSkip: {
-    width: 40,
-    height: 40,
-    tintColor: red,
   },
 
-  swipeIconWrapForward: {
+  swipeIconWrapShare: {
     marginTop: -100,
     alignItems: 'center',
     justifyContent: 'flex-start',
-    // shadowColor: blue,
   },
-  swipeIconForward: {
-    tintColor: blue,
+  swipeIconShare: {
+    fontSize: 70,
   },
 });
 

@@ -148,12 +148,12 @@ class Cards extends React.Component {
       }
     ).start(() => {
       if (oldG.dx > THRESHOLD) {
-        this.firstTimeAlert('like', 'Like 👍', 'Cool! You\'ll get matches with people who like what you like. Matches are anonymous. They\'ll only see your username and the likes you have in common.')
+        this.firstTimeAlert('like', 'Like 😀', 'Cool! You\'ll get matches with people who like what you like. Matches are anonymous. They\'ll only see your username and the likes you have in common.')
         .then(proceed => {
           if (proceed) this.swipe(oldProps, time, 'like');
         });
       } else if (oldG.dx < -THRESHOLD) {
-        this.firstTimeAlert('skip', 'Skip ❌', 'Skip the things you\'re not interested in.')
+        this.firstTimeAlert('skip', 'Skip 😐', 'Skip the things you\'re not interested in.')
         .then(proceed => {
           if (proceed) this.swipe(oldProps, time, 'skip');
         });
