@@ -20,7 +20,7 @@
 ☐ make sure push works
 ☐ make sure deep link share works
 ☐ add an empty message to conversations list before you've had any matches
-☐ switch heart, x, flag, share to 😀👍, 😐, ☹️, 🚀 on card swipes
+✔ switch heart, x, flag, share to 😀👍, 😐, ☹️, 🚀 on card swipes @done(2016-12-02 23:25)
 ✔ login sometimes does not load any data @done(2016-11-30 22:43)
 ✔ Install PushNotificationsIOS  @done(2016-11-30 22:44)
 ☐ make sure PushNotificationBar works
