@@ -60,21 +60,32 @@ class PointsModal extends React.Component {
 
   render() {
     const { currentUser } = this.props;
+    const points = currentUser && currentUser.meta && currentUser.meta.points;
     return (
       <PosytModal key="pointsModal" ref="pointsModal" style={styles.modal}>
         <View style={[styles.modalButton, { height: 160, paddingLeft: 10, paddingRight: 10 }]}>
-          <Shimmer pauseDuration={2500} speed={30}>
-            <Text style={[styles.modalSubText, { fontWeight: '600' }]}>Points {currentUser && currentUser.meta && currentUser.meta.points}</Text>
+          <Shimmer pauseDuration={4500} speed={100} animationOpacity={0.4}>
+            <Text style={[styles.modalSubText, { fontWeight: '600' }]}>{points} {points === 1 ? 'Point' : 'Points'}</Text>
           </Shimmer>
-          <Text style={[styles.modalSubText, { fontSize: 15, lineHeight: 18, marginTop: -3, fontWeight: '400', textAlign: 'left' }]}>Help your posyts reach more people 🎉</Text>
-          <Text style={[styles.modalSubText, { fontWeight: '400', textAlign: 'right' }]}>✏️ write a posyt 👉 +1</Text>
-          <Text style={[styles.modalSubText, { fontWeight: '400', textAlign: 'right' }]}>💚 get a like 👉 +1</Text>
-          <Text style={[styles.modalSubText, { fontWeight: '400', textAlign: 'right' }]}>🚩 get flagged 👉 -1</Text>
+          <Shimmer pauseDuration={4500} speed={100} animationOpacity={0.4}>
+            <Text style={[styles.modalSubText, { fontSize: 15, lineHeight: 18, marginTop: -3, fontWeight: '400', textAlign: 'left' }]}>Help your posyts reach more people 🎉</Text>
+          </Shimmer>
+          <Shimmer pauseDuration={4500} speed={100} animationOpacity={0.4}>
+            <Text style={[styles.modalSubText, { fontWeight: '400', textAlign: 'right' }]}>✏️ write a posyt 👉 +1</Text>
+          </Shimmer>
+          <Shimmer pauseDuration={4500} speed={100} animationOpacity={0.4}>
+            <Text style={[styles.modalSubText, { fontWeight: '400', textAlign: 'right' }]}>💚 get a like 👉 +1</Text>
+          </Shimmer>
+          <Shimmer pauseDuration={4500} speed={100} animationOpacity={0.4}>
+            <Text style={[styles.modalSubText, { fontWeight: '400', textAlign: 'right' }]}>🚩 get flagged 👉 -1</Text>
+          </Shimmer>
         </View>
         <View style={styles.modalSeparator} />
-        <Text style={[styles.modalSubText, { fontWeight: '400', paddingLeft: 5, paddingRight: 5, paddingTop: 10, paddingBottom: 10 }]}>
-          Earn points to give your posyts a boost. Points make your posyts more visible in the hours right after you share them.
-        </Text>
+        <Shimmer pauseDuration={4500} speed={100} animationOpacity={0.4}>
+          <Text style={[styles.modalSubText, { fontWeight: '400', paddingLeft: 5, paddingRight: 5, paddingTop: 10, paddingBottom: 10 }]}>
+            Earn points to give your posyts a boost. Points make your posyts more visible in the hours right after you share them.
+          </Text>
+        </Shimmer>
       </PosytModal>
     )
     // <View style={styles.modalSeparator} />
