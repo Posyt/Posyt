@@ -32,7 +32,15 @@ function cardsDidChange(state, action) {
 
 // TODO: make more performant. don't update everything just what's changed
 function updateCards(state, action) {
-  if (!ddp.userId) return {};
+  if (!ddp.userId) {
+    const cards = mongo.db.articles.find().map(a => ({ ...a, _type: 'article' }));
+    cards.push({ _id: '2' });
+    cards.push({ _id: '3' });
+    return {
+      leads: [],
+      cards,
+    };
+  }
   const user = mongo.db.users.findOne({ _id: ddp.userId });
   // // TODO: UNDO: don't actually sort leads by type
   // const leads = user && user.meta && _.sortBy(user.meta.leads, o => o.type) || [];

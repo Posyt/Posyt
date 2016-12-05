@@ -28,7 +28,8 @@
 ✔ load all images from https @done(2016-12-04 16:05)
 ✔ get gifs working @done(2016-12-04 16:06)
 ☐ PS: change the imgur rss feed url to one that is up to date
-☐ add empty state to cards stack
+✔ add empty state to cards stack @done(2016-12-04 21:45)
+☐ make sure that the user's stats (points, posyts, messages) always render in the modal
 
 Prod
 ☐ meteor server
