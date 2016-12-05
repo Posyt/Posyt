@@ -24,7 +24,11 @@
 ✔ login sometimes does not load any data @done(2016-11-30 22:43)
 ✔ Install PushNotificationsIOS  @done(2016-11-30 22:44)
 ☐ make sure PushNotificationBar works
-☐ make sure new likes get added to existing conversations in the backend
+✔ PM: make sure new likes get added to existing conversations in the backend @done(2016-12-04 14:56)
+✔ load all images from https @done(2016-12-04 16:05)
+✔ get gifs working @done(2016-12-04 16:06)
+☐ PS: change the imgur rss feed url to one that is up to date
+☐ add empty state to cards stack
 
 Prod
 ☐ meteor server

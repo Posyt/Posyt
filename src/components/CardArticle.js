@@ -1,11 +1,19 @@
 import React from 'react';
-import {StyleSheet, View, Text, Image} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  ActivityIndicator,
+} from 'react-native';
+import { connect } from 'react-redux';
+import Lightbox from 'react-native-lightbox';
+import LinearGradient from 'react-native-linear-gradient';
+import FLAnimatedImage from 'react-native-flanimatedimage';
 import {
   topCardExpanded,
   topCardContracted,
-} from '../lib/actions.js';
-import _ from 'lodash';
-import Lightbox from 'react-native-lightbox';
+} from '../lib/actions';
 import openURL from '../lib/openURL';
 import {
   articleTitle,
@@ -13,15 +21,14 @@ import {
   articleURL,
   articleSources,
 } from '../lib/articleHelpers';
-import { connect } from 'react-redux';
-import LinearGradient from 'react-native-linear-gradient';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
   imageWrap: {
-    flex: 1,
+    flex: 2,
+    backgroundColor: 'black',
   },
   lightbox: {
     flex: 1,
@@ -31,7 +38,7 @@ const styles = StyleSheet.create({
   },
   text: {
     position: 'relative',
-    flex: 2,
+    flex: 3,
     paddingTop: 20,
   },
   title: {
@@ -78,32 +85,62 @@ const styles = StyleSheet.create({
 class ArticleImage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      loading: true,
+    };
   }
 
-  onLayout(e) {
+  onLayout = (e) => {
     this.setState({ width: e.nativeEvent.layout.width, height: e.nativeEvent.layout.height });
   }
 
+  onGifLoadEnd = (e) => {
+    this.setState({ loading: false });
+    // if (!e.nativeEvent.size) return;
+    // const { width, height } = e.nativeEvent.size;
+    // this.setState({
+    //   width,
+    //   height,
+    // });
+  }
+
   render() {
-    const { width, height, open } = this.state;
+    const { width, height, open, loading } = this.state;
     const { article } = this.props;
     if (!article.image_url) return null;
-    // TODO: wait for this issue to be resolved before allowing gifs https://github.com/facebook/react-native/issues/1968
-    //   A stopgap could be only rendering gifs that are less than 10mb
-    if (article.image_url.includes('.gif')) return null;
+    const uri = article.image_url.replace('http://', 'https://'); // NOTE: ios needs SSL images
     return (
-      <View style={styles.imageWrap} onLayout={this.onLayout.bind(this)}>
-        <Lightbox style={styles.lightbox}
-          activeProps={{ resizeMode: 'contain' }}
-          onOpen={() => this.setState({ open: true })}
-          onClose={() => this.setState({ open: false })}
-        >
-          <Image resizeMode="cover"
-            source={{ uri: article.image_url }}
-            style={[styles.image, !open && { width, height }]}
-          />
-        </Lightbox>
+      <View style={styles.imageWrap} onLayout={this.onLayout}>
+        {uri.includes('.gif') ? (
+          <View>
+            {loading && (
+              <ActivityIndicator
+                animating={loading}
+                style={[{ height, alignItems: 'center', justifyContent: 'center' }]}
+                size="large"
+              />
+            )}
+            <FLAnimatedImage
+              // resizeMode="cover"
+              source={{ uri }}
+              style={[styles.image, !open && { width, height }]}
+              onLoadEnd={this.onGifLoadEnd}
+            />
+          </View>
+        ) : (
+          <Lightbox
+            style={styles.lightbox}
+            activeProps={{ resizeMode: 'contain' }}
+            onOpen={() => this.setState({ open: true })}
+            onClose={() => this.setState({ open: false })}
+          >
+            <Image
+              resizeMode="cover"
+              source={{ uri }}
+              style={[styles.image, !open && { width, height }]}
+            />
+          </Lightbox>
+        )}
       </View>
     );
   }

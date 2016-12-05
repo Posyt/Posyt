@@ -8,12 +8,14 @@ import {
   TouchableWithoutFeedback,
   TouchableHighlight,
   Alert,
+  ActivityIndicator,
 } from 'react-native';
 import _ from 'lodash';
 import Lightbox from 'react-native-lightbox';
 import Shimmer from 'react-native-shimmer';
 import { connect } from 'react-redux';
 import moment from 'moment';
+import FLAnimatedImage from 'react-native-flanimatedimage';
 import {
   red,
   blue,
@@ -146,6 +148,7 @@ const articleStyles = StyleSheet.create({
   imageWrap: {
     flex: 1,
     height: 100,
+    backgroundColor: 'black',
   },
   lightbox: {
     flex: 1,
@@ -196,31 +199,60 @@ const articleStyles = StyleSheet.create({
 class ArticleImage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      loading: true,
+    };
   }
 
-  onLayout(e) {
+  onLayout = (e) => {
     this.setState({ width: e.nativeEvent.layout.width, height: e.nativeEvent.layout.height });
   }
 
+  onGifLoadEnd = (e) => {
+    this.setState({ loading: false });
+    // if (!e.nativeEvent.size) return;
+    // const { width, height } = e.nativeEvent.size;
+    // this.setState({
+    //   width,
+    //   height,
+    // });
+  }
+
   render() {
-    const { width, height, open } = this.state;
+    const { width, height, open, loading } = this.state;
     const { article } = this.props;
     if (!article.image_url) return null;
-    // TODO: wait for this issue to be resolved before allowing gifs https://github.com/facebook/react-native/issues/1968
-    if (article.image_url.includes('.gif')) return null;
+    const uri = article.image_url.replace('http://', 'https://'); // NOTE: ios needs SSL images
     return (
-      <View style={articleStyles.imageWrap} onLayout={this.onLayout.bind(this)}>
-        <Lightbox style={articleStyles.lightbox}
-          activeProps={{ resizeMode: 'contain' }}
-          onOpen={() => this.setState({ open: true })}
-          onClose={() => this.setState({ open: false })}
-        >
-          <Image resizeMode="cover"
-            source={{ uri: article.image_url }}
-            style={[articleStyles.image, !open && { width, height }]}
-          />
-        </Lightbox>
+      <View style={articleStyles.imageWrap} onLayout={this.onLayout}>
+        {uri.includes('.gif') ? (
+          <View>
+            {loading && (
+              <ActivityIndicator
+                animating={loading}
+                style={[{ height, alignItems: 'center', justifyContent: 'center' }]}
+                size="large"
+              />
+            )}
+            <FLAnimatedImage
+              // resizeMode="cover"
+              source={{ uri }}
+              style={[styles.image, !open && { width, height }]}
+              onLoadEnd={this.onGifLoadEnd}
+            />
+          </View>
+        ) : (
+          <Lightbox style={articleStyles.lightbox}
+            activeProps={{ resizeMode: 'contain' }}
+            onOpen={() => this.setState({ open: true })}
+            onClose={() => this.setState({ open: false })}
+          >
+            <Image resizeMode="cover"
+              source={{ uri }}
+              style={[articleStyles.image, !open && { width, height }]}
+            />
+          </Lightbox>
+        )}
       </View>
     );
   }

@@ -35,6 +35,8 @@
 		8E09147D1DDAB27900FD5BDB /* RNSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E09147C1DDAB27900FD5BDB /* RNSegment.m */; };
 		8E0914F01DDB8A9A00FD5BDB /* Branch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E0914EF1DDB8A9A00FD5BDB /* Branch.framework */; };
 		8E0915751DDB8BCB00FD5BDB /* libRNBranch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E0915741DDB8BA200FD5BDB /* libRNBranch.a */; };
+		8E53EFA51DF4B13600DB163F /* FLAnimatedImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E53EFA41DF4B13600DB163F /* FLAnimatedImage.framework */; };
+		8E53EFC61DF4B39A00DB163F /* libRNFLAnimatedImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E53EFC51DF4B38700DB163F /* libRNFLAnimatedImage.a */; };
 		8E8529281DE609C800885E81 /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E85291A1DE6098700885E81 /* libRCTPushNotification.a */; };
 		8EA2F7BC1DE1509500B869B1 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA2F7BA1DE1509500B869B1 /* Fabric.framework */; };
 		8EA2F7BD1DE1509500B869B1 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA2F7BB1DE1509500B869B1 /* Crashlytics.framework */; };
@@ -185,6 +187,13 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = CodePush;
 		};
+		8E53EFC41DF4B38700DB163F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8E53EFC01DF4B38700DB163F /* RNFLAnimatedImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B5EE7B8C1D884FA5008938BC;
+			remoteInfo = RNFLAnimatedImage;
+		};
 		8E8529191DE6098700885E81 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8E85290A1DE6098600885E81 /* RCTPushNotification.xcodeproj */;
@@ -290,6 +299,8 @@
 		8E09147C1DDAB27900FD5BDB /* RNSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNSegment.m; sourceTree = "<group>"; };
 		8E0914EF1DDB8A9A00FD5BDB /* Branch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Branch.framework; path = Carthage/Build/iOS/Branch.framework; sourceTree = "<group>"; };
 		8E09155D1DDB8BA200FD5BDB /* RNBranch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNBranch.xcodeproj; path = "../node_modules/react-native-branch/ios/RNBranch.xcodeproj"; sourceTree = "<group>"; };
+		8E53EFA41DF4B13600DB163F /* FLAnimatedImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FLAnimatedImage.framework; path = Carthage/Build/iOS/FLAnimatedImage.framework; sourceTree = "<group>"; };
+		8E53EFC01DF4B38700DB163F /* RNFLAnimatedImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNFLAnimatedImage.xcodeproj; path = "../node_modules/react-native-flanimatedimage/RNFLAnimatedImage/RNFLAnimatedImage.xcodeproj"; sourceTree = "<group>"; };
 		8E85290A1DE6098600885E81 /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
 		8EA2F7BA1DE1509500B869B1 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		8EA2F7BB1DE1509500B869B1 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -329,6 +340,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E53EFC61DF4B39A00DB163F /* libRNFLAnimatedImage.a in Frameworks */,
+				8E53EFA51DF4B13600DB163F /* FLAnimatedImage.framework in Frameworks */,
 				8E8529281DE609C800885E81 /* libRCTPushNotification.a in Frameworks */,
 				8EA2F7BC1DE1509500B869B1 /* Fabric.framework in Frameworks */,
 				8E0915751DDB8BCB00FD5BDB /* libRNBranch.a in Frameworks */,
@@ -516,6 +529,7 @@
 				18ECA28FCE8041D49E147672 /* RCTDigitsManager.xcodeproj */,
 				8E85290A1DE6098600885E81 /* RCTPushNotification.xcodeproj */,
 				7775032A38DA409E81ED1DBA /* CodePush.xcodeproj */,
+				8E53EFC01DF4B38700DB163F /* RNFLAnimatedImage.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -617,6 +631,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		8E53EFC11DF4B38700DB163F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8E53EFC51DF4B38700DB163F /* libRNFLAnimatedImage.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		8E85290B1DE6098600885E81 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -636,6 +658,7 @@
 		8ED678F11DD77A6600125C26 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8E53EFA41DF4B13600DB163F /* FLAnimatedImage.framework */,
 				8EA2F7BE1DE1516D00B869B1 /* DigitsKit.framework */,
 				8EA2F7BF1DE1516D00B869B1 /* DigitsKitResources.bundle */,
 				8EA2F7C01DE1516D00B869B1 /* TwitterCore.framework */,
@@ -804,6 +827,10 @@
 					ProjectRef = D9EF244BD59E43988B86FD91 /* RNDeviceInfo.xcodeproj */;
 				},
 				{
+					ProductGroup = 8E53EFC11DF4B38700DB163F /* Products */;
+					ProjectRef = 8E53EFC01DF4B38700DB163F /* RNFLAnimatedImage.xcodeproj */;
+				},
+				{
 					ProductGroup = 8E0916031DDBAA1800FD5BDB /* Products */;
 					ProjectRef = 230131DFEB5241E38452E358 /* RNShimmer.xcodeproj */;
 				},
@@ -940,6 +967,13 @@
 			remoteRef = 8E1A77571DEA505E00A54E44 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		8E53EFC51DF4B38700DB163F /* libRNFLAnimatedImage.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNFLAnimatedImage.a;
+			remoteRef = 8E53EFC41DF4B38700DB163F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		8E85291A1DE6098700885E81 /* libRCTPushNotification.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1059,6 +1093,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Analytics.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Branch.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FLAnimatedImage.framework",
 			);
 			outputPaths = (
 			);
