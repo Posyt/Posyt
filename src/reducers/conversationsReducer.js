@@ -26,7 +26,7 @@ function updateConversations(state, action) {
   if (!ddp.userId) return {};
   const conversationsWithoutUsers = mongo.db.conversations.find({}, { sort: { 'lastMessage.createdAt': -1, createdAt: -1 } });
   const conversations = conversationsWithoutUsers.map(c => {
-    const user = mongo.db.users.findOne({ _id: _.without(c.participantIds, ddp.userId)[0] }, { fields: { username:1, 'status.online':1 } });
+    const user = mongo.db.users.findOne({ _id: _.without(c.participantIds, ddp.userId)[0] }, { fields: { username: 1, 'status.online': 1 } });
     return { ...c, user };
   });
   return {

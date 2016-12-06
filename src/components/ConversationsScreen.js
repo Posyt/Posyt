@@ -73,6 +73,8 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     fontSize: 16,
     color: lightBlack,
+    overflow: 'hidden',
+    height: 20,
   },
 });
 
