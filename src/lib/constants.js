@@ -5,7 +5,7 @@ import { shadeColor } from './utils';
  */
 
 export const posytDomain = (global.__DEV__ ? '10.0.1.87' : 'beta.posyt.com');
-export const posytUri = (global.__DEV__ ? `http://${posytDomain}:3000` : `https://${posytDomain}`);
+export const posytUri = (global.__DEV__ ? `ws://${posytDomain}:3000/websocket` : `wss://${posytDomain}/websocket`);
 export const posytPort = (global.__DEV__ ? 3000 : 443);
 export const posytSSL = (global.__DEV__ ? false : true);
 
