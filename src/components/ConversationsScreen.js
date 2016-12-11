@@ -107,7 +107,8 @@ class ConversationsScreen extends React.Component {
     const { dispatch } = this.props;
     if (!conversation || !conversation.user || !conversation.user.username || !conversation.participants) return null;
     const date = conversation.lastMessage && conversation.lastMessage.createdAt || conversation.createdAt;
-    const isUnread = !_.find(conversation.participants, { id: ddp.userId }).isCurrent;
+    const participantMe = _.find(conversation.participants, { id: ddp.userId });
+    const isUnread = participantMe && !participantMe.isCurrent;
     const isOnline = _.get(conversation, 'user.status.online');
     return (
       <TouchableHighlight style={styles.cell} underlayColor={lightGrey} key={conversation._id} onPress={ () => dispatch(showConversation(conversation._id)) }>

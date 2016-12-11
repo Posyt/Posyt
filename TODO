@@ -30,6 +30,8 @@
 ☐ PS: change the imgur rss feed url to one that is up to date
 ✔ add empty state to cards stack @done(2016-12-04 21:45)
 ☐ make sure that the user's stats (points, posyts, messages) always render in the modal. particularly after login
+✔ sometimes the local release build crashes. FIX CRASHES @done(2016-12-11 11:06)
+
 
 Prod
 ☐ meteor server
