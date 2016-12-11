@@ -19,7 +19,8 @@ export function articleURL(article) {
 }
 
 export function articleSources(article) {
-  const sourceNames = [article.source, ...(article.sources && article.sources.map(s => s.name))];
-  const sources = _.compact(sourceNames).join(' | ');
+  const rootSource = { name: article.source, url: article.url };
+  const subSources = (article.sources && article.sources.map(s => s.name && { name: s.name, url: s.url })) || [];
+  const sources = _.compact([rootSource, ...subSources]);
   return sources;
 }

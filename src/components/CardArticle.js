@@ -159,13 +159,23 @@ function descriptionComp(article) {
   return description && <Text style={styles.description}>{description}</Text>;
 }
 
-function sourcesComp(article) {
+function sourcesComp(article, dispatch) {
   const sources = articleSources(article);
   return !!sources.length && (
     <LinearGradient style={styles.bottom}
       colors={['rgba(255,255,255,0)', 'white']}
     >
-      <Text style={styles.sources}>{sources}</Text>
+      <Text style={styles.sources}>
+        {sources.map((s, i) => (
+          <Text key={s.name}>
+            {i !== 0 && <Text> | </Text>}
+            <Text onPress={() => {
+              openURL(s.url, () => dispatch(topCardContracted()));
+              dispatch(topCardExpanded());
+            }}>{s.name}</Text>
+          </Text>
+        ))}
+      </Text>
     </LinearGradient>
   );
 }
@@ -187,7 +197,7 @@ class CardArticle extends React.Component {
   }
 
   render() {
-    const { article } = this.props;
+    const { article, dispatch } = this.props;
 
     return (
       <View style={styles.container}>
@@ -195,7 +205,7 @@ class CardArticle extends React.Component {
         <View style={styles.text}>
           {titleComp(article)}
           {descriptionComp(article)}
-          {sourcesComp(article)}
+          {sourcesComp(article, dispatch)}
         </View>
       </View>
     );

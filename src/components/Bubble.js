@@ -25,6 +25,12 @@ import {
 import {
   sendMessage,
 } from '../lib/actions';
+import {
+  articleTitle,
+  articleDescription,
+  articleURL,
+  articleSources,
+} from '../lib/articleHelpers';
 import openURL from '../lib/openURL';
 import LinkifyText from './LinkifyText';
 
@@ -271,29 +277,29 @@ ArticleImage.propTypes = {
 };
 
 function titleComp(article) {
-  let title = article.title;
-  if (!title) title = article.sources && _.compact(article.sources.map(s => s.title))[0];
+  const title = articleTitle(article);
   return title && <Text style={articleStyles.title} numberOfLines={2}>{title}</Text>;
 }
 
 function descriptionComp(article) {
-  let description = article.description;
-  if (!description) description = article.sources && _.compact(article.sources.map(s => s.description))[0];
+  const description = articleDescription(article);
   return description && <Text style={articleStyles.description} numberOfLines={2}>{description}</Text>;
 }
 
-function getURL(article) {
-  return article.url || article.sources && _.compact(article.sources.map(s => s.url))[0];
-}
-
 function sourcesComp(article) {
-  const sourceNames = [article.source, ...(article.sources && article.sources.map(s => s.name))];
-  const sources = _.compact(sourceNames).join(' | ');
+  const sources = articleSources(article);
   return !!sources.length && (
     <LinearGradient style={articleStyles.bottom}
       colors={['rgba(255,255,255,0)', 'white']}
     >
-      <Text style={articleStyles.sources}>{sources}</Text>
+      <Text style={articleStyles.sources}>
+        {sources.map((s, i) => (
+          <Text key={s.name}>
+            {i !== 0 && <Text> | </Text>}
+            <Text onPress={() => openURL(s.url)}>{s.name}</Text>
+          </Text>
+        ))}
+      </Text>
     </LinearGradient>
   );
 }
@@ -302,7 +308,7 @@ function ArticleBubble({ article }) {
   return (
     <View style={articleStyles.container}>
       <ArticleImage article={article} />
-      <TouchableWithoutFeedback onPress={() => openURL(getURL(article))}>
+      <TouchableWithoutFeedback onPress={() => openURL(articleURL(article))}>
         <View style={articleStyles.text}>
           {titleComp(article)}
           {descriptionComp(article)}
