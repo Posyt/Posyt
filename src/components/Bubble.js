@@ -15,6 +15,7 @@ import Lightbox from 'react-native-lightbox';
 import Shimmer from 'react-native-shimmer';
 import { connect } from 'react-redux';
 import moment from 'moment';
+import LinearGradient from 'react-native-linear-gradient';
 import FLAnimatedImage from 'react-native-flanimatedimage';
 import {
   red,
@@ -160,7 +161,6 @@ const articleStyles = StyleSheet.create({
     position: 'relative',
     flex: 2,
     paddingTop: 10,
-    paddingBottom: 40,
   },
   title: {
     fontFamily: 'Rooney Sans',
@@ -178,6 +178,15 @@ const articleStyles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
     marginBottom: 10,
+    minHeight: 50,
+    maxHeight: 100,
+  },
+  bottom: {
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
+    left: 0,
+    height: 100,
   },
   sources: {
     position: 'absolute',
@@ -187,9 +196,9 @@ const articleStyles = StyleSheet.create({
     fontFamily: 'Rooney Sans',
     fontWeight: '400',
     fontSize: 16,
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingBottom: 5,
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingBottom: 14,
     backgroundColor: 'transparent',
   },
 });
@@ -264,13 +273,13 @@ ArticleImage.propTypes = {
 function titleComp(article) {
   let title = article.title;
   if (!title) title = article.sources && _.compact(article.sources.map(s => s.title))[0];
-  return title && <Text style={articleStyles.title}>{title}</Text>;
+  return title && <Text style={articleStyles.title} numberOfLines={2}>{title}</Text>;
 }
 
 function descriptionComp(article) {
   let description = article.description;
   if (!description) description = article.sources && _.compact(article.sources.map(s => s.description))[0];
-  return description && <Text style={articleStyles.description}>{description}</Text>;
+  return description && <Text style={articleStyles.description} numberOfLines={2}>{description}</Text>;
 }
 
 function getURL(article) {
@@ -281,7 +290,11 @@ function sourcesComp(article) {
   const sourceNames = [article.source, ...(article.sources && article.sources.map(s => s.name))];
   const sources = _.compact(sourceNames).join(' | ');
   return !!sources.length && (
-    <Text style={articleStyles.sources}>{sources}</Text>
+    <LinearGradient style={articleStyles.bottom}
+      colors={['rgba(255,255,255,0)', 'white']}
+    >
+      <Text style={articleStyles.sources}>{sources}</Text>
+    </LinearGradient>
   );
 }
 
