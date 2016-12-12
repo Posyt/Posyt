@@ -162,7 +162,7 @@ class ConversationsScreen extends React.Component {
               No Matches
             </Text>
             <Text style={styles.emptyDescription}>
-              Get matches by swiping cards. The more likes you have in common with someone else, the more likely you are to match.
+              Get matches by swiping news and ideas. The more likes you have in common with someone else, the more likely you are to match.
             </Text>
           </View>
         </View>
