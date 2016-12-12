@@ -30,6 +30,27 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
 
+  empty: {
+    flex: 1,
+    // alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 10,
+  },
+  emptyTitle: {
+    color: '#ddd',
+    fontFamily: 'Rooney Sans',
+    fontWeight: '600',
+    fontSize: 40,
+    // textAlign: 'center',
+  },
+  emptyDescription: {
+    color: '#ccc',
+    fontFamily: 'Rooney Sans',
+    fontWeight: '500',
+    fontSize: 20,
+    // textAlign: 'center',
+  },
+
   cell: {
     borderBottomWidth: 2 / PixelRatio.get(),
     borderColor: lightGrey,
@@ -132,6 +153,21 @@ class ConversationsScreen extends React.Component {
 
   render() {
     const { dataSource } = this.props;
+
+    if (dataSource.getRowCount() === 0) return (
+      <View style={styles.container}>
+        <View style={styles.card}>
+          <View style={styles.empty}>
+            <Text style={styles.emptyTitle}>
+              No Matches
+            </Text>
+            <Text style={styles.emptyDescription}>
+              Get matches by swiping cards. The more likes you have in common with someone else, the more likely you are to match.
+            </Text>
+          </View>
+        </View>
+      </View>
+    );
 
     return (
       <View style={styles.container}>

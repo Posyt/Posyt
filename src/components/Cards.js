@@ -148,7 +148,7 @@ class Cards extends React.Component {
       }
     ).start(() => {
       if (oldG.dx > THRESHOLD) {
-        this.firstTimeAlert('like', 'Like 😀', 'Cool! You\'ll get matches with people who like what you like. Matches are anonymous. They\'ll only see your username and the likes you have in common.')
+        this.firstTimeAlert('like', 'Like 👍', 'Cool! You\'ll get matches with people who like what you like. Matches are anonymous. They\'ll only see your username and the likes you have in common.')
         .then(proceed => {
           if (proceed) this.swipe(oldProps, time, 'like');
         });
@@ -163,7 +163,7 @@ class Cards extends React.Component {
           if (proceed) this.flag(oldProps, time);
         });
       } else if (oldG.dy < -THRESHOLD) {
-        this.firstTimeAlert('share', 'Share 🎉', 'Help the best ideas get noticed. Let\'s go!')
+        this.firstTimeAlert('share', 'Share 📢', 'Help the best ideas get noticed. Let\'s go!')
         .then(proceed => {
           if (proceed) this.share(oldProps, time);
         });

@@ -267,7 +267,7 @@ class Card extends React.Component {
           <View style={[styles.swipeIconsRow]}>
             <View style={[styles.swipeIconWrap, styles.swipeIconWrapLike]}>
               <Animated.Text style={[styles.swipeIcon, styles.swipeIconLike, swipeIconLikeAnim]}>
-                😀
+                👍
               </Animated.Text>
             </View>
             <View style={[styles.swipeIconWrap, styles.swipeIconWrapSkip]}>
@@ -279,7 +279,7 @@ class Card extends React.Component {
           <View style={[styles.swipeIconsRow]}>
             <View style={[styles.swipeIconWrap, styles.swipeIconWrapShare]}>
               <Animated.Text style={[styles.swipeIcon, styles.swipeIconShare, swipeIconShareAnim]}>
-                🎉
+                📢
               </Animated.Text>
             </View>
           </View>

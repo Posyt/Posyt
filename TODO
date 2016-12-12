@@ -19,7 +19,7 @@
 ✔ make sure chat works @done(2016-12-08 17:12)
 ☐ make sure push works
 ☐ make sure deep link share works
-☐ add an empty message to conversations list before you've had any matches
+✔ add an empty message to conversations list before you've had any matches @done(2016-12-11 20:49)
 ✔ switch heart, x, flag, share to 😀👍, 😐, ☹️, 🚀 on card swipes @done(2016-12-02 23:25)
 ✔ login sometimes does not load any data @done(2016-11-30 22:43)
 ✔ Install PushNotificationsIOS  @done(2016-11-30 22:44)
@@ -31,6 +31,7 @@
 ✔ add empty state to cards stack @done(2016-12-04 21:45)
 ☐ make sure that the user's stats (points, posyts, messages) always render in the modal. particularly after login
 ✔ sometimes the local release build crashes. FIX CRASHES @done(2016-12-11 11:06)
+☐ add segment analytics to meteor to track, conversation creation etc...
 
 
 Prod
@@ -41,6 +42,7 @@ Prod
 ☐ Think of and create indexes in neo4j
 ☐ Document neo4j indexes in pm readme
 ☐ elasticsearch
+☐ segment
 
 Android
 ☐ complete FBSDK install https://github.com/facebook/react-native-fbsdk#31-android-project
