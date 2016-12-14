@@ -52,8 +52,8 @@ const styles = StyleSheet.create({
   },
 
   modal: {
-    flex: 1,
-    alignSelf: 'center',
+    // flex: 1,
+    // alignSelf: 'center',
     width: 200,
   },
   modalButton: {
@@ -189,7 +189,7 @@ class Cards extends React.Component {
   }
 
   share(props, time) {
-    const { cards } = props;
+    const { cards, currentUser } = props;
     const card = cards[0];
     const canonicalIdentifier = `${card._type.slice(0, 1)}/${card._id}`;
     const canonicalUrl = `${posytUri}/${canonicalIdentifier}`;
@@ -197,7 +197,7 @@ class Cards extends React.Component {
       metadata: {
         _type: card._type,
         _id: card._id,
-        username: this.props.currentUser.username,
+        username: currentUser.username,
       },
       canonicalUrl,
     };
@@ -206,15 +206,15 @@ class Cards extends React.Component {
     };
     const shareOptions = {};
     if (card._type === 'article') {
-      shareOptions.text = 'Take a look at this article I just swiped across';
-      // shareOptions.messageHeader = 'Take a look at this article I just swiped across';
+      // shareOptions.text = 'Take a look at this article I just swiped across';
+      shareOptions.messageHeader = 'Take a look at this article I just swiped across';
       // shareOptions.messageBody = 'TODO:';
       universalObjectOptions.contentTitle = articleTitle(card);
       universalObjectOptions.contentDescription = articleDescription(card);
       universalObjectOptions.contentImageUrl = card.image_url;
     } else if (card.type === 'posyt') {
-      shareOptions.text = 'Take a look at this posyt I just swiped across';
-      // shareOptions.messageHeader = 'Take a look at this posyt I just swiped across';
+      // shareOptions.text = 'Take a look at this posyt I just swiped across';
+      shareOptions.messageHeader = 'Take a look at this posyt I just swiped across';
       // shareOptions.messageBody = 'TODO:';
       universalObjectOptions.contentDescription = card.content;
     }
@@ -227,7 +227,8 @@ class Cards extends React.Component {
       if (completed) {
         this.currentProps = props;
         this.currentTime = time;
-        this.refs.afterShareModal.show('top');
+        // this.refs.afterShareModal.show('top');
+        this.modalSwipe('like');
       } else {
         this.props.dispatch(unpopLastCard());
       }
@@ -239,7 +240,7 @@ class Cards extends React.Component {
   }
 
   modalSwipe(action) {
-    this.refs.afterShareModal.hide({ like: 'right', skip: 'left' }[action]);
+    // this.refs.afterShareModal.hide({ like: 'right', skip: 'left' }[action]);
     this.swipe(this.currentProps, this.currentTime, action);
   }
 
@@ -393,22 +394,28 @@ class Cards extends React.Component {
     return (
       <View style={styles.container} {...this.props}>
         {cardComponents}
-        <PosytModal key="afterShareModal" ref="afterShareModal" style={styles.modal} onDismiss={() => this.props.dispatch(unpopLastCard())}>
-          <View style={[styles.modalButton, { height: 60, marginHorizontal: 10 }]}>
-            <Text style={[styles.modalSubText, { fontWeight: "700" }]}>Thanks for sharing 😁</Text>
-            <Text style={[styles.modalSubText, { fontWeight: "400" }]}>Skip or Like that card?</Text>
+        {/* <PosytModal key="afterShareModal" ref="afterShareModal" style={styles.modal} onDismiss={() => this.props.dispatch(unpopLastCard())}>
+          <View>
+            <View style={[styles.modalButton, { height: 60, marginHorizontal: 10 }]}>
+              <Text style={[styles.modalSubText, { fontWeight: "700" }]}>Thanks for sharing 😁</Text>
+              <Text style={[styles.modalSubText, { fontWeight: "400" }]}>Did you want to 😐 or 👍?</Text>
+            </View>
+            <View style={styles.modalSeparator}/>
+            <View style={styles.modalRow}>
+              <TouchableHighlight style={[styles.modalButton]} underlayColor={'#f5f5f5'} onPress={() => { this.modalSwipe('skip') }}>
+                <Text style={styles.modalIcon}>
+                  😐
+                </Text>
+              </TouchableHighlight>
+              <View style={[styles.modalSeparator, { height: 100, width: 1 }]}/>
+              <TouchableHighlight style={[styles.modalButton]} underlayColor={'#f5f5f5'} onPress={() => { this.modalSwipe('like') }}>
+                <Text style={styles.modalIcon}>
+                  👍
+                </Text>
+              </TouchableHighlight>
+            </View>
           </View>
-          <View style={styles.modalSeparator}/>
-          <View style={styles.modalRow}>
-            <TouchableHighlight style={[styles.modalButton]} underlayColor={'#f5f5f5'} onPress={() => { this.modalSwipe('skip') }}>
-              <Image source={require('../../assets/images/skip.png')} style={[styles.modalIcon, { tintColor: red }]} />
-            </TouchableHighlight>
-            <View style={[styles.modalSeparator, { height: 100, width: 1 }]}/>
-            <TouchableHighlight style={[styles.modalButton]} underlayColor={'#f5f5f5'} onPress={() => { this.modalSwipe('like') }}>
-              <Image source={require('../../assets/images/heart.png')} style={[styles.modalIcon, { tintColor: green }]} />
-            </TouchableHighlight>
-          </View>
-        </PosytModal>
+        </PosytModal> */}
       </View>
     );
   }

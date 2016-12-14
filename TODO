@@ -32,6 +32,7 @@
 ☐ make sure that the user's stats (points, posyts, messages) always render in the modal. particularly after login
 ✔ sometimes the local release build crashes. FIX CRASHES @done(2016-12-11 11:06)
 ☐ add segment analytics to meteor to track, conversation creation etc...
+☐ add page tracking events whenever a PosytModal is shown
 
 
 Staging
