@@ -10,7 +10,7 @@ import {
 import { ddp } from '../lib/DDP';
 import PosytModal from './PosytModal';
 
-const SOURCES = _.sortBy(['Hacker News', 'Imgur', 'Product Hunt', 'The Verge', 'New York Times', 'Dribbble']);
+const SOURCES = _.sortBy(['Medium', 'Hacker News', 'Imgur', 'Product Hunt', 'The Verge', 'New York Times', 'Dribbble']);
 
 const styles = StyleSheet.create({
   modal: {
