@@ -27,12 +27,12 @@
 ✔ PM: make sure new likes get added to existing conversations in the backend @done(2016-12-04 14:56)
 ✔ load all images from https @done(2016-12-04 16:05)
 ✔ get gifs working @done(2016-12-04 16:06)
-☐ PS: change the imgur rss feed url to one that is up to date
+✔ PS: change the imgur rss feed url to one that is up to date @done(2016-12-17 22:59)
 ✔ add empty state to cards stack @done(2016-12-04 21:45)
 ☐ make sure that the user's stats (points, posyts, messages) always render in the modal. particularly after login
 ✔ sometimes the local release build crashes. FIX CRASHES @done(2016-12-11 11:06)
 ☐ add segment analytics to meteor to track, conversation creation etc...
-☐ add page tracking events whenever a PosytModal is shown
+✔ add page tracking events whenever a PosytModal is shown @done(2016-12-17 23:05)
 
 
 Staging

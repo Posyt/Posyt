@@ -155,7 +155,7 @@ class PosytTabBar extends React.Component {
           <View style={styles.modalSeparator} />
           <TouchableHighlight style={styles.modalButton} underlayColor={'#f5f5f5'} onPress={() => {
               this.refs.posytModal.hide("left", () => this.refs.pointsModal.getWrappedInstance().show("right"));
-              segment.screen('Viewed Virality Modal');
+              segment.screen('Viewed Points Modal');
           }}>
             <Text style={styles.modalText}>{currentUser && currentUser.meta && currentUser.meta.points || 0}</Text>
           </TouchableHighlight>
