@@ -108,7 +108,8 @@ class ArticleImage extends React.Component {
     const { width, height, open, loading } = this.state;
     const { article } = this.props;
     if (!article.image_url) return null;
-    const uri = article.image_url.replace('http://', 'https://'); // NOTE: ios needs SSL images
+    let uri = article.image_url.replace('http://', 'https://'); // NOTE: ios needs SSL images
+    if (uri.indexOf('https://') < 0) uri = `https:${uri}`;
     return (
       <View style={styles.imageWrap} onLayout={this.onLayout}>
         {uri.includes('.gif') ? (
