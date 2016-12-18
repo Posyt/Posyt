@@ -88,9 +88,10 @@ const styles = StyleSheet.create({
   },
 
   bouncingDots: {
-    height: 15,
-    width: 30,
-    opacity: 0.5,
+    marginVertical: 2,
+    height: 12,
+    width: 36,
+    opacity: 0.6,
   },
 
   posytText: {
@@ -103,7 +104,7 @@ const styles = StyleSheet.create({
 
 
 function MessageBubble({ message }) {
-  // if (message.isTypingIndicator) return <Image style={styles.bouncingDots} source={require('../../assets/images/bouncing_dots.gif')} />;
+  // if (message.isTypingIndicator) return <Image style={styles.bouncingDots} source={require('../../assets/images/typing.gif')} />;
   if (message.isTypingIndicator) return (
     <View style={[styles.messageText,
       message.isMine && { color: 'white' },
