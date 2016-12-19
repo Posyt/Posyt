@@ -33,6 +33,8 @@
 ✔ sometimes the local release build crashes. FIX CRASHES @done(2016-12-11 11:06)
 ☐ add segment analytics to meteor to track, conversation creation etc...
 ✔ add page tracking events whenever a PosytModal is shown @done(2016-12-17 23:05)
+☐ Simplify article chat bubbles to take up as smaller amount of space
+✔ fix product hunt weird html parsing @done(2016-12-19 17:47)
 
 
 Staging
