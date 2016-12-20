@@ -15,7 +15,6 @@ import Lightbox from 'react-native-lightbox';
 import Shimmer from 'react-native-shimmer';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import LinearGradient from 'react-native-linear-gradient';
 import FLAnimatedImage from 'react-native-flanimatedimage';
 import {
   red,
@@ -152,10 +151,14 @@ function PosytBubble({ posyt }) {
 const articleStyles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'row',
+    height: 100,
+    overflow: 'hidden',
   },
   imageWrap: {
-    flex: 1,
+    // flex: 1,
     height: 100,
+    width: 100,
     backgroundColor: 'black',
   },
   lightbox: {
@@ -172,16 +175,16 @@ const articleStyles = StyleSheet.create({
   title: {
     fontFamily: 'Rooney Sans',
     fontWeight: '500',
-    fontSize: 20,
+    fontSize: 14,
     marginLeft: 10,
     marginRight: 10,
-    marginBottom: 10,
+    marginBottom: 4,
   },
   description: {
     fontFamily: 'Rooney Sans',
     fontWeight: '400',
-    fontSize: 16,
-    lineHeight: 20,
+    fontSize: 11,
+    lineHeight:12,
     marginLeft: 10,
     marginRight: 10,
     marginBottom: 10,
@@ -193,19 +196,19 @@ const articleStyles = StyleSheet.create({
     bottom: 0,
     right: 0,
     left: 0,
-    height: 100,
+    height: 50,
   },
   sources: {
     position: 'absolute',
     bottom: 0,
-    right: 0,
-    textAlign: 'right',
+    left: 0,
+    textAlign: 'left',
     fontFamily: 'Rooney Sans',
     fontWeight: '400',
-    fontSize: 16,
-    paddingLeft: 20,
-    paddingRight: 20,
-    paddingBottom: 14,
+    fontSize: 9,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 4,
     backgroundColor: 'transparent',
   },
 });
@@ -291,9 +294,7 @@ function descriptionComp(article) {
 function sourcesComp(article) {
   const sources = articleSources(article);
   return !!sources.length && (
-    <LinearGradient style={articleStyles.bottom}
-      colors={['rgba(255,255,255,0)', 'white']}
-    >
+    <View style={articleStyles.bottom}>
       <Text style={articleStyles.sources}>
         {sources.map((s, i) => (
           <Text key={s.name}>
@@ -302,14 +303,13 @@ function sourcesComp(article) {
           </Text>
         ))}
       </Text>
-    </LinearGradient>
+    </View>
   );
 }
 
-function ArticleBubble({ article }) {
+function ArticleBubble({ article, style }) {
   return (
-    <View style={articleStyles.container}>
-      <ArticleImage article={article} />
+    <View style={[articleStyles.container, ...style]}>
       <TouchableWithoutFeedback onPress={() => openURL(articleURL(article))}>
         <View style={articleStyles.text}>
           {titleComp(article)}
@@ -317,6 +317,7 @@ function ArticleBubble({ article }) {
           {sourcesComp(article)}
         </View>
       </TouchableWithoutFeedback>
+      <ArticleImage article={article} />
     </View>
   );
 }
@@ -336,10 +337,10 @@ function BubbleDate({ data }) {
 
 
 class Bubble extends React.Component {
-  renderBubbleType() {
+  renderBubbleType({ style }) {
     const { data } = this.props;
     if (data._type === 'message') return <MessageBubble message={data} />;
-    if (data._type === 'article') return <ArticleBubble article={data} />;
+    if (data._type === 'article') return <ArticleBubble article={data} style={style} />;
     if (data._type === 'posyt') return <PosytBubble posyt={data} />;
     return null;
   }
@@ -349,6 +350,14 @@ class Bubble extends React.Component {
     const showDate = !data.previousDate || moment(data.date).subtract(30, 'minutes').isAfter(moment(data.previousDate));
     // TODO: DEBUG: willShowNextDate is not always accurate. sometimes it's true when the next bubble does not show a date
     const willShowNextDate = data.nextDate && moment(data.nextDate).subtract(30, 'minutes').isAfter(moment(data.date));
+    const bubbleBorderRadius = [
+      !showDate && data.isMine && data.previousIsSameOwner && { borderTopRightRadius: 4 },
+      !willShowNextDate && data.isMine && data.nextIsSameOwner && { borderBottomRightRadius: 4 },
+      !showDate && data.isParticipants && !data.isMine && data.previousIsSameOwner && { borderTopLeftRadius: 4 },
+      !willShowNextDate && data.isParticipants && !data.isMine && data.nextIsSameOwner && { borderBottomLeftRadius: 4 },
+      !showDate && !data.isParticipants && !data.previousIsParticipants && !data.isFirst && { borderTopLeftRadius: 4, borderTopRightRadius: 4 },
+      !willShowNextDate && !data.isParticipants && !data.nextIsParticipants && !data.isLast && { borderBottomLeftRadius: 4, borderBottomRightRadius: 4 },
+    ];
     return (
       <View>
         {showDate && <BubbleDate data={data} />}
@@ -358,7 +367,7 @@ class Bubble extends React.Component {
           !data.isParticipants && { marginLeft: 40 },
           data.isMine && data.previousIsSameOwner && { marginTop: 1 },
           data.isParticipants && !data.isMine && data.previousIsSameOwner && { marginTop: 1 },
-          !data.isParticipants && !data.previousIsParticipants && { marginTop: 20 },
+          !data.isParticipants && !data.previousIsParticipants && { marginTop: 2 },
           showDate && { marginTop: 3 },
         ]}>
           <View style={[styles.bubble,
@@ -366,15 +375,10 @@ class Bubble extends React.Component {
             data.isMine && { backgroundColor: blue },
             ['article', 'posyt'].includes(data._type) && { backgroundColor: 'white', borderColor: grey, borderWidth: 1 / PixelRatio.get() },
             data._type === 'article' && { padding: 0 },
-            !showDate && data.isMine && data.previousIsSameOwner && { borderTopRightRadius: 4 },
-            !willShowNextDate && data.isMine && data.nextIsSameOwner && { borderBottomRightRadius: 4 },
-            !showDate && data.isParticipants && !data.isMine && data.previousIsSameOwner && { borderTopLeftRadius: 4 },
-            !willShowNextDate && data.isParticipants && !data.isMine && data.nextIsSameOwner && { borderBottomLeftRadius: 4 },
-            !showDate && !data.isParticipants && !data.previousIsParticipants && !data.isFirst && { borderTopLeftRadius: 4, borderTopRightRadius: 4 },
-            !willShowNextDate && !data.isParticipants && !data.nextIsParticipants && !data.isLast && { borderBottomLeftRadius: 4, borderBottomRightRadius: 4 },
+            ...bubbleBorderRadius,
             data.state === 'failed' && data._type === 'message' && { marginRight: 24 },
           ]}>
-            {this.renderBubbleType()}
+            {this.renderBubbleType({ style: [...bubbleBorderRadius] })}
           </View>
           {data.state === 'sending' && data._type === 'message' && <Text style={[styles.state, { color: grey }]}>Sending...</Text>}
           {data.state === 'failed' && data._type === 'message' && <MessageFailedDot message={data} dispatch={dispatch} />}
