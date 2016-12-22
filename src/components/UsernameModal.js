@@ -9,6 +9,7 @@ import {
 } from '../lib/constants';
 import { ddp } from '../lib/DDP';
 import PosytModal from './PosytModal';
+import segment from '../lib/segment';
 
 
 const styles = StyleSheet.create({
@@ -85,6 +86,7 @@ class UsernameModal extends React.Component {
       this.setState({ error: "Invalid", saving: false })
     }).then(res => {
       this.setState({ error: null, saving: false, saved: true })
+      segment.track('Changed Username');
       this.refs.usernameModal.hide()
     })
   }

@@ -206,7 +206,7 @@ class PosytTabBar extends React.Component {
     return [
       posytModal
       ,
-      <PosytModal key="loginModal" ref="loginModal" style={styles.modal} alwaysVisible={!loggedIn && !showAnotherModal}>
+      <PosytModal key="loginModal" ref="loginModal" style={styles.modal} alwaysVisible={!loggedIn && !showAnotherModal} onShow={() => segment.screen('Viewed Login Modal')}>
         {(loggingIn || loggedIn) ?
           <TouchableHighlight style={[styles.modalButton, { height: 38 }]} underlayColor={'white'}>
             <Text style={[styles.modalSubText, { fontWeight: "700" }]}>Logging in...</Text>

@@ -31,10 +31,11 @@
 ✔ add empty state to cards stack @done(2016-12-04 21:45)
 ☐ make sure that the user's stats (points, posyts, messages) always render in the modal. particularly after login
 ✔ sometimes the local release build crashes. FIX CRASHES @done(2016-12-11 11:06)
-☐ add segment analytics to meteor to track, conversation creation etc...
+✔ add segment analytics to meteor to track, conversation creation etc... @done(2016-12-21 23:16)
 ✔ add page tracking events whenever a PosytModal is shown @done(2016-12-17 23:05)
 ✔ Simplify article chat bubbles to take up as smaller amount of space @done(2016-12-19 19:51)
 ✔ fix product hunt weird html parsing @done(2016-12-19 17:47)
+✔ use new segment write keys in Posyt for dev and Posyt sources @done(2016-12-21 16:19)
 
 
 Staging

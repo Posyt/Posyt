@@ -22,6 +22,10 @@ const styles = StyleSheet.create({
 });
 
 class Tabs extends React.Component {
+  componentDidMount() {
+    segment.screen('Viewed Cards');
+  }
+
   onChangeTab({ i }) {
     const tabs = { 0: 'Viewed Cards', 1: 'Viewed Conversations' };
     segment.screen(tabs[i]);

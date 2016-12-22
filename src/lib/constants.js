@@ -14,7 +14,7 @@ export const posytSSL = (global.__DEV__ ? false : true);
  * keys
  */
 
-export const segmentWriteKey = (global.__DEV__ ? '9awl42vsc9' : '6lhm0kwq2w');
+export const segmentWriteKey = (global.__DEV__ ? 'mATdPTIQxyMk6wCtSJH8iXdJp3PTcF7K' : 'ASBKWL2TC6rtcrpGUAPzFz51kGji79kV');
 
 /*
  * colors
