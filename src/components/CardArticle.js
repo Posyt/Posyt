@@ -14,6 +14,9 @@ import {
   topCardExpanded,
   topCardContracted,
 } from '../lib/actions';
+import {
+  makeUriHttps,
+} from '../lib/utils';
 import openURL from '../lib/openURL';
 import {
   articleTitle,
@@ -108,8 +111,7 @@ class ArticleImage extends React.Component {
     const { width, height, open, loading } = this.state;
     const { article } = this.props;
     if (!article.image_url) return null;
-    let uri = article.image_url.replace('http://', 'https://'); // NOTE: ios needs SSL images
-    if (uri.indexOf('https://') < 0) uri = `https:${uri}`;
+    const uri = makeUriHttps(article.image_url);
     return (
       <View style={styles.imageWrap} onLayout={this.onLayout}>
         {uri.includes('.gif') ? (

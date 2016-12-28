@@ -25,6 +25,9 @@ import {
   sendMessage,
 } from '../lib/actions';
 import {
+  makeUriHttps,
+} from '../lib/utils';
+import {
   articleTitle,
   articleDescription,
   articleURL,
@@ -241,8 +244,7 @@ class ArticleImage extends React.Component {
     const { width, height, open, loading } = this.state;
     const { article } = this.props;
     if (!article.image_url) return null;
-    let uri = article.image_url.replace('http://', 'https://'); // NOTE: ios needs SSL images
-    if (uri.indexOf('https://') < 0) uri = `https:${uri}`;
+    const uri = makeUriHttps(article.image_url);
     return (
       <View style={articleStyles.imageWrap} onLayout={this.onLayout}>
         {uri.includes('.gif') ? (

@@ -18,6 +18,9 @@ import {
   unpopLastCard,
 } from '../lib/actions';
 import {
+  makeUriHttps,
+} from '../lib/utils';
+import {
   red,
   green,
   black,
@@ -207,15 +210,15 @@ class Cards extends React.Component {
     const shareOptions = {};
     if (card._type === 'article') {
       // shareOptions.text = 'Take a look at this article I just swiped across';
-      shareOptions.messageHeader = 'Take a look at this article I just swiped across';
-      // shareOptions.messageBody = 'TODO:';
-      universalObjectOptions.contentTitle = articleTitle(card);
-      universalObjectOptions.contentDescription = articleDescription(card);
-      universalObjectOptions.contentImageUrl = card.image_url;
-    } else if (card.type === 'posyt') {
+      // if (articleTitle(card)) shareOptions.messageHeader = articleTitle(card); // NOTE: messageHeader does not seem to be used
+      shareOptions.messageBody = articleTitle(card) || articleDescription(card) || 'Take a look at this article I just swiped across';
+      if (articleTitle(card)) universalObjectOptions.contentTitle = articleTitle(card);
+      if (articleDescription(card)) universalObjectOptions.contentDescription = articleDescription(card);
+      if (card.image_url) universalObjectOptions.contentImageUrl = makeUriHttps(card.image_url);
+    } else if (card._type === 'posyt') {
       // shareOptions.text = 'Take a look at this posyt I just swiped across';
-      shareOptions.messageHeader = 'Take a look at this posyt I just swiped across';
-      // shareOptions.messageBody = 'TODO:';
+      // shareOptions.messageHeader = 'Take a look at this posyt I just swiped across'; // NOTE: messageHeader does not seem to be used
+      shareOptions.messageBody = 'Take a look at this posyt I just swiped across';
       universalObjectOptions.contentDescription = card.content;
     }
     const linkProperties = { feature: 'share', channel: 'RNApp' };
