@@ -1,6 +1,18 @@
 # Posyt
 
 
+## Getting Started
+
+1. Run `npm install`
+2. Download the FBSDK https://developers.facebook.com/docs/ios/getting-started/#download
+3. Open XCode `open ios/Posyt.xcodeproj`
+4. Press play
+
+### Troubleshooting
+
+- Make sure the posytDomain in constants.js is set to `localhost` or the IP of your development machine
+
+
 ## Releasing updates
 
 	https://github.com/Microsoft/react-native-code-push#releasing-updates

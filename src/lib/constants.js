@@ -1,10 +1,11 @@
+import _ from 'lodash';
 import { shadeColor } from './utils';
 
 /*
  * urls
  */
 
-export const posytDomain = (global.__DEV__ ? '10.0.1.87' : 'beta.posyt.com');
+export const posytDomain = (global.__DEV__ ? '10.0.0.22' : 'beta.posyt.com');
 export const posytUri = (global.__DEV__ ? `http://${posytDomain}:3000` : `https://${posytDomain}`);
 export const posytWsUri = (global.__DEV__ ? `ws://${posytDomain}:3000/websocket` : `wss://${posytDomain}/websocket`);
 export const posytPort = (global.__DEV__ ? 3000 : 443);
@@ -15,6 +16,20 @@ export const posytSSL = (global.__DEV__ ? false : true);
  */
 
 export const segmentWriteKey = (global.__DEV__ ? 'mATdPTIQxyMk6wCtSJH8iXdJp3PTcF7K' : 'ASBKWL2TC6rtcrpGUAPzFz51kGji79kV');
+
+/*
+ * sources
+ */
+
+export const sources = _.sortBy([
+  'Medium',
+  'Hacker News',
+  'Imgur',
+  'Product Hunt',
+  'The Verge',
+  'New York Times',
+  'Dribbble'
+]);
 
 /*
  * colors

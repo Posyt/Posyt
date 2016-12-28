@@ -4,13 +4,12 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import LinearGradient from 'react-native-linear-gradient';
 import {
+  sources as allSources,
   grey,
   lightGrey,
 } from '../lib/constants';
 import { ddp } from '../lib/DDP';
 import PosytModal from './PosytModal';
-
-const SOURCES = _.sortBy(['Medium', 'Hacker News', 'Imgur', 'Product Hunt', 'The Verge', 'New York Times', 'Dribbble']);
 
 const styles = StyleSheet.create({
   modal: {
@@ -63,7 +62,7 @@ class FeedsModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sources: SOURCES,
+      sources: [...allSources],
     };
     this.show = this.show.bind(this);
   }
@@ -96,7 +95,7 @@ class FeedsModal extends React.Component {
         </View>
         <View style={styles.modalSeparator} />
         <ScrollView style={styles.scrollView}>
-          {SOURCES.map(source => {
+          {allSources.map(source => {
             const active = sources.includes(source);
             return (
               <View key={source}>
