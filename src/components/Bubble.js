@@ -163,6 +163,9 @@ const articleStyles = StyleSheet.create({
     height: 100,
     width: 100,
     backgroundColor: 'black',
+    overflow: 'hidden',
+    borderTopRightRadius: 18,
+    borderBottomRightRadius: 18,
   },
   lightbox: {
     flex: 1,
@@ -242,11 +245,11 @@ class ArticleImage extends React.Component {
 
   render() {
     const { width, height, open, loading } = this.state;
-    const { article } = this.props;
+    const { article, style } = this.props;
     if (!article.image_url) return null;
     const uri = makeUriHttps(article.image_url);
     return (
-      <View style={articleStyles.imageWrap} onLayout={this.onLayout}>
+      <View style={[articleStyles.imageWrap, style]} onLayout={this.onLayout}>
         {uri.includes('.gif') ? (
           <View>
             {loading && (
@@ -311,7 +314,7 @@ function sourcesComp(article) {
 
 function ArticleBubble({ article, style }) {
   return (
-    <View style={[articleStyles.container, ...style]}>
+    <View style={[articleStyles.container, style]}>
       <TouchableWithoutFeedback onPress={() => openURL(articleURL(article))}>
         <View style={articleStyles.text}>
           {titleComp(article)}
@@ -319,7 +322,7 @@ function ArticleBubble({ article, style }) {
           {sourcesComp(article)}
         </View>
       </TouchableWithoutFeedback>
-      <ArticleImage article={article} />
+      <ArticleImage article={article} style={_.pick(style, ['borderTopRightRadius', 'borderBottomRightRadius'])} />
     </View>
   );
 }
@@ -352,14 +355,14 @@ class Bubble extends React.Component {
     const showDate = !data.previousDate || moment(data.date).subtract(30, 'minutes').isAfter(moment(data.previousDate));
     // TODO: DEBUG: willShowNextDate is not always accurate. sometimes it's true when the next bubble does not show a date
     const willShowNextDate = data.nextDate && moment(data.nextDate).subtract(30, 'minutes').isAfter(moment(data.date));
-    const bubbleBorderRadius = [
+    const bubbleBorderRadius = Object.assign.apply(null, [{}, ..._.compact([
       !showDate && data.isMine && data.previousIsSameOwner && { borderTopRightRadius: 4 },
       !willShowNextDate && data.isMine && data.nextIsSameOwner && { borderBottomRightRadius: 4 },
       !showDate && data.isParticipants && !data.isMine && data.previousIsSameOwner && { borderTopLeftRadius: 4 },
       !willShowNextDate && data.isParticipants && !data.isMine && data.nextIsSameOwner && { borderBottomLeftRadius: 4 },
       !showDate && !data.isParticipants && !data.previousIsParticipants && !data.isFirst && { borderTopLeftRadius: 4, borderTopRightRadius: 4 },
       !willShowNextDate && !data.isParticipants && !data.nextIsParticipants && !data.isLast && { borderBottomLeftRadius: 4, borderBottomRightRadius: 4 },
-    ];
+    ])]);
     return (
       <View>
         {showDate && <BubbleDate data={data} />}
@@ -377,10 +380,10 @@ class Bubble extends React.Component {
             data.isMine && { backgroundColor: blue },
             ['article', 'posyt'].includes(data._type) && { backgroundColor: 'white', borderColor: grey, borderWidth: 1 / PixelRatio.get() },
             data._type === 'article' && { padding: 0 },
-            ...bubbleBorderRadius,
+            bubbleBorderRadius,
             data.state === 'failed' && data._type === 'message' && { marginRight: 24 },
           ]}>
-            {this.renderBubbleType({ style: [...bubbleBorderRadius] })}
+            {this.renderBubbleType({ style: bubbleBorderRadius })}
           </View>
           {data.state === 'sending' && data._type === 'message' && <Text style={[styles.state, { color: grey }]}>Sending...</Text>}
           {data.state === 'failed' && data._type === 'message' && <MessageFailedDot message={data} dispatch={dispatch} />}
