@@ -56,10 +56,6 @@ class InviteModal extends React.Component {
     this.refs.reachModal.show(direction);
   }
 
-  componentWillReceiveProps(nextProps) {
-    // if (!this.props.currentUser || !nextProps.currentUser || this.props.currentUser.profile.sources !== nextProps.currentUser.profile.sources) this.setState({ sources: nextProps.currentUser && nextProps.currentUser.profile && nextProps.currentUser.profile.sources || SOURCES })
-  }
-
   render() {
     const { sources } = this.state;
     return (
