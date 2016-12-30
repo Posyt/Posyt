@@ -1,6 +1,12 @@
-var { NativeModules, Platform } = require('react-native');
+// import af from 'react-native-apps-flyer';
+import {
+  appId,
+  appsflyerDevKey,
+} from './constants';
 
-var rnSegment = Platform.OS === 'ios' ? NativeModules.RNSegment : null;
+const { NativeModules, Platform } = require('react-native');
+
+const rnSegment = Platform.OS === 'ios' ? NativeModules.RNSegment : null;
 
 class Segment {
   setupWithConfiguration = (writeKey, debug = false) => {
@@ -9,6 +15,13 @@ class Segment {
     }
 
     rnSegment.setupWithConfiguration(writeKey, debug);
+    af.init(appId, appsflyerDevKey, (err) => {
+      if (err) {
+        if (global.__DEV__) console.log('AppsFlyer Failed to initialize: ', err)
+      } else {
+        if (global.__DEV__) console.log('AppsFlyer Initialized! ')
+      }
+    });
   };
 
   identify = (userId, traits = {}, options = {}) => {
@@ -25,6 +38,11 @@ class Segment {
     }
 
     rnSegment.track(event, properties, options);
+    af.trackEvent(event, properties, (err, uid) => {
+      if (err) {
+        if (global.__DEV__) console.log('AppsFlyer Failed to track: ', err)
+      }
+    });
   };
 
   screen = (event, properties = {}, options = {}) => {
@@ -47,7 +65,7 @@ class Segment {
     if(!rnSegment) {
       return;
     }
-    
+
     rnSegment.reset();
   };
 }
