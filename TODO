@@ -52,14 +52,17 @@ Staging
 ☐ segment
 
 Prod
-☐ meteor server
-☐ scraper server
 ☐ mongo db
 ☐ neo4j
-☐ Think of and create indexes in neo4j
-☐ Document neo4j indexes in pm readme
 ☐ elasticsearch
-☐ segment
+☐ meteor server
+☐ scraper server
+☐ segment - mixpanel, google
+☐ crashlytics
+☐ appsflyer
+
+Submission
+☐ Ad permissions https://support.appsflyer.com/hc/en-us/articles/207032086-New-Apple-IDFA-Guidelines-How-To-Submit-Your-iOS-App-With-IDFA
 
 Android
 ☐ complete FBSDK install https://github.com/facebook/react-native-fbsdk#31-android-project
