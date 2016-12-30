@@ -135,14 +135,14 @@ class ConversationsScreen extends React.Component {
       <TouchableHighlight style={styles.cell} underlayColor={lightGrey} key={conversation._id} onPress={ () => dispatch(showConversation(conversation._id)) }>
         <View style={styles.cellInner}>
           <View style={styles.row1}>
-            <Text style={[styles.username, isUnread && { fontWeight: '600' }]}>
+            <Text style={[styles.username, isUnread && { fontWeight: '600' }]} numberOfLines={1}>
               {conversation.user.username}
             </Text>
             {!!isOnline && <View style={styles.onlineDot} />}
             <DateOldText date={date} shorten={true} uppercase={false} ending='' style={styles.date} />
           </View>
           <View style={styles.row2}>
-            <Text style={styles.content}>
+            <Text style={styles.content} numberOfLines={1}>
               {conversation.lastMessage ? conversation.lastMessage.content : 'Start the conversation...'}
             </Text>
           </View>

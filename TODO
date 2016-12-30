@@ -72,6 +72,7 @@ Maybe
 ☐ swtich node-ddp-client and maybe minimongo-cache out for react-native-meteor
 ☐ use facebook account kit https://github.com/underscopeio/react-native-facebook-account-kit
 ☐ render an error if facebook login fails - loginWithFacebook.js
+☐ add chromatic to pm https://github.com/meteor/chromatic
 
 cmd + enter = add new todo
 cmd + d = check / uncheck
