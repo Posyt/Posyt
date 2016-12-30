@@ -59,7 +59,7 @@ Prod
 ☐ scraper server
 ☐ segment - mixpanel, google
 ☐ crashlytics
-☐ appsflyer
+✔ appsflyer @done(2016-12-30 16:50)
 
 Submission
 ☐ Ad permissions https://support.appsflyer.com/hc/en-us/articles/207032086-New-Apple-IDFA-Guidelines-How-To-Submit-Your-iOS-App-With-IDFA
