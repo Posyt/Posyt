@@ -36,6 +36,9 @@
 ✔ Simplify article chat bubbles to take up as smaller amount of space @done(2016-12-19 19:51)
 ✔ fix product hunt weird html parsing @done(2016-12-19 17:47)
 ✔ use new segment write keys in Posyt for dev and Posyt sources @done(2016-12-21 16:19)
+☐ add 5 onboarding cards prompting you to swipe and chat and compose your own posyts
+☐ popup the info modal the first time you open compose
+☐ add appsflyer https://github.com/ppsreejith/react-native-apps-flyer
 
 
 Staging
