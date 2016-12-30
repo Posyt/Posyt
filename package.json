@@ -26,6 +26,7 @@
     "react": "15.3.2",
     "react-mixin": "3.0.5",
     "react-native": "0.36.0",
+    "react-native-appsflyer": "^1.0.10",
     "react-native-branch": "github:branchmetrics/react-native-branch-deep-linking",
     "react-native-code-push": "1.16.0-beta",
     "react-native-device-info": "0.9.6",

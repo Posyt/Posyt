@@ -127,6 +127,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-appsflyer')
     compile project(':react-native-code-push')
     compile project(':react-native-fabric-digits')
     compile project(':react-native-device-info')

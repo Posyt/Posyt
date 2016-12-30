@@ -19,6 +19,7 @@
 #import <Crashlytics/Crashlytics.h>
 #import <DigitsKit/DigitsKit.h>
 #import "RCTPushNotificationManager.h"
+#import <AppsFlyerLib/AppsFlyerTracker.h>
 
 
 @implementation AppDelegate
@@ -95,6 +96,7 @@
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
   [RCTPushNotificationManager didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+  [[AppsFlyerTracker sharedTracker] registerUninstall:deviceToken];
 }
 // Required for the registrationError event.
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error

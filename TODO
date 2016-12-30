@@ -38,7 +38,7 @@
 ✔ use new segment write keys in Posyt for dev and Posyt sources @done(2016-12-21 16:19)
 ☐ add 5 onboarding cards prompting you to swipe and chat and compose your own posyts
 ☐ popup the info modal the first time you open compose
-☐ add appsflyer https://github.com/ppsreejith/react-native-apps-flyer
+✔ add appsflyer https://github.com/ppsreejith/react-native-apps-flyer @done(2016-12-30 16:42)
 
 
 Staging
@@ -73,6 +73,7 @@ Eventually
   ☐ ask again if the user said yes the the first prompt, but no to the real push prompt
 ☐ add an inline image to share via messages if the article has an image
 ☐ fix slow gifs. they all seem to play at half speed
+☐ AppsFlyer deeplink integration https://support.appsflyer.com/hc/en-us/articles/207032066-AppsFlyer-SDK-Integration-iOS
 
 Maybe
 ☐ swtich node-ddp-client and maybe minimongo-cache out for react-native-meteor

@@ -1,4 +1,4 @@
-// import af from 'react-native-apps-flyer';
+import appsFlyer from 'react-native-appsflyer';
 import {
   appId,
   appsflyerDevKey,
@@ -14,13 +14,12 @@ class Segment {
       return;
     }
 
+    this._debug = debug;
     rnSegment.setupWithConfiguration(writeKey, debug);
-    af.init(appId, appsflyerDevKey, (err) => {
-      if (err) {
-        if (global.__DEV__) console.log('AppsFlyer Failed to initialize: ', err)
-      } else {
-        if (global.__DEV__) console.log('AppsFlyer Initialized! ')
-      }
+    appsFlyer.initSdk({ appId, devKey: appsflyerDevKey, isDebug: debug }, (success) => {
+      if (global.__DEV__) console.log('AppsFlyer Initialized!');
+    }, (err) => {
+      if (global.__DEV__) console.log('AppsFlyer Failed to initialize: ', err);
     });
   };
 
@@ -30,6 +29,9 @@ class Segment {
     }
 
     rnSegment.identify(userId, traits, options);
+    appsFlyer.setCustomerUserId(userId, (success) => {
+      if (global.__DEV__ && this._debug) console.log('AppsFlyer setCustomerUserId success: ', userId);
+    });
   };
 
   track = (event, properties = {}, options = {}) => {
@@ -38,10 +40,10 @@ class Segment {
     }
 
     rnSegment.track(event, properties, options);
-    af.trackEvent(event, properties, (err, uid) => {
-      if (err) {
-        if (global.__DEV__) console.log('AppsFlyer Failed to track: ', err)
-      }
+    appsFlyer.trackEvent(event, properties, (success) => {
+      if (global.__DEV__ && this._debug) console.log('AppsFlyer Track success: ', event);
+    }, (err) => {
+      if (global.__DEV__) console.log('AppsFlyer Failed to track: ', err);
     });
   };
 

@@ -15,9 +15,9 @@ export const posytSSL = (global.__DEV__ ? false : true);
  * keys
  */
 
- export const appId = (!global.__DEV__ ? '' : 'id1037842845');
+ export const appId = (global.__DEV__ ? '' : '1037842845');
 export const segmentWriteKey = (global.__DEV__ ? 'mATdPTIQxyMk6wCtSJH8iXdJp3PTcF7K' : 'ASBKWL2TC6rtcrpGUAPzFz51kGji79kV');
-export const appsflyerDevKey = (!global.__DEV__ ? '' : 'tCS4w2zCJNCPxMx8FHjYeL');
+export const appsflyerDevKey = (global.__DEV__ ? '' : 'tCS4w2zCJNCPxMx8FHjYeL');
 
 /*
  * sources

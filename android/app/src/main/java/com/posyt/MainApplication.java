@@ -4,6 +4,7 @@ import android.app.Application;
 import android.util.Log;
 
 import com.facebook.react.ReactApplication;
+import com.appsflyer.reactnative.RNAppsFlyerPackage;
 import com.microsoft.codepush.react.CodePush;
 import com.proxima.RCTDigits.DigitsPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
@@ -36,6 +37,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNAppsFlyerPackage(),
             new CodePush(getResources().getString(R.string.reactNativeCodePush_androidDeploymentKey), getApplicationContext(), BuildConfig.DEBUG),
             new DigitsPackage(),
             new RNDeviceInfo(),
