@@ -16,6 +16,7 @@ import {
 } from '../lib/constants';
 import CardPosyt from './CardPosyt';
 import CardArticle from './CardArticle';
+import CardIntro from './CardIntro';
 
 const SWIPE_ICON_THRESHOLD = 20;
 
@@ -252,6 +253,8 @@ class Card extends React.Component {
       cardContent = <CardPosyt posyt={data} ref="cardContent" />
     } else if (data._type === 'article') {
       cardContent = <CardArticle article={data} ref="cardContent" />
+    } else if (data._type === 'intro') {
+      cardContent = <CardIntro intro={data} ref="cardContent" />
     }
 
     return (

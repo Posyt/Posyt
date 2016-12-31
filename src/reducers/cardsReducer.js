@@ -11,6 +11,15 @@ import {
 import { ddp } from '../lib/DDP';
 import { mongo } from '../lib/Mongo';
 
+const introCards = [
+  { _type: 'intro', _id: 'intro1', hero: 'Swipe ➡️', content: 'to like stuff', step: 'Intro 1 / 5', shimmerDirection: 'right', shimmerSpeed: 40 },
+  { _type: 'intro', _id: 'intro2', hero: 'Swipe ⬅️', content: 'when you\'re not feeling something', step: 'Intro 2 / 5', shimmerDirection: 'left', shimmerSpeed: 40 },
+  { _type: 'intro', _id: 'intro3', hero: 'Swipe ⬇️', content: 'when you\'re REALLY not feeling something', step: 'Intro 3 / 5', shimmerDirection: 'down', shimmerSpeed: 20 },
+  { _type: 'intro', _id: 'intro4', hero: 'Swipe ⬆️', content: 'to make sure the best ideas get seen', step: 'Intro 4 / 5', shimmerDirection: 'up', shimmerSpeed: 20 },
+  { _type: 'intro', _id: 'intro5', hero: '🎊\nWelcome to Posyt', step: 'Intro 5 / 5', shimmerDirection: 'right', shimmerSpeed: 15,
+    content: 'When someone 👍\'s a bunch of the stuff you 👍, you can 💬\n\nSwipe away! ⬅️⬇️⬆️➡️\n\nAnd if you\'re feeling inspired, post your own ideas.' },
+];
+
 const initialState = {
   leads: [], // The current user's leads
   cards: [], // The current user's leads converted into renderable articles and posyts
@@ -41,7 +50,9 @@ function updateCards(state, action) {
       cards,
     };
   }
+
   const user = mongo.db.users.findOne({ _id: ddp.userId });
+
   // // TODO: UNDO: don't actually sort leads by type
   // const leads = user && user.meta && _.sortBy(user.meta.leads, o => o.type) || [];
   const leads = user && user.meta && user.meta.leads || [];
@@ -53,6 +64,14 @@ function updateCards(state, action) {
     return card && { ...card, _type: l.type };
   }))], '_id');
   // TODO: leave the top 3 cards at the top
+
+  if (user && user.profile && !user.profile.hasCompletedSwipeIntro) {
+    return {
+      leads,
+      cards: [...introCards, ...cards],
+    };
+  }
+
   return {
     leads,
     cards,

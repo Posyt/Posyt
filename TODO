@@ -36,12 +36,14 @@
 ✔ Simplify article chat bubbles to take up as smaller amount of space @done(2016-12-19 19:51)
 ✔ fix product hunt weird html parsing @done(2016-12-19 17:47)
 ✔ use new segment write keys in Posyt for dev and Posyt sources @done(2016-12-21 16:19)
-☐ add 5 onboarding cards prompting you to swipe and chat and compose your own posyts
+✔ add 5 onboarding cards prompting you to swipe and chat and compose your own posyts @done(2016-12-31 14:43)
 ☐ popup the info modal the first time you open compose
 ☐ make login buttons more colorful
 ☐ add a modal before the login buttons introing posyt with a "Let's go!" button to kick it off
+☐ create posyt medium and get it cnamed to blog.posyt.com
 ✔ add a min speed to swipes @done(2016-12-30 22:50)
 ✔ add appsflyer https://github.com/ppsreejith/react-native-apps-flyer @done(2016-12-30 16:42)
+☐ reduce card flicker
 
 
 Staging

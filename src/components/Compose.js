@@ -176,7 +176,7 @@ class Compose extends React.Component {
       nAnim: new Animated.Value(0),
       pan: new Animated.ValueXY(),
       savingAnim: new Animated.Value(1),
-      placeholder: 'Write something...',
+      placeholder: 'Post an idea...',
       newPosytText: '',
       charCount: MAX_CHARS,
     };
@@ -247,7 +247,7 @@ class Compose extends React.Component {
       this.open = true;
       const placeholders = [
         'Write something... (It\'s all anonymous)',
-        'e.g. Share an idea...',
+        'e.g. Post an idea...',
         'e.g. Share what you\'re working on...',
         'e.g. Ask for help with something...',
         'e.g. Share what you want to learn...',
@@ -342,7 +342,7 @@ class Compose extends React.Component {
           ]),
         ]).start(() => {
           this.setState({ placeholder: 'Thanks for sharing 😊' });
-          setTimeout(() => this.setState({ placeholder: 'Write something...' }), 2000);
+          setTimeout(() => this.setState({ placeholder: 'Post an idea...' }), 2000);
           this.state.yAnim.setValue(-300);
           this.reset();
         });
@@ -366,7 +366,7 @@ class Compose extends React.Component {
   closeDown() {
     this.reset();
     this.requestAnimationFrame(() => {
-      this.setState({ placeholder: 'Write something...' });
+      this.setState({ placeholder: 'Post an idea...' });
     });
   }
 

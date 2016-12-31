@@ -142,6 +142,7 @@ class Cards extends React.Component {
     const vy = g.vy + (0.2 * Math.sign(g.vy));
     const oldG = { ...g };
     const oldProps = { ...this.props };
+    const card = oldProps.cards[0];
     const time = (new Date).getTime();
     Animated.timing(
       this.state.panPush,
@@ -150,7 +151,9 @@ class Cards extends React.Component {
         duration: 200,
       }
     ).start(() => {
-      if (oldG.dx > THRESHOLD) {
+      if (card._type === 'intro') {
+        this.swipeIntro(card);
+      } else if (oldG.dx > THRESHOLD) {
         this.firstTimeAlert('like', 'Like 👍', 'Cool! You\'ll get matches with people who like what you like. Matches are anonymous. They\'ll only see your username and the likes you have in common.')
         .then(proceed => {
           if (proceed) this.swipe(oldProps, time, 'like');
@@ -263,6 +266,14 @@ class Cards extends React.Component {
       }
       segment.track('Card Flag', { reason });
     });
+  }
+
+  swipeIntro(card) {
+    if (card._id === 'intro5') {
+      ddp.call('users/complete/hasCompletedSwipeIntro', []).catch(err => {
+        if (global.__DEV__) console.log('Swipe Intro Error:', err);
+      });
+    }
   }
 
   swipe(props, time, action, reason) {
