@@ -30,7 +30,7 @@ export const sources = _.sortBy([
   'Product Hunt',
   'The Verge',
   'New York Times',
-  'Dribbble'
+  'Dribbble',
 ]);
 
 /*
