@@ -63,10 +63,14 @@ class Card extends React.Component {
   _onPanResponderEnd(e, g) {
     clearTimeout(this.longTimer) // end the press timer
 
+    const d = Math.abs(g.dx) > Math.abs(g.dy) ? 'x' : 'y';
+    const x = d === 'x' ? Math.max(Math.abs(g.vx), 1.0) * Math.sign(g.dx) : g.vx;
+    const y = d === 'y' ? Math.max(Math.abs(g.vy), 1.0) * Math.sign(g.dy) : g.vy;
+
     Animated.decay(this.state.pan, {   // coast to a stop
-      velocity: {x: g.vx, y: g.vy}, // velocity from gesture release
+      velocity: { x, y }, // velocity from gesture release
       deceleration: 0.999,
-    }).start()
+    }).start();
 
     // TODO: if onRelease is defined then only animate back if it returns true
     if (!this.props.onRelease || this.props.onRelease(e, g)) {
