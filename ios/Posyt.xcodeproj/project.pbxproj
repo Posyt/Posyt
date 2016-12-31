@@ -35,12 +35,12 @@
 		8E09147D1DDAB27900FD5BDB /* RNSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E09147C1DDAB27900FD5BDB /* RNSegment.m */; };
 		8E0914F01DDB8A9A00FD5BDB /* Branch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E0914EF1DDB8A9A00FD5BDB /* Branch.framework */; };
 		8E0915751DDB8BCB00FD5BDB /* libRNBranch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E0915741DDB8BA200FD5BDB /* libRNBranch.a */; };
-		8E0C6E801E1704FF00B02810 /* libRNAppsFlyer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E0C6E7F1E1704E800B02810 /* libRNAppsFlyer.a */; };
 		8E2455CE1E17055100056131 /* AppsFlyerLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E2455CD1E17055100056131 /* AppsFlyerLib.framework */; };
 		8E2455D01E170D8B00056131 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E2455CF1E170D8B00056131 /* AdSupport.framework */; };
 		8E2455D21E170DA300056131 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E2455D11E170DA300056131 /* iAd.framework */; };
 		8E4742CB1E136ECE00042A33 /* FLAnimatedImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4742CA1E136ECE00042A33 /* FLAnimatedImage.framework */; };
 		8E53EFC61DF4B39A00DB163F /* libRNFLAnimatedImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E53EFC51DF4B38700DB163F /* libRNFLAnimatedImage.a */; };
+		8E6CC3111E174F6400E011F8 /* libRNAppsFlyer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E6CC30B1E174F5200E011F8 /* libRNAppsFlyer.a */; };
 		8E8529281DE609C800885E81 /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E85291A1DE6098700885E81 /* libRCTPushNotification.a */; };
 		8EA2F7BC1DE1509500B869B1 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA2F7BA1DE1509500B869B1 /* Fabric.framework */; };
 		8EA2F7BD1DE1509500B869B1 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA2F7BB1DE1509500B869B1 /* Crashlytics.framework */; };
@@ -184,13 +184,6 @@
 			remoteGlobalIDString = 5D7E4C681C88C61600B72F0C;
 			remoteInfo = RNShimmer;
 		};
-		8E0C6E7E1E1704E800B02810 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8E0C6E7A1E1704E800B02810 /* RNAppsFlyer.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNAppsFlyer;
-		};
 		8E1A77571DEA505E00A54E44 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7775032A38DA409E81ED1DBA /* CodePush.xcodeproj */;
@@ -204,6 +197,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = B5EE7B8C1D884FA5008938BC;
 			remoteInfo = RNFLAnimatedImage;
+		};
+		8E6CC30A1E174F5200E011F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8E6CC2F01E174F5200E011F8 /* RNAppsFlyer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNAppsFlyer;
 		};
 		8E8529191DE6098700885E81 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -310,12 +310,12 @@
 		8E09147C1DDAB27900FD5BDB /* RNSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNSegment.m; sourceTree = "<group>"; };
 		8E0914EF1DDB8A9A00FD5BDB /* Branch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Branch.framework; path = Carthage/Build/iOS/Branch.framework; sourceTree = "<group>"; };
 		8E09155D1DDB8BA200FD5BDB /* RNBranch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNBranch.xcodeproj; path = "../node_modules/react-native-branch/ios/RNBranch.xcodeproj"; sourceTree = "<group>"; };
-		8E0C6E7A1E1704E800B02810 /* RNAppsFlyer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNAppsFlyer.xcodeproj; path = "/Users/smothers/Sites/Posyt/node_modules/react-native-flanimatedimage/RNFLAnimatedImage/../../react-native-appsflyer/ios/RNAppsFlyer.xcodeproj"; sourceTree = "<absolute>"; };
 		8E2455CD1E17055100056131 /* AppsFlyerLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppsFlyerLib.framework; sourceTree = "<group>"; };
 		8E2455CF1E170D8B00056131 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		8E2455D11E170DA300056131 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		8E4742CA1E136ECE00042A33 /* FLAnimatedImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FLAnimatedImage.framework; path = Carthage/Build/iOS/FLAnimatedImage.framework; sourceTree = "<group>"; };
 		8E53EFC01DF4B38700DB163F /* RNFLAnimatedImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNFLAnimatedImage.xcodeproj; path = "../node_modules/react-native-flanimatedimage/RNFLAnimatedImage/RNFLAnimatedImage.xcodeproj"; sourceTree = "<group>"; };
+		8E6CC2F01E174F5200E011F8 /* RNAppsFlyer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNAppsFlyer.xcodeproj; path = "../node_modules/react-native-appsflyer/ios/RNAppsFlyer.xcodeproj"; sourceTree = "<group>"; };
 		8E85290A1DE6098600885E81 /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
 		8EA2F7BA1DE1509500B869B1 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		8EA2F7BB1DE1509500B869B1 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -355,9 +355,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E6CC3111E174F6400E011F8 /* libRNAppsFlyer.a in Frameworks */,
 				8E2455D21E170DA300056131 /* iAd.framework in Frameworks */,
 				8E2455D01E170D8B00056131 /* AdSupport.framework in Frameworks */,
-				8E0C6E801E1704FF00B02810 /* libRNAppsFlyer.a in Frameworks */,
 				8E53EFC61DF4B39A00DB163F /* libRNFLAnimatedImage.a in Frameworks */,
 				8E8529281DE609C800885E81 /* libRCTPushNotification.a in Frameworks */,
 				8EA2F7BC1DE1509500B869B1 /* Fabric.framework in Frameworks */,
@@ -549,7 +549,7 @@
 				8E85290A1DE6098600885E81 /* RCTPushNotification.xcodeproj */,
 				7775032A38DA409E81ED1DBA /* CodePush.xcodeproj */,
 				8E53EFC01DF4B38700DB163F /* RNFLAnimatedImage.xcodeproj */,
-				8E0C6E7A1E1704E800B02810 /* RNAppsFlyer.xcodeproj */,
+				8E6CC2F01E174F5200E011F8 /* RNAppsFlyer.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -643,14 +643,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8E0C6E7B1E1704E800B02810 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				8E0C6E7F1E1704E800B02810 /* libRNAppsFlyer.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		8E1A77531DEA505E00A54E44 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -663,6 +655,14 @@
 			isa = PBXGroup;
 			children = (
 				8E53EFC51DF4B38700DB163F /* libRNFLAnimatedImage.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8E6CC2F11E174F5200E011F8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8E6CC30B1E174F5200E011F8 /* libRNAppsFlyer.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -850,8 +850,8 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
-					ProductGroup = 8E0C6E7B1E1704E800B02810 /* Products */;
-					ProjectRef = 8E0C6E7A1E1704E800B02810 /* RNAppsFlyer.xcodeproj */;
+					ProductGroup = 8E6CC2F11E174F5200E011F8 /* Products */;
+					ProjectRef = 8E6CC2F01E174F5200E011F8 /* RNAppsFlyer.xcodeproj */;
 				},
 				{
 					ProductGroup = 8E09155E1DDB8BA200FD5BDB /* Products */;
@@ -995,13 +995,6 @@
 			remoteRef = 8E09161B1DDBAA1800FD5BDB /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		8E0C6E7F1E1704E800B02810 /* libRNAppsFlyer.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNAppsFlyer.a;
-			remoteRef = 8E0C6E7E1E1704E800B02810 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		8E1A77581DEA505E00A54E44 /* libCodePush.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1014,6 +1007,13 @@
 			fileType = archive.ar;
 			path = libRNFLAnimatedImage.a;
 			remoteRef = 8E53EFC41DF4B38700DB163F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8E6CC30B1E174F5200E011F8 /* libRNAppsFlyer.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNAppsFlyer.a;
+			remoteRef = 8E6CC30A1E174F5200E011F8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		8E85291A1DE6098700885E81 /* libRCTPushNotification.a */ = {
