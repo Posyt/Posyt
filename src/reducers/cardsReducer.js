@@ -15,9 +15,9 @@ const introCards = [
   { _type: 'intro', _id: 'intro1', hero: 'Swipe ➡️', content: 'to like stuff', step: 'Intro 1 / 5', shimmerDirection: 'right', shimmerSpeed: 40 },
   { _type: 'intro', _id: 'intro2', hero: 'Swipe ⬅️', content: 'when you\'re not feeling something', step: 'Intro 2 / 5', shimmerDirection: 'left', shimmerSpeed: 40 },
   { _type: 'intro', _id: 'intro3', hero: 'Swipe ⬇️', content: 'when you\'re REALLY not feeling something', step: 'Intro 3 / 5', shimmerDirection: 'down', shimmerSpeed: 20 },
-  { _type: 'intro', _id: 'intro4', hero: 'Swipe ⬆️', content: 'to make sure the best ideas get seen', step: 'Intro 4 / 5', shimmerDirection: 'up', shimmerSpeed: 20 },
+  { _type: 'intro', _id: 'intro4', hero: 'Swipe ⬆️', content: 'to share the best ideas and make sure they get seen', step: 'Intro 4 / 5', shimmerDirection: 'up', shimmerSpeed: 20 },
   { _type: 'intro', _id: 'intro5', hero: '🎊\nWelcome to Posyt', step: 'Intro 5 / 5', shimmerDirection: 'right', shimmerSpeed: 15,
-    content: 'When someone 👍\'s a bunch of the stuff you 👍, you can 💬\n\nSwipe away! ⬅️⬇️⬆️➡️\n\nAnd if you\'re feeling inspired, post your own ideas.' },
+    content: 'When someone likes a bunch of the stuff you like, you can chat 💬\n\nSo keep swiping! ⬅️⬇️⬆️➡️\n\nAnd if you\'re feeling inspired, post your own ideas.' },
 ];
 
 const initialState = {
