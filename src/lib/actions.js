@@ -10,6 +10,7 @@ import segment from './segment';
 export const SET_PLATFORM = 'SET_PLATFORM';
 
 export const CHANGED_COLLECTION = 'CHANGED_COLLECTION';
+export const CHANGED_COLLECTION_BREAK = 'CHANGED_COLLECTION_BREAK';
 
 export const DDP_CONNECT_REQUEST = 'DDP_CONNECT_REQUEST';
 export const DDP_CONNECT_SUCCESS = 'DDP_CONNECT_SUCCESS';
@@ -59,14 +60,33 @@ export function setPlatform(platform) {
   };
 }
 
+let changedCollectionTimeout;
+let changedCollectionInterval = 0;
 export function changedCollection(collectionName, changeType, id) {
-  return {
-    type: CHANGED_COLLECTION,
-    payload: {
-      collectionName,
-      changeType,
-      id,
-    },
+  return dispatch => {
+    dispatch({
+      type: CHANGED_COLLECTION,
+      payload: {
+        collectionName,
+        changeType,
+        id,
+      },
+    });
+
+    // TODO: PERFORMANCE: find a smarter way to update corresponding reducers based on the specific document that is changed in a collection
+    //   At the moment all reducers just update based on CHANGED_COLLECTION_BREAK
+    //   There are lots of performance gains to be had here and in the individual reducers
+    //   Immutability may help here too as there are some deep equality checks being done in the reducers
+    if (changedCollectionTimeout) {
+      clearTimeout(changedCollectionTimeout);
+      changedCollectionInterval += 1;
+    }
+    changedCollectionTimeout = setTimeout(() => {
+      changedCollectionInterval = 0;
+      dispatch({
+        type: CHANGED_COLLECTION_BREAK,
+      });
+    }, Math.max(0, 50 - changedCollectionInterval));
   };
 }
 

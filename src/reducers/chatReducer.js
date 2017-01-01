@@ -1,5 +1,6 @@
 import {
   CHANGED_COLLECTION,
+  CHANGED_COLLECTION_BREAK,
   SELECT_CONVERSATION,
   UPDATE_CHAT,
   PAGE_CHAT,
@@ -118,8 +119,9 @@ export default function chatReducer(state = initialState, action) {
         ...initialState,
         conversationId: action.payload.id,
       };
-    case CHANGED_COLLECTION:
-      if (!chatDidChange(state, action)) return state;
+    // case CHANGED_COLLECTION:
+    case CHANGED_COLLECTION_BREAK:
+      // if (!chatDidChange(state, action)) return state;
       return {
         ...state,
         ...updateChat(state, action),

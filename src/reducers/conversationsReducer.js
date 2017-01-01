@@ -1,5 +1,6 @@
 import {
   CHANGED_COLLECTION,
+  CHANGED_COLLECTION_BREAK,
   PAGE_CONVERSATIONS,
   LOGIN_SUCCESS,
 } from '../lib/actions';
@@ -36,8 +37,9 @@ function updateConversations(state, action) {
 
 export default function conversationsReducer(state = initialState, action) {
   switch (action.type) {
-    case CHANGED_COLLECTION:
-      if (!conversationsDidChange(state, action)) return state;
+    // case CHANGED_COLLECTION:
+    case CHANGED_COLLECTION_BREAK:
+      // if (!conversationsDidChange(state, action)) return state;
       return {
         ...state,
         ...updateConversations(state, action),

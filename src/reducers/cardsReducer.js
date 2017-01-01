@@ -6,6 +6,7 @@ import {
   UNPOP_LAST_CARD,
   UNSHIFT_CARD,
   CHANGED_COLLECTION,
+  CHANGED_COLLECTION_BREAK,
   LOGIN_SUCCESS,
 } from '../lib/actions';
 import { ddp } from '../lib/DDP';
@@ -134,8 +135,9 @@ export default function cardsReducer(state = initialState, action) {
         ...newState,
         ...updateCards(newState, action),
       };
-    case CHANGED_COLLECTION:
-      if (!cardsDidChange(state, action)) return state;
+    // case CHANGED_COLLECTION:
+    case CHANGED_COLLECTION_BREAK:
+      // if (!cardsDidChange(state, action)) return state;
       return {
         ...state,
         ...updateCards(state, action),

@@ -38,12 +38,15 @@
 ✔ use new segment write keys in Posyt for dev and Posyt sources @done(2016-12-21 16:19)
 ✔ add 5 onboarding cards prompting you to swipe and chat and compose your own posyts @done(2016-12-31 14:43)
 ✔ popup the info modal the first time you open compose @done(2016-12-31 23:56)
-☐ make login buttons more colorful
-☐ add a modal before the login buttons introing posyt with a "Let's go!" button to kick it off
 ☐ create posyt medium and get it cnamed to blog.posyt.com
 ✔ add a min speed to swipes @done(2016-12-30 22:50)
 ✔ add appsflyer https://github.com/ppsreejith/react-native-apps-flyer @done(2016-12-30 16:42)
-☐ reduce card flicker
+✔ reduce card flicker @done(2017-01-01 16:15)
+
+☐ fix product hunt swipes - they seem to be a lot of weird formated podcasts that are dublicates or just never disapear
+  ☐ it seems to be due to query params for the libsyn.com domain
+  ☐ it also seems to only be podcasts lately
+☐ make sure imgur does not overwhelm the feed
 
 
 Staging
@@ -79,6 +82,9 @@ Eventually
 ☐ add an inline image to share via messages if the article has an image
 ☐ fix slow gifs. they all seem to play at half speed
 ☐ AppsFlyer deeplink integration https://support.appsflyer.com/hc/en-us/articles/207032066-AppsFlyer-SDK-Integration-iOS
+☐ make login buttons more colorful
+☐ add a modal before the login buttons introing posyt with a "Let's go!" button to kick it off
+☐ use ML to detect spam with https://www.detextion.io/ or something similar
 
 Maybe
 ☐ swtich node-ddp-client and maybe minimongo-cache out for react-native-meteor
