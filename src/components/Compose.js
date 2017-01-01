@@ -279,6 +279,7 @@ class Compose extends React.Component {
         ),
       ]).start(() => {
         if (this.open) this.props.dispatch(removeTabBarTopMargin(true));
+        this.checkFirstOpen();
       });
       // });
       segment.screen('Viewed Compose');
@@ -290,6 +291,12 @@ class Compose extends React.Component {
   //   //   this.close()
   //   // }
   // }
+
+  async checkFirstOpen() {
+    const hasBeenOpened = await AsyncStorage.getItem('haasBeenOpened/Compose');
+    if (!hasBeenOpened) this.refs.infoModal.show('bottom');
+    AsyncStorage.setItem('haasBeenOpened/Compose', 'true');
+  }
 
   playSavingAnimation() {
     Animated.sequence([
