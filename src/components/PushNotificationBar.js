@@ -28,7 +28,7 @@ function renderTestNotifications() {
     setTimeout(() => {
       require('RCTDeviceEventEmitter').emit('remoteNotificationReceived', {
         aps: {
-          alert: 'New Match with Chris',
+          alert: 'New Match with kate',
           badge: '+1',
           sound: 'default',
           category: 'REACT_NATIVE',
