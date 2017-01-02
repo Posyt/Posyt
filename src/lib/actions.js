@@ -86,7 +86,7 @@ export function changedCollection(collectionName, changeType, id) {
       dispatch({
         type: CHANGED_COLLECTION_BREAK,
       });
-    }, Math.max(0, 50 - changedCollectionInterval));
+    }, Math.max(0, 100 - changedCollectionInterval));
   };
 }
 
@@ -256,8 +256,9 @@ function removeMessageFromCache(attrs) {
     payload: { attrs },
   };
 }
-export function sendMessage(attrs, opts = {}) {
+export function sendMessage(attributes, opts = {}) {
   return dispatch => {
+    const attrs = { ...attributes, content: attributes.content && attributes.content.trim() };
     if (opts.retry) {
       dispatch(retryingMessageCreate(attrs));
       segment.track('Message Send A - Retry', attrs);
