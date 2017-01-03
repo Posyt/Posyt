@@ -46,6 +46,7 @@
   ✔ it seems to be due to query params for the libsyn.com domain @done(2017-01-02 19:10)
   ✔ it also seems to only be podcasts lately @done(2017-01-02 19:10)
 ☐ make sure imgur does not overwhelm the feed
+☐ fix first toggled feed disapearing...
 
 
 Staging
@@ -59,15 +60,18 @@ Staging
 ☐ segment
 
 Prod
-☐ mongo db
-☐ neo4j
-☐ elasticsearch
-☐ meteor server
-☐ scraper server
-☐ segment - mixpanel, google
+✔ mongo db @done(2017-01-03 01:14)
+✔ neo4j @done(2017-01-03 01:14)
+✔ elasticsearch @done(2017-01-03 01:14)
+✔ meteor server @done(2017-01-03 01:14)
+✔ scraper server @done(2017-01-03 01:14)
+✔ segment - mixpanel, google @done(2017-01-03 01:54)
 ☐ crashlytics
 ✔ appsflyer @done(2016-12-30 16:50)
-☐ switch code push key to production key
+✔ switch code push key to production key @done(2017-01-03 01:14)
+☐ update press page on site
+☐ upate instagram, twitter, facebook
+☐ make sure barnch is updated
 
 Submission
 ☐ Ad permissions https://support.appsflyer.com/hc/en-us/articles/207032086-New-Apple-IDFA-Guidelines-How-To-Submit-Your-iOS-App-With-IDFA
