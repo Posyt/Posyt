@@ -1276,7 +1276,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.posyt.PosytTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.posyt.PosytApp;
 				PRODUCT_NAME = Posyt;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1320,7 +1320,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.posyt.PosytTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.posyt.PosytApp;
 				PRODUCT_NAME = Posyt;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
