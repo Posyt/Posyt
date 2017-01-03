@@ -42,10 +42,9 @@
 ✔ add a min speed to swipes @done(2016-12-30 22:50)
 ✔ add appsflyer https://github.com/ppsreejith/react-native-apps-flyer @done(2016-12-30 16:42)
 ✔ reduce card flicker @done(2017-01-01 16:15)
-
-☐ fix product hunt swipes - they seem to be a lot of weird formated podcasts that are dublicates or just never disapear
-  ☐ it seems to be due to query params for the libsyn.com domain
-  ☐ it also seems to only be podcasts lately
+✔ fix product hunt swipes - they seem to be a lot of weird formated podcasts that are dublicates or just never disapear @done(2017-01-02 19:10)
+  ✔ it seems to be due to query params for the libsyn.com domain @done(2017-01-02 19:10)
+  ✔ it also seems to only be podcasts lately @done(2017-01-02 19:10)
 ☐ make sure imgur does not overwhelm the feed
 
 
