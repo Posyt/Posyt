@@ -55,7 +55,7 @@
 ☐ add a "Tap Card" and "Tap Card Image" events
 ☐ change "Card Swipe" to 4 distinct events
 ☐ don't send load a screen event when going from webview back to posyt
-☐ add apple encryption tag to plist
+✔ add apple encryption tag to plist @done(2017-01-04 02:39)
 ☐ allow landscape mode in webview videos
 
 
