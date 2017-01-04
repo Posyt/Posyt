@@ -233,8 +233,8 @@ class PosytTabBar extends React.Component {
               </View>
             </TouchableHighlight>
             <View style={styles.modalSeparator} />
-            <View style={[styles.modalButton, { height: 90, backgroundColor: '#111' }]}>
-              <Text style={[styles.modalSubText, { fontWeight: '600', lineHeight: 15, color: 'white' }]}>On Posyt{"\n"}you control your identity{"\n"}and who you share it with</Text>
+            <View style={[styles.modalButton, { height: 130, backgroundColor: '#111' }]}>
+              <Text style={[styles.modalSubText, { fontWeight: '600', lineHeight: 15, color: 'white', paddingTop: 1 }]}>On Posyt{"\n"}you control your identity{"\n"}and who you share it with{"\n"}we only ask for the bare{"\n"}minimum to log you in</Text>
             </View>
           </View>
         }
