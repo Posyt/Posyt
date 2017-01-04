@@ -96,7 +96,6 @@ class FeedsModal extends React.Component {
         <View style={styles.modalSeparator} />
         <ScrollView style={styles.scrollView}>
           {allSources.map(source => {
-            console.log(source) 
             const active = sources.includes(source);
             return (
               <View key={source}>
