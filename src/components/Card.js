@@ -239,10 +239,10 @@ class Card extends React.Component {
     if (data.deepLink && data.deepLink.username) sharedBy = (
       <View style={styles.sharedBy}>
         <Text style={styles.sharedByText}>
-          {data.deepLink.username} shared this {data.deepLink._type} with you
+          {data.deepLink.username} shared this with you
         </Text>
         <Text style={styles.sharedBySubText}>
-          Swipe right and maybe you'll see{"\n"}what else interests {data.deepLink.username}
+          Swipe right if you like it too{"\n"}or swipe left if you don't
         </Text>
       </View>
     )
