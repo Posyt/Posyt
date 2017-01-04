@@ -135,7 +135,7 @@ class PosytTabBar extends React.Component {
               this.refs.posytModal.hide("left", () => this.refs.feedsModal.getWrappedInstance().show("right"));
               segment.screen('Viewed Feeds Modal');
           }}>
-            <Text style={styles.modalText}>Feeds</Text>
+            <Text style={styles.modalText}>News Feeds</Text>
           </TouchableHighlight>
           <View style={styles.modalSeparator} />
           <View style={styles.modalCol}>

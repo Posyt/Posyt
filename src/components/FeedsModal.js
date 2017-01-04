@@ -82,7 +82,7 @@ class FeedsModal extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!this.props.currentUser || !nextProps.currentUser || this.props.currentUser.profile.sources !== nextProps.currentUser.profile.sources) this.setState({ sources: nextProps.currentUser && nextProps.currentUser.profile && nextProps.currentUser.profile.sources || allSources })
+    if (!this.props.currentUser || !nextProps.currentUser || this.props.currentUser.profile.sources !== nextProps.currentUser.profile.sources) this.setState({ sources: nextProps.currentUser && nextProps.currentUser.profile && nextProps.currentUser.profile.sources || [...allSources] })
   }
 
   render() {
@@ -96,6 +96,7 @@ class FeedsModal extends React.Component {
         <View style={styles.modalSeparator} />
         <ScrollView style={styles.scrollView}>
           {allSources.map(source => {
+            console.log(source) 
             const active = sources.includes(source);
             return (
               <View key={source}>
