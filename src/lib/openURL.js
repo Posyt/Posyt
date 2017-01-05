@@ -1,11 +1,16 @@
-import React from 'react';
 import { Linking } from 'react-native';
 import SafariView from 'react-native-safari-view';
+import Orientation from 'react-native-orientation';
 import { red } from './constants';
 
 global.onDismissLinkedView = () => {};
 
+SafariView.addEventListener('onShow', () => {
+  Orientation.unlockAllOrientations();
+});
+
 SafariView.addEventListener('onDismiss', () => {
+  Orientation.lockToPortrait();
   global.onDismissLinkedView();
 });
 
