@@ -92,17 +92,17 @@ class Card extends React.Component {
   }
 
   _onLayout(e) {
-    this.setState({ width: e.nativeEvent.layout.width, height: e.nativeEvent.layout.height, })
+    this.setState({ width: e.nativeEvent.layout.width, height: e.nativeEvent.layout.height });
   }
 
   resetPan(animated = true) {
     if (animated) {
       Animated.spring(
         this.state.pan,
-        {toValue: {x: 0, y: 0}}
+        { toValue: { x: 0, y: 0 } }
       ).start(); // reset the pan to 0,0
     } else {
-      this.state.pan.setValue({x: 0, y: 0})
+      this.state.pan.setValue({ x: 0, y: 0 });
     }
   }
 
