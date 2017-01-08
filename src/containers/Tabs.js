@@ -22,13 +22,22 @@ const styles = StyleSheet.create({
 });
 
 class Tabs extends React.Component {
+  constructor(props) {
+    super(props);
+    this.tab = null;
+  }
+
   componentDidMount() {
     segment.screen('Viewed Cards');
+    this.tab = 0;
   }
 
   onChangeTab({ i }) {
-    const tabs = { 0: 'Viewed Cards', 1: 'Viewed Conversations' };
-    segment.screen(tabs[i]);
+    if (this.tab !== i) {
+      const tabs = { 0: 'Viewed Cards', 1: 'Viewed Conversations' };
+      segment.screen(tabs[i]);
+      this.tab = i;
+    }
   }
 
   render() {
