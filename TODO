@@ -47,7 +47,7 @@
   ✔ it also seems to only be podcasts lately @done(2017-01-02 19:10)
 ☐ make sure imgur does not overwhelm the feed
 ✔ fix first toggled feed disapearing... @done(2017-01-04 01:07)
-☐ make optomisitic updates work with feed toggles - it's glitchy on slow connections
+✔ make optomisitic updates work with feed toggles - it's glitchy on slow connections @done(2017-01-08 17:49)
 ✔ say that posyt does not post to facebook on the login modal - make it clear that we don't ask for many permissions @done(2017-01-04 01:50)
 ☐ the add a username popup is slow to popup on a slow internet connection
 ✔ profile posyt, make sure it runs fast and does not eat battery @done(2017-01-08 16:39)
@@ -59,7 +59,7 @@
 ✔ allow landscape mode in webview videos @done(2017-01-05 01:07)
 ☐ see if xcode will autogen push certs, otherwise make them by hand
 ✔ don't autolike on share @done(2017-01-08 01:15)
-☐ switch feeds array on user to disabledFeeds. This way new feeds will be auto enabled without requiring a migration
+✔ switch feeds array on user to disabledFeeds. This way new feeds will be auto enabled without requiring a migration @done(2017-01-08 17:48)
 
 
 Staging
