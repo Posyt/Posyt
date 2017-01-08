@@ -21,6 +21,7 @@
 #import "RCTPushNotificationManager.h"
 #import <AppsFlyerLib/AppsFlyerTracker.h>
 #import "Orientation.h"
+#import <Analytics/SEGAnalytics.h>
 
 @implementation AppDelegate
 
@@ -97,6 +98,7 @@
 {
   [RCTPushNotificationManager didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
   [[AppsFlyerTracker sharedTracker] registerUninstall:deviceToken];
+  [[SEGAnalytics sharedAnalytics] registeredForRemoteNotificationsWithDeviceToken:deviceToken];
 }
 // Required for the registrationError event.
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
