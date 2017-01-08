@@ -1,12 +1,13 @@
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
+import { connect } from 'react-redux';
+import LinearGradient from 'react-native-linear-gradient';
+import segment from '../lib/segment';
 import {
   topCardExpanded,
   topCardContracted,
 } from '../lib/actions.js';
 import LinkifyText from './LinkifyText';
-import { connect } from 'react-redux';
-import LinearGradient from 'react-native-linear-gradient';
 
 const styles = StyleSheet.create({
   container: {
@@ -56,11 +57,18 @@ class CardPosyt extends React.Component {
     const { posyt } = this.props;
     return (
       <View style={styles.container}>
-        <LinkifyText style={styles.content}
-          onOpenURL={() => this.props.dispatch(topCardExpanded())}
+        <LinkifyText
+          style={styles.content}
+          onOpenURL={() => {
+            this.props.dispatch(topCardExpanded());
+            segment.track('Card Press Posyt URL', { _id: posyt._id, content: posyt.content });
+          }}
           onCloseURL={() => this.props.dispatch(topCardContracted())}
-        >{posyt.content}</LinkifyText>
-        <LinearGradient style={styles.bottom}
+        >
+          {posyt.content}
+        </LinkifyText>
+        <LinearGradient
+          style={styles.bottom}
           colors={['rgba(255,255,255,0)', 'white']}
         >
           <Text style={styles.sources}>Posyt</Text>

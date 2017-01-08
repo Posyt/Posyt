@@ -52,13 +52,14 @@
 ☐ the add a username popup is slow to popup on a slow internet connection
 ☐ profile posyt, make sure it runs fast and does not eat battery
 ✔ rename feeds to "News Feeds" @done(2017-01-04 00:53)
-☐ add a "Tap Card" and "Tap Card Image" events
-☐ change "Card Swipe" to 4 distinct events
+✔ add a "Tap Card" and "Tap Card Image" events @done(2017-01-08 01:37)
+✔ change "Card Swipe" to 4 distinct events @done(2017-01-08 01:26)
 ☐ don't send load a screen event when going from webview back to posyt
 ✔ add apple encryption tag to plist @done(2017-01-04 02:39)
 ✔ allow landscape mode in webview videos @done(2017-01-05 01:07)
 ☐ see if xcode will autogen push certs, otherwise make them by hand
 ✔ don't autolike on share @done(2017-01-08 01:15)
+☐ switch feeds array on user to disabledFeeds. This way new feeds will be auto enabled without requiring a migration
 
 
 Staging
