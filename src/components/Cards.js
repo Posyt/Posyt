@@ -170,7 +170,7 @@ class Cards extends React.Component {
           if (proceed) this.flag(oldProps, time);
         });
       } else if (oldG.dy < -THRESHOLD) {
-        this.firstTimeAlert('share', 'Share 📢', 'Help the best ideas get noticed. Let\'s go!')
+        this.firstTimeAlert('share', 'Share 📢', 'Help the best ideas get noticed. Let\'s go!', false)
         .then(proceed => {
           if (proceed) this.share(oldProps, time);
         });
@@ -308,7 +308,7 @@ class Cards extends React.Component {
     });
   }
 
-  async firstTimeAlert(action, title, body) {
+  async firstTimeAlert(action, title, body, unpopLastCardOnCancel = true) {
     const id = `seen/firstTimeAlert/${action}`;
     const permission = await AsyncStorage.getItem(id);
     return new Promise((resolve) => {
@@ -320,7 +320,7 @@ class Cards extends React.Component {
           [
             { text: 'Cancel', onPress: () => {
               segment.track(`Card Swipe - First Time Alert 2 - ${action} - Denied`);
-              this.props.dispatch(unpopLastCard());
+              if (unpopLastCardOnCancel) this.props.dispatch(unpopLastCard());
               resolve(false);
             } },
             { text: _.capitalize(action), onPress: () => {
