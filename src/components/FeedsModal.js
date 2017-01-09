@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableHighlight, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, TouchableHighlight, ScrollView, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import LinearGradient from 'react-native-linear-gradient';
@@ -71,18 +71,24 @@ class FeedsModal extends React.Component {
     this.refs.feedsModal.show(direction);
   }
 
-  save(source) {
-    let sources = this.state.sources;
-    const active = sources.includes(source);
-    sources = _.compact(active ? _.pull(sources, source) : [...sources, source]);
-    this.setState({ sources });
-    ddp.call("users/sources/set", [sources]).catch(err => {
+  toggle(source) {
+    const sources = this.state.sources;
+    const disabledSources = _.get(this.props, 'currentUser.profile.disabledSources', []);
+    disabledSources.includes(source) ? _.pull(disabledSources, source) : disabledSources.push(source);
+    this.setState({ sources: _.difference(allSources, disabledSources) });
+    ddp.call("users/disabledSources/set", [disabledSources]).catch(err => {
       if (global.__DEV__) console.log("Error setting feeds:", err);
+      this.setState({ sources }); // rollback
+      Alert.alert('That\'s weird', 'We could not save this change to the server. Please try again later. The server is probably undergoing maintinence.')
     });
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!this.props.currentUser || !nextProps.currentUser || this.props.currentUser.profile.sources !== nextProps.currentUser.profile.sources) this.setState({ sources: nextProps.currentUser && nextProps.currentUser.profile && nextProps.currentUser.profile.sources || allSources })
+    if (!this.props.currentUser || !nextProps.currentUser ||
+      this.props.currentUser.profile.disabledSources !== nextProps.currentUser.profile.disabledSources) {
+      const disabledSources = _.get(nextProps, 'currentUser.profile.disabledSources', []);
+      this.setState({ sources: _.difference(allSources, disabledSources) });
+    }
   }
 
   render() {
@@ -99,7 +105,7 @@ class FeedsModal extends React.Component {
             const active = sources.includes(source);
             return (
               <View key={source}>
-                <TouchableHighlight style={[styles.modalButton]} onPress={() => this.save(source)} underlayColor={lightGrey}>
+                <TouchableHighlight style={[styles.modalButton]} onPress={() => this.toggle(source)} underlayColor={lightGrey}>
                   <Text style={[styles.modalText, !active && { color: grey }]}>{source}</Text>
                 </TouchableHighlight>
                 <View style={styles.modalSeparator} />

@@ -20,7 +20,8 @@
 #import <DigitsKit/DigitsKit.h>
 #import "RCTPushNotificationManager.h"
 #import <AppsFlyerLib/AppsFlyerTracker.h>
-
+#import "Orientation.h"
+#import <Analytics/SEGAnalytics.h>
 
 @implementation AppDelegate
 
@@ -97,6 +98,7 @@
 {
   [RCTPushNotificationManager didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
   [[AppsFlyerTracker sharedTracker] registerUninstall:deviceToken];
+  [[SEGAnalytics sharedAnalytics] registeredForRemoteNotificationsWithDeviceToken:deviceToken];
 }
 // Required for the registrationError event.
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
@@ -112,6 +114,10 @@
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 {
   [RCTPushNotificationManager didReceiveLocalNotification:notification];
+}
+
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+  return [Orientation getOrientation];
 }
 
 @end

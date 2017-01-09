@@ -42,6 +42,7 @@
 		8E53EFC61DF4B39A00DB163F /* libRNFLAnimatedImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E53EFC51DF4B38700DB163F /* libRNFLAnimatedImage.a */; };
 		8E6CC3111E174F6400E011F8 /* libRNAppsFlyer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E6CC30B1E174F5200E011F8 /* libRNAppsFlyer.a */; };
 		8E8529281DE609C800885E81 /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E85291A1DE6098700885E81 /* libRCTPushNotification.a */; };
+		8E989EC51E1E0DEA002DF655 /* libRCTOrientation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E989EC41E1E0DDC002DF655 /* libRCTOrientation.a */; };
 		8EA2F7BC1DE1509500B869B1 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA2F7BA1DE1509500B869B1 /* Fabric.framework */; };
 		8EA2F7BD1DE1509500B869B1 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA2F7BB1DE1509500B869B1 /* Crashlytics.framework */; };
 		8EA2F7C11DE1516D00B869B1 /* DigitsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA2F7BE1DE1516D00B869B1 /* DigitsKit.framework */; };
@@ -212,6 +213,13 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RCTPushNotification;
 		};
+		8E989EC31E1E0DDC002DF655 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8E989EBF1E1E0DDC002DF655 /* RCTOrientation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RCTOrientation;
+		};
 		8EA2F7D91DE1523300B869B1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 18ECA28FCE8041D49E147672 /* RCTDigitsManager.xcodeproj */;
@@ -317,6 +325,7 @@
 		8E53EFC01DF4B38700DB163F /* RNFLAnimatedImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNFLAnimatedImage.xcodeproj; path = "../node_modules/react-native-flanimatedimage/RNFLAnimatedImage/RNFLAnimatedImage.xcodeproj"; sourceTree = "<group>"; };
 		8E6CC2F01E174F5200E011F8 /* RNAppsFlyer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNAppsFlyer.xcodeproj; path = "../node_modules/react-native-appsflyer/ios/RNAppsFlyer.xcodeproj"; sourceTree = "<group>"; };
 		8E85290A1DE6098600885E81 /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
+		8E989EBF1E1E0DDC002DF655 /* RCTOrientation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTOrientation.xcodeproj; path = "../node_modules/react-native-orientation/iOS/RCTOrientation.xcodeproj"; sourceTree = "<group>"; };
 		8EA2F7BA1DE1509500B869B1 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		8EA2F7BB1DE1509500B869B1 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		8EA2F7BE1DE1516D00B869B1 /* DigitsKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DigitsKit.framework; sourceTree = "<group>"; };
@@ -355,6 +364,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E989EC51E1E0DEA002DF655 /* libRCTOrientation.a in Frameworks */,
 				8E6CC3111E174F6400E011F8 /* libRNAppsFlyer.a in Frameworks */,
 				8E2455D21E170DA300056131 /* iAd.framework in Frameworks */,
 				8E2455D01E170D8B00056131 /* AdSupport.framework in Frameworks */,
@@ -528,6 +538,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				8E989EBF1E1E0DDC002DF655 /* RCTOrientation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
 				00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */,
@@ -671,6 +682,14 @@
 			isa = PBXGroup;
 			children = (
 				8E85291A1DE6098700885E81 /* libRCTPushNotification.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8E989EC01E1E0DDC002DF655 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8E989EC41E1E0DDC002DF655 /* libRCTOrientation.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -824,6 +843,10 @@
 				{
 					ProductGroup = 00C302D41ABCB9D200DB3ED1 /* Products */;
 					ProjectRef = 00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */;
+				},
+				{
+					ProductGroup = 8E989EC01E1E0DDC002DF655 /* Products */;
+					ProjectRef = 8E989EBF1E1E0DDC002DF655 /* RCTOrientation.xcodeproj */;
 				},
 				{
 					ProductGroup = 8E85290B1DE6098600885E81 /* Products */;
@@ -1021,6 +1044,13 @@
 			fileType = archive.ar;
 			path = libRCTPushNotification.a;
 			remoteRef = 8E8529191DE6098700885E81 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8E989EC41E1E0DDC002DF655 /* libRCTOrientation.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTOrientation.a;
+			remoteRef = 8E989EC31E1E0DDC002DF655 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		8EA2F7DA1DE1523300B869B1 /* libRCTDigitsManager.a */ = {
@@ -1267,6 +1297,7 @@
 					"$(SRCROOT)/../node_modules/react-native/Libraries/PushNotificationIOS/**",
 					"$(SRCROOT)/../node_modules/react-native-branch/ios",
 					"$(SRCROOT)/../node_modules/react-native-code-push/ios/CodePush/**",
+					"$(SRCROOT)/../node_modules/react-native-orientation/iOS/RCTOrientation",
 				);
 				INFOPLIST_FILE = Posyt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -1311,6 +1342,7 @@
 					"$(SRCROOT)/../node_modules/react-native/Libraries/PushNotificationIOS/**",
 					"$(SRCROOT)/../node_modules/react-native-branch/ios",
 					"$(SRCROOT)/../node_modules/react-native-code-push/ios/CodePush/**",
+					"$(SRCROOT)/../node_modules/react-native-orientation/iOS/RCTOrientation",
 				);
 				INFOPLIST_FILE = Posyt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;

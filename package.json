@@ -36,6 +36,7 @@
     "react-native-invertible-scroll-view": "1.0.0",
     "react-native-lightbox": "0.6.0",
     "react-native-linear-gradient": "1.5.15",
+    "react-native-orientation": "github:yamill/react-native-orientation",
     "react-native-router-flux": "3.36.0",
     "react-native-safari-view": "1.2.0",
     "react-native-shimmer": "0.1.0",

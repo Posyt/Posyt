@@ -144,6 +144,7 @@ class Cards extends React.Component {
     const oldProps = { ...this.props };
     const card = oldProps.cards[0];
     const time = (new Date).getTime();
+    let reset = true;
     Animated.timing(
       this.state.panPush,
       {
@@ -173,11 +174,21 @@ class Cards extends React.Component {
         .then(proceed => {
           if (proceed) this.share(oldProps, time);
         });
+        this.state.panPush.setValue({ x: 0, y: 800 });
+        Animated.spring(
+          this.state.panPush,
+          { toValue: { x: 0, y: 0 } }
+        ).start(() => {
+          this.state.pan.setValue({ x: 0, y: 0 });
+        }); // reset the pan to 0,0
+        reset = false;
       }
       this.refs.card0.getWrappedInstance().resetPan(false);
-      this.props.dispatch(popTopCard());
-      this.state.pan.setValue({ x: 0, y: 0 });
-      this.state.panPush.setValue({ x: 0, y: 0 });
+      if (reset) {
+        this.props.dispatch(popTopCard());
+        this.state.pan.setValue({ x: 0, y: 0 });
+        this.state.panPush.setValue({ x: 0, y: 0 });
+      }
     });
   }
 
@@ -234,14 +245,14 @@ class Cards extends React.Component {
         this.currentProps = props;
         this.currentTime = time;
         // this.refs.afterShareModal.show('top');
-        this.modalSwipe('like');
+        // this.modalSwipe('like');
       } else {
-        this.props.dispatch(unpopLastCard());
+        // this.props.dispatch(unpopLastCard());
       }
       segment.track('Card Share', { channel, completed, error, _type: card._type, _id: card._id, canonicalUrl });
     })
     .catch((e) => {
-      this.props.dispatch(unpopLastCard());
+      // this.props.dispatch(unpopLastCard());
     });
   }
 
@@ -264,7 +275,6 @@ class Cards extends React.Component {
       } else {
         this.swipe(props, time, 'flag', reason);
       }
-      segment.track('Card Flag', { reason });
     });
   }
 
@@ -291,7 +301,7 @@ class Cards extends React.Component {
       expandedTime: this.calculateExpandedTime(props),
     };
     if (action === 'flag') attrs.reason = reason;
-    segment.track('Card Swipe', { _type: card._type, _id: card._id, action, readTime: attrs.readTime, expandedTime: attrs.expandedTime, reason });
+    segment.track(`Card Swipe ${_.startCase(action)}`, { _type: card._type, _id: card._id, action, readTime: attrs.readTime, expandedTime: attrs.expandedTime, reason });
     ddp.call('users/swipe', [attrs]).catch(err => {
       if (global.__DEV__) console.log('Swipe Error:', err);
       // TODO: show a subtle toast over the activity bar

@@ -1,16 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { View, StatusBar } from 'react-native';
 import {
   Scene,
   Router,
 } from 'react-native-router-flux';
+import Orientation from 'react-native-orientation';
 import Tabs from './Tabs';
 import ChatScreen from '../components/ChatScreen';
 import NoNetworkBar from '../components/NoNetworkBar';
 import NoServerBar from '../components/NoServerBar';
 import PushNotificationBar from '../components/PushNotificationBar';
 
-class App extends React.Component {
+class App extends Component {
+  componentWillMount() {
+    Orientation.lockToPortrait();
+  }
+
   render() {
     return (
       <View style={{ backgroundColor: 'black', flex: 1 }}>

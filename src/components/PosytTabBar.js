@@ -135,7 +135,7 @@ class PosytTabBar extends React.Component {
               this.refs.posytModal.hide("left", () => this.refs.feedsModal.getWrappedInstance().show("right"));
               segment.screen('Viewed Feeds Modal');
           }}>
-            <Text style={styles.modalText}>Feeds</Text>
+            <Text style={styles.modalText}>News Feeds</Text>
           </TouchableHighlight>
           <View style={styles.modalSeparator} />
           <View style={styles.modalCol}>
@@ -217,13 +217,25 @@ class PosytTabBar extends React.Component {
               <Text style={[styles.modalSubText, { fontWeight: "700", color: 'white' }]}>Login with</Text>
             </TouchableHighlight>
             <View style={styles.modalSeparator} />
-            <TouchableHighlight style={[styles.modalButton]} underlayColor={'#f5f5f5'} onPress={ () => { this.refs.loginModal.hide("top", this.loginWithFacebook) }}>
-              <Text style={[styles.modalText]}>Facebook</Text>
+            <TouchableHighlight style={[styles.modalButton, { height: 100 }]} underlayColor={'#f5f5f5'} onPress={ () => { this.refs.loginModal.hide("top", this.loginWithFacebook) }}>
+              <View>
+                <Text style={[styles.modalText]}>Facebook</Text>
+                <Text style={[styles.modalSubText, { fontWeight: '200', lineHeight: 15, color: '#333' }]}>this does not allow posyt{"\n"}to post to your facebook</Text>
+              </View>
+            </TouchableHighlight>
+            <View style={styles.modalSeparatorWithText}>
+              <Text style={styles.modalSeparatorText}>or</Text>
+            </View>
+            <TouchableHighlight style={[styles.modalButton, { height: 70 }]} underlayColor={'#f5f5f5'} onPress={this.showDigits}>
+              <View>
+                <Text style={[styles.modalText]}>Phone Number</Text>
+                {/* <Text style={[styles.modalSubText, { fontWeight: '200', lineHeight: 15, color: '#333' }]}>that's it</Text> */}
+              </View>
             </TouchableHighlight>
             <View style={styles.modalSeparator} />
-            <TouchableHighlight style={[styles.modalButton]} underlayColor={'#f5f5f5'} onPress={this.showDigits}>
-              <Text style={[styles.modalText]}>Phone Number</Text>
-            </TouchableHighlight>
+            <View style={[styles.modalButton, { height: 130, backgroundColor: '#111' }]}>
+              <Text style={[styles.modalSubText, { fontWeight: '600', lineHeight: 15, color: 'white', paddingTop: 1 }]}>On Posyt{"\n"}you control your identity{"\n"}and who you share it with{"\n"}we only ask for the bare-{"\n"}minimum to log you in</Text>
+            </View>
           </View>
         }
       </PosytModal>
@@ -417,6 +429,24 @@ const styles = StyleSheet.create({
   modalSeparator: {
     height: 1,
     backgroundColor: '#eee',
+  },
+  modalSeparatorWithText: {
+    borderTopWidth: 1,
+    borderTopColor: '#eee',
+    position: 'relative',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  modalSeparatorText: {
+    position: 'absolute',
+    top: -8,
+    left: 80,
+    width: 40,
+    textAlign: 'center',
+    fontSize: 14,
+    fontWeight: '400',
+    fontFamily: 'Rooney Sans',
+    backgroundColor: 'white',
   },
 });
 

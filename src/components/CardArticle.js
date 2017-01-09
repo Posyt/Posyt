@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import Lightbox from 'react-native-lightbox';
 import LinearGradient from 'react-native-linear-gradient';
 import FLAnimatedImage from 'react-native-flanimatedimage';
+import segment from '../lib/segment';
 import {
   topCardExpanded,
   topCardContracted,
@@ -134,7 +135,10 @@ class ArticleImage extends React.Component {
           <Lightbox
             style={styles.lightbox}
             activeProps={{ resizeMode: 'contain' }}
-            onOpen={() => this.setState({ open: true })}
+            onOpen={() => {
+              this.setState({ open: true });
+              segment.track('Card Press Article Image', { _id: article._id, title: article.title });
+            }}
             onClose={() => this.setState({ open: false })}
           >
             <Image
@@ -191,8 +195,10 @@ class CardArticle extends React.Component {
   }
 
   onPress() {
+    const { article } = this.props;
     openURL(articleURL(this.props.article), this.onDismissWebView.bind(this));
     this.props.dispatch(topCardExpanded());
+    segment.track('Card Press Article', { _id: article._id, title: article.title });
   }
 
   onDismissWebView() {
