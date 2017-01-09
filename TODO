@@ -61,6 +61,7 @@
 ✔ don't autolike on share @done(2017-01-08 01:15)
 ✔ switch feeds array on user to disabledFeeds. This way new feeds will be auto enabled without requiring a migration @done(2017-01-08 17:48)
 
+☐ eliminate duplicate cards - they don't pop up a lot, but they do pop up. Maybe store the last 20 most recent swipes in memory and don't render them...
 
 Staging
 ✔ meteor server @done(2016-12-13 21:57)

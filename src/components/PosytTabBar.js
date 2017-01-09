@@ -220,7 +220,7 @@ class PosytTabBar extends React.Component {
             <TouchableHighlight style={[styles.modalButton, { height: 100 }]} underlayColor={'#f5f5f5'} onPress={ () => { this.refs.loginModal.hide("top", this.loginWithFacebook) }}>
               <View>
                 <Text style={[styles.modalText]}>Facebook</Text>
-                <Text style={[styles.modalSubText, { fontWeight: '200', lineHeight: 15, color: '#333' }]}>we only need your profile{"\n"}we do not ask to post</Text>
+                <Text style={[styles.modalSubText, { fontWeight: '200', lineHeight: 15, color: '#333' }]}>this does not allow posyt{"\n"}to post to your facebook</Text>
               </View>
             </TouchableHighlight>
             <View style={styles.modalSeparatorWithText}>
