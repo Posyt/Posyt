@@ -63,6 +63,7 @@
 
 ☐ eliminate duplicate cards - they don't pop up a lot, but they do pop up. Maybe store the last 20 most recent swipes in memory and don't render them...
 ☐ add time ago to cards - created at
+☐ clicking a branch link with the app installed should open the app, but instead opens the app store
 
 Staging
 ✔ meteor server @done(2016-12-13 21:57)
