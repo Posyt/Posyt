@@ -45,3 +45,8 @@ If you like the new update please support Posyt by leaving a rating in the App S
 ## v1.0.1
 
 - Update App Store icon
+
+
+## v1.0.2
+
+- Change minimum iOS version from 9.3 to 9.0
