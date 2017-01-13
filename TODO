@@ -64,6 +64,7 @@
 ☐ eliminate duplicate cards - they don't pop up a lot, but they do pop up. Maybe store the last 20 most recent swipes in memory and don't render them...
 ☐ add time ago to cards - created at
 ☐ clicking a branch link with the app installed should open the app, but instead opens the app store
+☐ make sure add a username modal always shows if no username
 
 Staging
 ✔ meteor server @done(2016-12-13 21:57)
@@ -73,7 +74,7 @@ Staging
 ✔ Think of and create indexes in neo4j @done(2016-12-13 23:17)
 ✔ Document neo4j indexes in pm readme @done(2016-12-13 23:17)
 ✔ elasticsearch @done(2016-12-13 21:57)
-☐ segment
+✔ segment @done(2017-01-12 22:55)
 
 Prod
 ✔ mongo db @done(2017-01-03 01:14)
@@ -82,15 +83,15 @@ Prod
 ✔ meteor server @done(2017-01-03 01:14)
 ✔ scraper server @done(2017-01-03 01:14)
 ✔ segment - mixpanel, google @done(2017-01-03 01:54)
-☐ crashlytics
-☐ kadira
+✔ crashlytics @done(2017-01-12 22:55)
+✔ kadira @done(2017-01-12 22:55)
 ✔ appsflyer @done(2016-12-30 16:50)
 ✔ switch code push key to production key @done(2017-01-03 01:14)
-☐ update press page on site
+✔ update press page on site @done(2017-01-12 22:55)
 ☐ upate instagram, twitter, facebook
 ☐ make sure barnch is updated
-☐ make sure heroku production is up to date
-☐ fastlane
+✔ make sure heroku production is up to date @done(2017-01-12 22:56)
+✔ fastlane @done(2017-01-12 22:56)
 
 Submission
 ☐ Ad permissions https://support.appsflyer.com/hc/en-us/articles/207032086-New-Apple-IDFA-Guidelines-How-To-Submit-Your-iOS-App-With-IDFA
@@ -109,6 +110,7 @@ Eventually
 ☐ make login buttons more colorful
 ☐ add a modal before the login buttons introing posyt with a "Let's go!" button to kick it off
 ☐ use ML to detect spam with https://www.detextion.io/ or something similar
+☐ switch website frontend to next.js and add some apollo graphql schemas to the backend api for serving the website
 
 Maybe
 ☐ swtich node-ddp-client and maybe minimongo-cache out for react-native-meteor

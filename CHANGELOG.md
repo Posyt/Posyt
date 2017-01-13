@@ -40,3 +40,8 @@ After a much too long hiatus we're back!
     - Links open in browser when tapped
 
 If you like the new update please support Posyt by leaving a rating in the App Store.
+
+
+## v1.0.1
+
+- Update App Store icon
