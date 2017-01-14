@@ -23,6 +23,7 @@
     "moment-timezone": "0.5.7",
     "node-ddp-client": "1.0.1",
     "pluralize": "3.0.0",
+    "raven-js": "^3.9.1",
     "react": "15.3.2",
     "react-mixin": "3.0.5",
     "react-native": "0.36.0",

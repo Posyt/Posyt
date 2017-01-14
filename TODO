@@ -61,6 +61,8 @@
 ✔ don't autolike on share @done(2017-01-08 01:15)
 ✔ switch feeds array on user to disabledFeeds. This way new feeds will be auto enabled without requiring a migration @done(2017-01-08 17:48)
 
+✔ add sentry error tracking @done(2017-01-14 12:54)
+☐ fix digits in production - the keys / bundle ids might be off
 ☐ eliminate duplicate cards - they don't pop up a lot, but they do pop up. Maybe store the last 20 most recent swipes in memory and don't render them...
 ☐ add time ago to cards - created at
 ☐ clicking a branch link with the app installed should open the app, but instead opens the app store

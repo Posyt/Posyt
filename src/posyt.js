@@ -8,10 +8,16 @@ import codePush from 'react-native-code-push';
 import App from './containers/App';
 import {
   segmentWriteKey,
+  sentryPublicDSN,
 } from './lib/constants';
 import { store } from './lib/store';
 import { setPlatform } from './lib/actions';
 import segment from './lib/segment';
+import DeviceInfo from 'react-native-device-info';
+
+import Raven from 'raven-js';
+require('raven-js/plugins/react-native')(Raven);
+Raven.config(sentryPublicDSN, { release: DeviceInfo.getVersion() }).install();
 
 export default function posyt(platform) {
   class Posyt extends React.Component {

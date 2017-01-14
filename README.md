@@ -10,7 +10,7 @@
 
 ### Troubleshooting
 
-- Make sure the posytDomain in constants.js is set to `localhost` or the IP of your development machine
+- Make sure the `posytDomain` in `constants.js` is set to `localhost` or the IP of your development machine
 
 
 ## Releasing updates
@@ -20,10 +20,22 @@
 The default: (remember to update the CHANGELOG...)
 NOTE: release-react will bundle the main.jsbundle as well, so you don't need to run react-native bundle
 
-	code-push release-react Posyt ios -d "Production" -des "CHANGELOG..." --rollout "100%"
+	code-push release-react Posyt ios -des "CHANGELOG..." --rollout "100%" -b main.jsbundle -s main.jsbundle.map
+
+Test on device then promote to production:
+
+  code-push promote
+
+Add the source map to sentry https://github.com/getsentry/raven-js/blob/203dd7f6e61bf7c50f7fb2b311ecae264098e343/docs/integrations/react-native.rst#generating-and-uploading-source-filessource-maps
+
+To see how many people have installed the latest version:
+
+  code-push deployment ls Posyt
+
+More CLI cmds https://github.com/Microsoft/code-push/blob/master/cli/README.md
 
 
-## Packaging
+## Packaging - DEPRECATED in favor of code-push
 
 	XCode Product > Scheme > Edit Scheme -- set Build Configuration to Release and uncheck debug
 	XCode Click the Posyt project in left bar > Build Settings -- in Code Signing change the profile to prod and the identities to distrubution
