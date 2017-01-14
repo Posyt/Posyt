@@ -62,6 +62,7 @@
 ✔ switch feeds array on user to disabledFeeds. This way new feeds will be auto enabled without requiring a migration @done(2017-01-08 17:48)
 
 ✔ add sentry error tracking @done(2017-01-14 12:54)
+☐ fix code-push - updates are not getting synced to devices, staging is not automated
 ☐ fix digits in production - the keys / bundle ids might be off
 ☐ don't register taps on fast swipes - sometimes the browser opens on a fast swipe
 ☐ add a toggle all feeds to toggle them all on or off
