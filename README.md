@@ -20,11 +20,11 @@
 The default: (remember to update the CHANGELOG...)
 NOTE: release-react will bundle the main.jsbundle as well, so you don't need to run react-native bundle
 
-	code-push release-react Posyt ios -des "CHANGELOG..." --rollout "100%" -b main.jsbundle -s main.jsbundle.map
+	code-push release-react Posyt ios --des "CHANGELOG..." --rollout "100%" -s releases/main_ios_$(date +"%Y%m%d%H%M%S").jsbundle.map
 
 Test on device then promote to production:
 
-  code-push promote
+  code-push promote Posyt Staging Production
 
 Add the source map to sentry https://github.com/getsentry/raven-js/blob/203dd7f6e61bf7c50f7fb2b311ecae264098e343/docs/integrations/react-native.rst#generating-and-uploading-source-filessource-maps
 

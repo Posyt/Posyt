@@ -63,6 +63,8 @@
 
 ✔ add sentry error tracking @done(2017-01-14 12:54)
 ☐ fix digits in production - the keys / bundle ids might be off
+☐ don't register taps on fast swipes - sometimes the browser opens on a fast swipe
+☐ add a toggle all feeds to toggle them all on or off
 ☐ eliminate duplicate cards - they don't pop up a lot, but they do pop up. Maybe store the last 20 most recent swipes in memory and don't render them...
 ☐ add time ago to cards - created at
 ☐ clicking a branch link with the app installed should open the app, but instead opens the app store
