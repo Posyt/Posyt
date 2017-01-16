@@ -41,6 +41,12 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (Digits *)sharedInstance;
 
+
+/**
+ *  Returns YES if there is a valid Digits session.
+ */
++ (BOOL)isLoggedIn;
+
 /**
  *  Start Digits with your consumer key and secret. These will override any credentials
  *  present in your applications Info.plist.
@@ -134,8 +140,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Creates an instance of a DGTContactsFetcher, which is used for fetching contact information.
- *  This method will return nil if there is no valid digits session. this is an advanced feature 
- *  providing direct access to contact data, and is not required when accessing Digits views.
+ *  This is an advanced feature providing direct access to contact data, and is not required when 
+ *  accessing Digits views.
  */
 - (DGTContactsFetcher *)createContactsFetcher __TVOS_UNAVAILABLE;
 

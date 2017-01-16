@@ -8,13 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSUInteger, DGTInviteCandidateState) {
-    DGTInviteCondidateInAppState,  // contact is already using the app
-    DGTInviteCondidateInvitableState, // contact is elegible for invitation
-    DGTInviteCondidateInvitePendingState  // contact has been sent an invitation, but the candidate has not signed in with digits yet
-};
-
-
 // The data model for a single contact used in friends invitation flow
 @interface DGTAddressBookContact : NSObject
 NS_ASSUME_NONNULL_BEGIN
@@ -40,16 +33,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, nullable) NSString *userID;
 
 /**
- *  The current state of the contact.
+ *  A flag to indicate if this contact entry has been invited by the current user or not
  */
-@property (nonatomic) DGTInviteCandidateState candidateState; // not read only since it may gets updated asynchronously different
-                                                              // from instiation flow
+@property (nonatomic) BOOL invited;
+
 /**
  *  Initializes an instance of DGTAddressBook Contact with a display name and phone number.
- *
- *  @param (required) displayName
- *  @param (required) abNumber
- */
+ * */
 - (instancetype)initWithName:(NSString *)displayName
        numberFromAddressBook:(NSString *)phoneNumber;
 
