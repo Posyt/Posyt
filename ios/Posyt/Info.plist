@@ -31,7 +31,7 @@
 	<key>CFBundleVersion</key>
 	<string>18</string>
 	<key>CodePushDeploymentKey</key>
-	<string>Rlb4SNsxmxQ4zL1hdYJtf6bynIBFEJqvI-CZW</string>
+	<string>$(CODEPUSH_KEY)</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -48,9 +48,9 @@
 				<key>KitInfo</key>
 				<dict>
 					<key>consumerKey</key>
-					<string>5Azg6Ejw3CQr1oHbrJTVU6vxy</string>
+					<string>$(DIGITS_CONSUMER_KEY)</string>
 					<key>consumerSecret</key>
-					<string>MYslkeaZTtCr5hkcXBCsKS5bX0Xa6tVASXL6Sqmws9ZnrDAQvg</string>
+					<string>$(DIGITS_SECRET_KEY)</string>
 				</dict>
 				<key>KitName</key>
 				<string>Digits</string>
@@ -86,7 +86,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>You control which photos get uploaded and where they're used</string>
+	<string>You control which photos get uploaded and where they&apos;re used</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>rooney sans black italic.otf</string>

@@ -1,4 +1,7 @@
 import appsFlyer from 'react-native-appsflyer';
+import { Answers, Crashlytics } from 'react-native-fabric';
+import { AppEventsLogger } from 'react-native-fbsdk';
+import bugsnag from './bugsnag';
 import {
   appId,
   appsflyerDevKey,
@@ -32,6 +35,9 @@ class Segment {
     appsFlyer.setCustomerUserId(userId, (success) => {
       if (global.__DEV__ && this._debug) console.log('AppsFlyer setCustomerUserId success: ', userId);
     });
+    Crashlytics.setUserIdentifier(userId);
+    if (traits.username) Crashlytics.setUserName(traits.username);
+    bugsnag.setUser(userId, traits.username, null);
   };
 
   track = (event, properties = {}, options = {}) => {
@@ -45,6 +51,9 @@ class Segment {
     }, (err) => {
       if (global.__DEV__) console.log('AppsFlyer Failed to track: ', err);
     });
+    Answers.logCustom(event, properties);
+    AppEventsLogger.logEvent(event, properties);
+    bugsnag.leaveBreadcrumb(event, properties);
   };
 
   screen = (event, properties = {}, options = {}) => {
@@ -53,6 +62,7 @@ class Segment {
     }
 
     rnSegment.screen(event, properties, options);
+    bugsnag.leaveBreadcrumb(event, properties);
   };
 
   alias = (newid, options = {}) => {

@@ -10,7 +10,7 @@ import {
 import { ddp } from '../lib/DDP';
 import PosytModal from './PosytModal';
 import segment from '../lib/segment';
-
+import bugsnag from '../lib/bugsnag';
 
 const styles = StyleSheet.create({
   modal: {
@@ -83,12 +83,13 @@ class UsernameModal extends React.Component {
     if (!valid) return this.refs.usernameModal.shake();
     this.setState({ error: null, saving: true })
     ddp.call("users/username/set", [this.state.username]).catch(err => {
-      this.setState({ error: "Invalid", saving: false })
+      this.setState({ error: "Invalid", saving: false });
+      bugsnag.notify(err);
     }).then(res => {
-      this.setState({ error: null, saving: false, saved: true })
+      this.setState({ error: null, saving: false, saved: true });
       segment.track('Changed Username');
-      this.refs.usernameModal.hide()
-    })
+      this.refs.usernameModal.hide();
+    });
   }
 
   onChangeText(text) {

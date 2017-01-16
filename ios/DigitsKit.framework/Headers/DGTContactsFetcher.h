@@ -26,11 +26,14 @@ typedef void (^DGTContactFetchCompletionBlock)(NSArray<DGTAddressBookContact *> 
 @property (nonatomic, strong) NSArray <DGTAddressBookContact *> *contacts;
 
 /**
- *  Fetches a list of contacts from the address book and their states from the digits api.
- *  The result is stored in contacts after the fetch request is made and the same data is
- *  also available in the parameters of DGTContactFetchCompletionBlock. The contacts
- *  parameter in DGTContactFetchCompletionBlock contains a list of contacts with either
- *  a pending, in app or invitable state. If the user has not granted contacts permissions, 
+ *  Fetches a list of contacts from the address book and update them with digits server side info on whether 
+ *  this is user is on digits for this app (userId field populated) and if this contact has been invited
+ *  by the current digits user (invited field). The result is stored in contacts after the fetch request is 
+ *  made and the same data is also available in the 'contacts' parameters of DGTContactFetchCompletionBlock. 
+ *  If there is no valid Digits session, then the contacts fetched will be the same as from the address book
+ *  with no additional state information.
+ *
+ *  If the user has not granted contacts permissions,
  *  the completion block will pass back an error. The completion block is invoked on the main queue.
  *
  *  @param shouldFetchInAppContactsOnly - A boolean flag that determines if only in app contacts

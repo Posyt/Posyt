@@ -2,6 +2,7 @@ import _ from 'lodash';
 import { Actions } from 'react-native-router-flux';
 import { ddp } from './DDP';
 import segment from './segment';
+import bugsnag from './bugsnag';
 
 /*
  * action types
@@ -279,6 +280,7 @@ export function sendMessage(attributes, opts = {}) {
         dispatch(messageCreateFailed(attrs));
         dispatch(updateChat());
         segment.track('Message Send 2 - Save Failed', { ...attrs, error: err.reason });
+        bugsnag.notify(err);
       }, 500);
     });
   };

@@ -56,7 +56,8 @@
 #import "DGTSession.h"
 #import "DGTSessionUpdateDelegate.h"
 #import "Digits.h"
-
+#import "DGTBranch.h"
+#import "DGTInvites.h"
 
 /**
  *  `DigitsKit` can be used as an element in the array passed to the `+[Fabric with:]`.

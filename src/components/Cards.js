@@ -4,15 +4,13 @@ import {
   View,
   Animated,
   Dimensions,
-  TouchableHighlight,
-  Image,
-  Text,
   ActionSheetIOS,
   PushNotificationIOS,
   AsyncStorage,
   Alert,
 } from 'react-native';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import {
   popTopCard,
   unpopLastCard,
@@ -21,21 +19,18 @@ import {
   makeUriHttps,
 } from '../lib/utils';
 import {
-  red,
-  green,
   black,
   posytUri,
-} from '../lib/constants.js';
+} from '../lib/constants';
 import {
   articleTitle,
   articleDescription,
 } from '../lib/articleHelpers';
-import PosytModal from './PosytModal';
 import Card from './Card';
 import { ddp } from '../lib/DDP';
 import { deepLinker } from '../lib/DeepLinker';
 import segment from '../lib/segment';
-import _ from 'lodash';
+import bugsnag from '../lib/bugsnag';
 
 const { width } = Dimensions.get('window');
 const THRESHOLD = width / 4;
@@ -252,6 +247,7 @@ class Cards extends React.Component {
       segment.track('Card Share', { channel, completed, error, _type: card._type, _id: card._id, canonicalUrl });
     })
     .catch((e) => {
+      bugsnag.notify(e);
       // this.props.dispatch(unpopLastCard());
     });
   }
@@ -282,6 +278,7 @@ class Cards extends React.Component {
     if (card._id === 'intro5') {
       ddp.call('users/complete/hasCompletedSwipeIntro', []).catch(err => {
         if (global.__DEV__) console.log('Swipe Intro Error:', err);
+        bugsnag.notify(err);
       });
     }
   }
@@ -305,6 +302,7 @@ class Cards extends React.Component {
     ddp.call('users/swipe', [attrs]).catch(err => {
       if (global.__DEV__) console.log('Swipe Error:', err);
       // TODO: show a subtle toast over the activity bar
+      bugsnag.notify(err)
     });
   }
 

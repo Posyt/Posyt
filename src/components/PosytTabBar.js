@@ -30,6 +30,7 @@ import FeedsModal from './FeedsModal';
 import PointsModal from './PointsModal';
 import InviteModal from './InviteModal';
 import { promptForFeedback } from '../lib/feedback';
+import bugsnag from '../lib/bugsnag';
 
 class PosytTabBar extends React.Component {
   constructor(props) {
@@ -102,6 +103,7 @@ class PosytTabBar extends React.Component {
   handleDigitsError = (err) => {
     this.setState({ showAnotherModal: false });
     if (global.__DEV__) console.warn('Digits login failed', err);
+    bugsnag.notify(err);
   }
 
   handleDigitsLogin = (credentials) => {

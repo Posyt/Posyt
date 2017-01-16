@@ -10,6 +10,7 @@ import {
 } from '../lib/constants';
 import { ddp } from '../lib/DDP';
 import PosytModal from './PosytModal';
+import bugsnag from '../lib/bugsnag';
 
 const styles = StyleSheet.create({
   modal: {
@@ -80,6 +81,7 @@ class FeedsModal extends React.Component {
       if (global.__DEV__) console.log("Error setting feeds:", err);
       this.setState({ sources }); // rollback
       Alert.alert('That\'s weird', 'We could not save this change to the server. Please try again later. The server is probably undergoing maintinence.')
+      bugsnag.notify(err);
     });
   }
 

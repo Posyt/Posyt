@@ -23,6 +23,7 @@ import {
 import { store } from './store';
 import { deepLinker } from './DeepLinker';
 import segment from './segment';
+import bugsnag from './bugsnag';
 
 class DDP {
   constructor() {
@@ -226,6 +227,7 @@ class DDP {
         this.authToken = null;
         this.authTokenExpires = null;
         store.dispatch(loginFailure(error));
+        bugsnag.notify(error);
 
         reject(error);
       });
@@ -250,6 +252,7 @@ class DDP {
       }).catch((err) => {
         if (global.__DEV__) console.log('Log out err', err);
         store.dispatch(logoutFailure(err));
+        bugsnag.notify(err);
         reject(err);
       });
     });

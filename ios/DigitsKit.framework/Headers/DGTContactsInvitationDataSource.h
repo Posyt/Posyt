@@ -67,7 +67,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  Returns the associated address book contact for the given index path. This method
  *  returns nil if the index is out of bounds.
  *
- *  @param (required) An index within the range of the contacts array.
+ *  @param index An index within the range of the contacts array.
  */
 - (DGTAddressBookContact *)contactAtIndex:(NSInteger)index;
 
