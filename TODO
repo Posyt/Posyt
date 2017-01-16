@@ -116,6 +116,7 @@ Eventually
 ☐ add a modal before the login buttons introing posyt with a "Let's go!" button to kick it off
 ☐ use ML to detect spam with https://www.detextion.io/ or something similar
 ☐ switch website frontend to next.js and add some apollo graphql schemas to the backend api for serving the website
+☐ enable dynamic user specific beta releases https://github.com/Microsoft/react-native-code-push#dynamic-deployment-assignment
 
 Maybe
 ☐ swtich node-ddp-client and maybe minimongo-cache out for react-native-meteor

@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 import { Provider } from 'react-redux';
 import codePush from 'react-native-code-push';
+import DeviceInfo from 'react-native-device-info';
 import App from './containers/App';
 import {
   segmentWriteKey,
@@ -13,7 +14,6 @@ import {
 import { store } from './lib/store';
 import { setPlatform } from './lib/actions';
 import segment from './lib/segment';
-import DeviceInfo from 'react-native-device-info';
 
 import Raven from 'raven-js';
 require('raven-js/plugins/react-native')(Raven);
@@ -37,5 +37,6 @@ export default function posyt(platform) {
     }
   }
 
-  AppRegistry.registerComponent('Posyt', () => codePush(Posyt));
+  const codePushOptions = { checkFrequency: codePush.CheckFrequency.ON_APP_RESUME };
+  AppRegistry.registerComponent('Posyt', () => codePush(codePushOptions)(Posyt));
 }

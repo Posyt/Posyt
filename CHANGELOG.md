@@ -50,3 +50,8 @@ If you like the new update please support Posyt by leaving a rating in the App S
 ## v1.0.2
 
 - Change minimum iOS version from 9.3 to 9.0
+
+### internal
+
+- update codepush to v1.16.1-beta
+- add Staging build for easy switching between Debug, Release, and Staging env vars
