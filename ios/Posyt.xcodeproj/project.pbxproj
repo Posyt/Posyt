@@ -48,6 +48,7 @@
 		8EA2F7C11DE1516D00B869B1 /* DigitsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA2F7BE1DE1516D00B869B1 /* DigitsKit.framework */; };
 		8EA2F7C21DE1516D00B869B1 /* DigitsKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8EA2F7BF1DE1516D00B869B1 /* DigitsKitResources.bundle */; };
 		8EA2F7C31DE1516D00B869B1 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA2F7C01DE1516D00B869B1 /* TwitterCore.framework */; };
+		8ECF02461E2C7C65001BAD24 /* libSMXCrashlytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ECF02451E2C7C4B001BAD24 /* libSMXCrashlytics.a */; };
 		8ED678F61DD7805800125C26 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ED678F21DD7805800125C26 /* Bolts.framework */; };
 		8ED678F71DD7805800125C26 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ED678F31DD7805800125C26 /* FBSDKCoreKit.framework */; };
 		8ED678F81DD7805800125C26 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ED678F41DD7805800125C26 /* FBSDKLoginKit.framework */; };
@@ -227,6 +228,13 @@
 			remoteGlobalIDString = 4D8BECAE1BDFF0FB000A1462;
 			remoteInfo = RCTDigitsManager;
 		};
+		8ECF02441E2C7C4B001BAD24 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8ECF02401E2C7C4B001BAD24 /* SMXCrashlytics.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D8D9DB831C6D03DB009FBC0E;
+			remoteInfo = SMXCrashlytics;
+		};
 		8EDE97F61DD50B600005DB23 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */;
@@ -331,6 +339,7 @@
 		8EA2F7BE1DE1516D00B869B1 /* DigitsKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DigitsKit.framework; sourceTree = "<group>"; };
 		8EA2F7BF1DE1516D00B869B1 /* DigitsKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DigitsKitResources.bundle; path = DigitsKit.framework/Versions/A/Resources/DigitsKitResources.bundle; sourceTree = "<group>"; };
 		8EA2F7C01DE1516D00B869B1 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
+		8ECF02401E2C7C4B001BAD24 /* SMXCrashlytics.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SMXCrashlytics.xcodeproj; path = "/Users/smothers/code/Posyt/node_modules/react-native-flanimatedimage/RNFLAnimatedImage/../../react-native-fabric/ios/SMXCrashlytics.xcodeproj"; sourceTree = "<absolute>"; };
 		8ED678F21DD7805800125C26 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../../../Documents/FacebookSDK/Bolts.framework; sourceTree = "<group>"; };
 		8ED678F31DD7805800125C26 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		8ED678F41DD7805800125C26 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -364,6 +373,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8ECF02461E2C7C65001BAD24 /* libSMXCrashlytics.a in Frameworks */,
 				8E989EC51E1E0DEA002DF655 /* libRCTOrientation.a in Frameworks */,
 				8E6CC3111E174F6400E011F8 /* libRNAppsFlyer.a in Frameworks */,
 				8E2455D21E170DA300056131 /* iAd.framework in Frameworks */,
@@ -561,6 +571,7 @@
 				7775032A38DA409E81ED1DBA /* CodePush.xcodeproj */,
 				8E53EFC01DF4B38700DB163F /* RNFLAnimatedImage.xcodeproj */,
 				8E6CC2F01E174F5200E011F8 /* RNAppsFlyer.xcodeproj */,
+				8ECF02401E2C7C4B001BAD24 /* SMXCrashlytics.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -698,6 +709,14 @@
 			isa = PBXGroup;
 			children = (
 				8EA2F7DA1DE1523300B869B1 /* libRCTDigitsManager.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8ECF02411E2C7C4B001BAD24 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8ECF02451E2C7C4B001BAD24 /* libSMXCrashlytics.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -896,6 +915,10 @@
 					ProductGroup = 8E0915DA1DDBA93F00FD5BDB /* Products */;
 					ProjectRef = 057E2B13080F4D0099A15E05 /* SafariViewManager.xcodeproj */;
 				},
+				{
+					ProductGroup = 8ECF02411E2C7C4B001BAD24 /* Products */;
+					ProjectRef = 8ECF02401E2C7C4B001BAD24 /* SMXCrashlytics.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -1058,6 +1081,13 @@
 			fileType = archive.ar;
 			path = libRCTDigitsManager.a;
 			remoteRef = 8EA2F7D91DE1523300B869B1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8ECF02451E2C7C4B001BAD24 /* libSMXCrashlytics.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSMXCrashlytics.a;
+			remoteRef = 8ECF02441E2C7C4B001BAD24 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		8EDE97F71DD50B600005DB23 /* libRCTImage-tvOS.a */ = {

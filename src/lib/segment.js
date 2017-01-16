@@ -1,4 +1,6 @@
 import appsFlyer from 'react-native-appsflyer';
+import { Answers, Crashlytics } from 'react-native-fabric';
+import { AppEventsLogger } from 'react-native-fbsdk';
 import {
   appId,
   appsflyerDevKey,
@@ -32,6 +34,8 @@ class Segment {
     appsFlyer.setCustomerUserId(userId, (success) => {
       if (global.__DEV__ && this._debug) console.log('AppsFlyer setCustomerUserId success: ', userId);
     });
+    Crashlytics.setUserIdentifier(userId);
+    if (traits.username) Crashlytics.setUserName(traits.username);
   };
 
   track = (event, properties = {}, options = {}) => {
@@ -45,6 +49,8 @@ class Segment {
     }, (err) => {
       if (global.__DEV__) console.log('AppsFlyer Failed to track: ', err);
     });
+    Answers.logCustom(event, properties);
+    AppEventsLogger.logEvent(event, properties);
   };
 
   screen = (event, properties = {}, options = {}) => {
