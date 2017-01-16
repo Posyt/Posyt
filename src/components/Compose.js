@@ -30,6 +30,8 @@ import _ from 'lodash';
 import TimerMixin from 'react-timer-mixin';
 import reactMixin from 'react-mixin';
 import segment from '../lib/segment';
+import bugsnag from '../lib/bugsnag';
+
 const { height, width } = Dimensions.get('window');
 
 const STARTING_VISIBLE_HEIGHT = 70;
@@ -465,6 +467,7 @@ class Compose extends React.Component {
       // this.setState({ saving: false });
       // Alert.alert('Error', err.reason, [{ text: 'OK' }]);
       segment.track('Posyt Create - Saving 2 - Error', { error: err.reason });
+      bugsnag.notify(err);
     });
   }
 
