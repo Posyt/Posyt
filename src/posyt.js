@@ -12,6 +12,7 @@ import {
   segmentWriteKey,
   sentryPublicDSN,
 } from './lib/constants';
+import './lib/bugsnag';
 import { store } from './lib/store';
 import { setPlatform } from './lib/actions';
 import segment from './lib/segment';

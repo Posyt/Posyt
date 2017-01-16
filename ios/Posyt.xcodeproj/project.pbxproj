@@ -49,6 +49,7 @@
 		8EA2F7C21DE1516D00B869B1 /* DigitsKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8EA2F7BF1DE1516D00B869B1 /* DigitsKitResources.bundle */; };
 		8EA2F7C31DE1516D00B869B1 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA2F7C01DE1516D00B869B1 /* TwitterCore.framework */; };
 		8ECF02461E2C7C65001BAD24 /* libSMXCrashlytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ECF02451E2C7C4B001BAD24 /* libSMXCrashlytics.a */; };
+		8ECF02511E2C82E2001BAD24 /* libBugsnagReactNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ECF024E1E2C82B6001BAD24 /* libBugsnagReactNative.a */; };
 		8ED678F61DD7805800125C26 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ED678F21DD7805800125C26 /* Bolts.framework */; };
 		8ED678F71DD7805800125C26 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ED678F31DD7805800125C26 /* FBSDKCoreKit.framework */; };
 		8ED678F81DD7805800125C26 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ED678F41DD7805800125C26 /* FBSDKLoginKit.framework */; };
@@ -235,6 +236,13 @@
 			remoteGlobalIDString = D8D9DB831C6D03DB009FBC0E;
 			remoteInfo = SMXCrashlytics;
 		};
+		8ECF024D1E2C82B6001BAD24 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8ECF02471E2C82B6001BAD24 /* BugsnagReactNative.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8AD256131D6DE5F600C7D842;
+			remoteInfo = BugsnagReactNative;
+		};
 		8EDE97F61DD50B600005DB23 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */;
@@ -340,6 +348,7 @@
 		8EA2F7BF1DE1516D00B869B1 /* DigitsKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DigitsKitResources.bundle; path = DigitsKit.framework/Versions/A/Resources/DigitsKitResources.bundle; sourceTree = "<group>"; };
 		8EA2F7C01DE1516D00B869B1 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
 		8ECF02401E2C7C4B001BAD24 /* SMXCrashlytics.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SMXCrashlytics.xcodeproj; path = "/Users/smothers/code/Posyt/node_modules/react-native-flanimatedimage/RNFLAnimatedImage/../../react-native-fabric/ios/SMXCrashlytics.xcodeproj"; sourceTree = "<absolute>"; };
+		8ECF02471E2C82B6001BAD24 /* BugsnagReactNative.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BugsnagReactNative.xcodeproj; path = "../node_modules/bugsnag-react-native/cocoa/BugsnagReactNative.xcodeproj"; sourceTree = "<group>"; };
 		8ED678F21DD7805800125C26 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../../../Documents/FacebookSDK/Bolts.framework; sourceTree = "<group>"; };
 		8ED678F31DD7805800125C26 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		8ED678F41DD7805800125C26 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -373,6 +382,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8ECF02511E2C82E2001BAD24 /* libBugsnagReactNative.a in Frameworks */,
 				8ECF02461E2C7C65001BAD24 /* libSMXCrashlytics.a in Frameworks */,
 				8E989EC51E1E0DEA002DF655 /* libRCTOrientation.a in Frameworks */,
 				8E6CC3111E174F6400E011F8 /* libRNAppsFlyer.a in Frameworks */,
@@ -572,6 +582,7 @@
 				8E53EFC01DF4B38700DB163F /* RNFLAnimatedImage.xcodeproj */,
 				8E6CC2F01E174F5200E011F8 /* RNAppsFlyer.xcodeproj */,
 				8ECF02401E2C7C4B001BAD24 /* SMXCrashlytics.xcodeproj */,
+				8ECF02471E2C82B6001BAD24 /* BugsnagReactNative.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -721,6 +732,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		8ECF02481E2C82B6001BAD24 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8ECF024E1E2C82B6001BAD24 /* libBugsnagReactNative.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		8ED678F11DD77A6600125C26 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -827,6 +846,10 @@
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = 8ECF02481E2C82B6001BAD24 /* Products */;
+					ProjectRef = 8ECF02471E2C82B6001BAD24 /* BugsnagReactNative.xcodeproj */;
+				},
 				{
 					ProductGroup = 8E09158E1DDB9D6B00FD5BDB /* Products */;
 					ProjectRef = D8D81F92C74F41F793BA7CA8 /* BVLinearGradient.xcodeproj */;
@@ -1090,6 +1113,13 @@
 			remoteRef = 8ECF02441E2C7C4B001BAD24 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		8ECF024E1E2C82B6001BAD24 /* libBugsnagReactNative.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libBugsnagReactNative.a;
+			remoteRef = 8ECF024D1E2C82B6001BAD24 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		8EDE97F71DD50B600005DB23 /* libRCTImage-tvOS.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1328,6 +1358,8 @@
 					"$(SRCROOT)/../node_modules/react-native-branch/ios",
 					"$(SRCROOT)/../node_modules/react-native-code-push/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-orientation/iOS/RCTOrientation",
+					"$(SRCROOT)/../node_modules/react-native-fabric/ios/**",
+					"$(SRCROOT)/../node_modules/bugsnag-react-native/cocoa/**",
 				);
 				INFOPLIST_FILE = Posyt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1373,6 +1405,8 @@
 					"$(SRCROOT)/../node_modules/react-native-branch/ios",
 					"$(SRCROOT)/../node_modules/react-native-code-push/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-orientation/iOS/RCTOrientation",
+					"$(SRCROOT)/../node_modules/react-native-fabric/ios/**",
+					"$(SRCROOT)/../node_modules/bugsnag-react-native/cocoa/**",
 				);
 				INFOPLIST_FILE = Posyt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1569,6 +1603,8 @@
 					"$(SRCROOT)/../node_modules/react-native-branch/ios",
 					"$(SRCROOT)/../node_modules/react-native-code-push/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-orientation/iOS/RCTOrientation",
+					"$(SRCROOT)/../node_modules/react-native-fabric/ios/**",
+					"$(SRCROOT)/../node_modules/bugsnag-react-native/cocoa/**",
 				);
 				INFOPLIST_FILE = Posyt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

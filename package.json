@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "buffer": "5.0.0",
+    "bugsnag-react-native": "^1.2.4",
     "linkify-it": "2.0.2",
     "lodash": "4.16.5",
     "minimongo-cache": "0.0.49",

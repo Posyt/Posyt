@@ -19,6 +19,7 @@ export const appId = (global.__DEV__ ? '' : '1037842845');
 export const segmentWriteKey = (global.__DEV__ ? 'mATdPTIQxyMk6wCtSJH8iXdJp3PTcF7K' : 'ASBKWL2TC6rtcrpGUAPzFz51kGji79kV');
 export const appsflyerDevKey = (global.__DEV__ ? '' : 'tCS4w2zCJNCPxMx8FHjYeL');
 export const sentryPublicDSN = (global.__DEV__ ? '' : 'https://a0392b7a67f84bab9191cc3162ab0b62@sentry.io/129274');
+export const bugsnagKey = (global.__DEV__ ? 'bf9abc670731967f0941a94d7fb82ee0' : '1198ce8497fed00f630cc1cb74cb1e3f');
 
 /*
  * sources
