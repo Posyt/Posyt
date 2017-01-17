@@ -58,3 +58,9 @@ If you like the new update please support Posyt by leaving a rating in the App S
 - add Staging build for easy switching between Debug, Release, and Staging env vars
 - add bugsnag
 - add sentry
+
+
+## v1.0.3
+
+- Login bug fix
+- Add a switch to toggle all feeds on/off
