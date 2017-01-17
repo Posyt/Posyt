@@ -74,10 +74,10 @@ class PointsModal extends React.Component {
             <Text style={[styles.modalSubText, { fontWeight: '400', textAlign: 'right' }]}>✏️ write a posyt 👉 +1</Text>
           </Shimmer>
           <Shimmer pauseDuration={4500} speed={100} animationOpacity={0.4}>
-            <Text style={[styles.modalSubText, { fontWeight: '400', textAlign: 'right' }]}>💚 get a like 👉 +1</Text>
+            <Text style={[styles.modalSubText, { fontWeight: '400', textAlign: 'right' }]}>👍 get a like 👉 +1</Text>
           </Shimmer>
           <Shimmer pauseDuration={4500} speed={100} animationOpacity={0.4}>
-            <Text style={[styles.modalSubText, { fontWeight: '400', textAlign: 'right' }]}>🚩 get flagged 👉 -1</Text>
+            <Text style={[styles.modalSubText, { fontWeight: '400', textAlign: 'right' }]}>👮 get reported 👉 -1</Text>
           </Shimmer>
         </View>
         <View style={styles.modalSeparator} />
