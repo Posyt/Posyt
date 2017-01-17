@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableHighlight, ScrollView, Alert } from 'react-native';
+import { StyleSheet, View, Text, TouchableHighlight, Alert, Switch, Animated, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import LinearGradient from 'react-native-linear-gradient';
@@ -7,6 +7,7 @@ import {
   sources as allSources,
   grey,
   lightGrey,
+  blue,
 } from '../lib/constants';
 import { ddp } from '../lib/DDP';
 import PosytModal from './PosytModal';
@@ -45,9 +46,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#eee',
   },
   scrollView: {
-    height: 290,
+    height: 240,
   },
   scrollViewBottomPadding: {
+    height: 50,
+  },
+  gradientWrap: {
+    position: 'absolute',
+    bottom: 50,
+    left: 0,
+    right: 0,
     height: 50,
   },
   gradient: {
@@ -57,6 +65,18 @@ const styles = StyleSheet.create({
     right: 0,
     height: 50,
   },
+  bottomWrap: {
+    flex: 1,
+    height: 50,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    borderTopWidth: 1,
+    borderTopColor: '#eee',
+    paddingLeft: 15,
+    paddingRight: 10,
+    backgroundColor: 'white',
+  },
 });
 
 class FeedsModal extends React.Component {
@@ -64,6 +84,7 @@ class FeedsModal extends React.Component {
     super(props);
     this.state = {
       sources: [...allSources],
+      scrollY: new Animated.Value(0),
     };
     this.show = this.show.bind(this);
   }
@@ -85,6 +106,17 @@ class FeedsModal extends React.Component {
     });
   }
 
+  toggleAll = (on) => {
+    const disabledSources = on ? [] : allSources;
+    this.setState({ sources: _.difference(allSources, disabledSources) });
+    ddp.call("users/disabledSources/set", [disabledSources]).catch(err => {
+      if (global.__DEV__) console.log("Error setting feeds:", err);
+      this.setState({ sources }); // rollback
+      Alert.alert('That\'s weird', 'We could not save this change to the server. Please try again later. The server is probably undergoing maintinence.')
+      bugsnag.notify(err);
+    });
+  }
+
   componentWillReceiveProps(nextProps) {
     if (!this.props.currentUser || !nextProps.currentUser ||
       this.props.currentUser.profile.disabledSources !== nextProps.currentUser.profile.disabledSources) {
@@ -94,7 +126,17 @@ class FeedsModal extends React.Component {
   }
 
   render() {
-    const { sources } = this.state;
+    const { sources, scrollY } = this.state;
+    const toggledAny = sources.length > 0;
+
+    const gradientAnim = {
+      bottom: scrollY.interpolate({
+        inputRange: [0, 50],
+        outputRange: [50, 0],
+        extrapolate: 'clamp',
+      }),
+    };
+
     return (
       <PosytModal key="feedsModal" ref="feedsModal" style={styles.modal} disableVerticalSwipe={true}>
         <View style={[styles.modalButton, { height: 60, paddingHorizontal: 5 }]}>
@@ -102,7 +144,13 @@ class FeedsModal extends React.Component {
           <Text style={[styles.modalSubText, { fontWeight: '400' }]}>Tap to toggle feeds off/on</Text>
         </View>
         <View style={styles.modalSeparator} />
-        <ScrollView style={styles.scrollView}>
+        <ScrollView
+          style={styles.scrollView}
+          scrollEventThrottle={16}
+          onScroll={Animated.event(
+            [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }]
+          )}
+        >
           {allSources.map(source => {
             const active = sources.includes(source);
             return (
@@ -114,15 +162,20 @@ class FeedsModal extends React.Component {
               </View>
             );
           })}
-          <View style={styles.scrollViewBottomPadding} />
         </ScrollView>
-        <LinearGradient
-          start={[0, 0]}
-          end={[0, 1]}
-          colors={['rgba(255,255,255,0)', 'rgba(255,255,255,1)']}
-          style={styles.gradient}
-          pointerEvents="none"
-        />
+        <Animated.View style={[styles.gradientWrap, gradientAnim]} pointerEvents="none">
+          <LinearGradient
+            start={[0, 0]}
+            end={[0, 1]}
+            colors={['rgba(255,255,255,0)', 'rgba(255,255,255,1)']}
+            style={styles.gradient}
+            pointerEvents="none"
+          />
+        </Animated.View>
+        <View style={styles.bottomWrap}>
+          <Text style={[styles.modalSubText, { fontWeight: '600', fontSize: 12 }]}>Toggle all feeds {toggledAny ? 'off' : 'on'}</Text>
+          <Switch onValueChange={this.toggleAll} value={toggledAny} onTintColor={blue} style={{ transform: [{scale: 0.7}] }} />
+        </View>
       </PosytModal>
     )
   }
