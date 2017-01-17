@@ -20,7 +20,7 @@
 The default: (remember to update the CHANGELOG...)
 NOTE: release-react will bundle the main.jsbundle as well, so you don't need to run react-native bundle
 
-	code-push release-react Posyt ios -m --des "CHANGELOG..." --rollout "100%" -s main.jsbundle.map
+	code-push release-react Posyt ios -m --des "v1.0.3 b19 CHANGELOG..." --rollout "100%" -s main.jsbundle.map
 
 Test on device then promote to production:
 
