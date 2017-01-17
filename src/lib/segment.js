@@ -27,7 +27,7 @@ class Segment {
   };
 
   identify = (userId, traits = {}, options = {}) => {
-    if(!rnSegment) {
+    if(!rnSegment || !userId) {
       return;
     }
 
@@ -37,7 +37,7 @@ class Segment {
     });
     Crashlytics.setUserIdentifier(userId);
     if (traits.username) Crashlytics.setUserName(traits.username);
-    bugsnag.setUser(userId, traits.username, null);
+    bugsnag.setUser(userId, traits.username || '', '');
   };
 
   track = (event, properties = {}, options = {}) => {
