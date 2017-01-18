@@ -40,6 +40,9 @@ export default function posyt(platform) {
     }
   }
 
-  const codePushOptions = { checkFrequency: codePush.CheckFrequency.ON_APP_RESUME };
+  const codePushOptions = {
+    checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
+    installMode: codePush.InstallMode.ON_NEXT_RESUME,
+  };
   AppRegistry.registerComponent('Posyt', () => codePush(codePushOptions)(Posyt));
 }
