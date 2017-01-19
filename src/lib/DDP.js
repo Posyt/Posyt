@@ -84,7 +84,12 @@ class DDP {
   close() {
     this._connected = false;
     this.userId = undefined;
-    return this._ddpClient.close();
+    try {
+      return this._ddpClient.close();
+    } catch (err) {
+      bugsnag.notify(err);
+      return false
+    }
   }
 
   // Promised based subscription
@@ -96,11 +101,16 @@ class DDP {
     return new Promise((resolve, reject) => {
       this.getConnection().then((ddpClient) => {
         if (global.__DEV__) console.log('DDP subscribing to ', pubName, 'params: ', params);
-        const id = ddpClient.subscribe(pubName, params, () => {
-          if (global.__DEV__) console.log('DDP subscribed! to ', pubName, 'params: ', params);
-        });
-        this._subs[id] = { pubName, params };
-        resolve(id);
+        try {
+          const id = ddpClient.subscribe(pubName, params, () => {
+            if (global.__DEV__) console.log('DDP subscribed! to ', pubName, 'params: ', params);
+          });
+          this._subs[id] = { pubName, params };
+          resolve(id);
+        } catch (err) {
+          bugsnag.notify(err);
+          reject(err);
+        }
       });
     });
   }
@@ -112,9 +122,14 @@ class DDP {
       } else {
         this.getConnection().then((ddpClient) => {
           if (global.__DEV__) console.log('DDP unsubscribing from ', id);
-          ddpClient.unsubscribe(id);
-          delete this._subs[id];
-          resolve(true);
+          try {
+            ddpClient.unsubscribe(id);
+            delete this._subs[id];
+            resolve(true);
+          } catch (err) {
+            bugsnag.notify(err);
+            reject(err);
+          }
         });
       }
     });
@@ -131,7 +146,12 @@ class DDP {
 
   // Pass through observe
   observe(collectionName: string) {
-    return this._ddpClient.observe(collectionName);
+    try {
+      return this._ddpClient.observe(collectionName);
+    } catch (err) {
+      bugsnag.notify(err);
+      return false;
+    }
   }
 
   // Promised based method call
@@ -143,16 +163,21 @@ class DDP {
 
     return new Promise((resolve, reject) => {
       this.getConnection().then((ddpClient) => {
-        ddpClient.call(methodName, params, (error, result) => {
-          // if (global.__DEV__) console.log('called function:', methodName)//, params, 'result: ', result, 'error: ', error);
-          if (error) {
-            reject(error);
-          } else {
-            resolve(result);
-          }
-        }, () => { // callback which fires when server has finished sending any updated documents
-          // if (global.__DEV__) console.log(ddpClient.collections.posts);
-        });
+        try {
+          ddpClient.call(methodName, params, (error, result) => {
+            // if (global.__DEV__) console.log('called function:', methodName)//, params, 'result: ', result, 'error: ', error);
+            if (error) {
+              reject(error);
+            } else {
+              resolve(result);
+            }
+          }, () => { // callback which fires when server has finished sending any updated documents
+            // if (global.__DEV__) console.log(ddpClient.collections.posts);
+          });
+        } catch (err) {
+          bugsnag.notify(err);
+          reject(err);
+        }
       });
     });
   }
