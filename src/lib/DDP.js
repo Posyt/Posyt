@@ -263,7 +263,7 @@ class DDP {
       port: posytPort,
       ssl: posytSSL,
       autoReconnect: true,
-      autoReconnectTimer: 500,
+      autoReconnectTimer: 10000,
       maintainCollections: true,
       ddpVersion: 'pre2',  // ['1', 'pre2', 'pre1'] available
       // Use a full url instead of a set of `host`, `port` and `ssl`
@@ -292,7 +292,7 @@ class DDP {
   }
 
   // Poll for ddp connection every 100ms while _connecting
-  _pollForConnection(resolve, reject, timeout = 50) {
+  _pollForConnection(resolve, reject, timeout = 100) {
     setTimeout(() => {
       if (global.__DEV__) console.log('DDP polling for connection');
       if (this._connecting) {
