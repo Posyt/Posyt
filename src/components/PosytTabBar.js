@@ -32,6 +32,142 @@ import InviteModal from './InviteModal';
 import { promptForFeedback } from '../lib/feedback';
 import bugsnag from '../lib/bugsnag';
 
+const styles = StyleSheet.create({
+  tabs: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    paddingTop: 25,
+    height: 65,
+    flexDirection: 'row',
+    // borderBottomWidth: 1,
+    // borderBottomColor: 'rgba(0,0,0,0.05)',
+  },
+  tab: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingBottom: 10,
+    position: 'relative',
+  },
+  iconLeft: {
+    width: 30,
+    height: 30,
+    position: 'absolute',
+    top: 0,
+    left: 20,
+    backgroundColor: lightGrey,
+  },
+  iconRight: {
+    width: 30,
+    height: 30,
+    position: 'absolute',
+    top: 0,
+    right: 20,
+    backgroundColor: lightGrey,
+  },
+  unreadBadge: {
+    backgroundColor: red,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 0,
+    height: 20,
+    borderRadius: 10,
+    overflow: 'hidden',
+    top: -6,
+    right: 45,
+    position: 'absolute',
+  },
+  unreadText: {
+    marginHorizontal: 7,
+    color: 'white',
+    textAlign: 'center',
+    justifyContent: 'center',
+    fontSize: 12,
+    fontWeight: '200',
+    // fontFamily: 'Rooney Sans',
+  },
+
+  iconCenter: {
+    width: 30,
+    height: 30,
+    marginTop: 2,
+  },
+
+  modal: {
+    // flex: 1,
+    // alignSelf: 'center',
+    width: 200,
+  },
+  modalButton: {
+    flex: 1,
+    height: 50,
+    // padding: 13,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  modalText: {
+    flex: 0,
+    textAlign: 'center',
+    fontSize: 20,
+    fontFamily: 'Rooney Sans',
+    marginTop: 5,
+  },
+  modalSubText: {
+    flex: 0,
+    textAlign: 'center',
+    fontSize: 13,
+    fontWeight: '500',
+    fontFamily: 'Rooney Sans',
+    marginTop: 4,
+  },
+  modalLightSubText: {
+    flex: 0,
+    textAlign: 'center',
+    fontSize: 12,
+    fontWeight: '400',
+    fontFamily: 'Rooney Sans',
+    marginTop: 1,
+  },
+  modalRow: {
+    flexDirection: 'row',
+    marginHorizontal: 16,
+  },
+  modalCol: {
+    flexDirection: 'column',
+    flex: 0,
+  },
+  modalIcon: {
+    width: 22,
+    height: 22,
+    marginVertical: 2,
+    tintColor: black,
+  },
+  modalSeparator: {
+    height: 1,
+    backgroundColor: '#eee',
+  },
+  modalSeparatorWithText: {
+    borderTopWidth: 1,
+    borderTopColor: '#eee',
+    position: 'relative',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  modalSeparatorText: {
+    position: 'absolute',
+    top: -8,
+    left: 80,
+    width: 40,
+    textAlign: 'center',
+    fontSize: 14,
+    fontWeight: '400',
+    fontFamily: 'Rooney Sans',
+    backgroundColor: 'white',
+  },
+});
+
 class PosytTabBar extends React.Component {
   constructor(props) {
     super(props);
@@ -315,142 +451,6 @@ PosytTabBar.propTypes = {
   tabs: React.PropTypes.array,
   visible: React.PropTypes.bool,
 };
-
-const styles = StyleSheet.create({
-  tabs: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    paddingTop: 25,
-    height: 65,
-    flexDirection: 'row',
-    // borderBottomWidth: 1,
-    // borderBottomColor: 'rgba(0,0,0,0.05)',
-  },
-  tab: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingBottom: 10,
-    position: 'relative',
-  },
-  iconLeft: {
-    width: 30,
-    height: 30,
-    position: 'absolute',
-    top: 0,
-    left: 20,
-    backgroundColor: lightGrey,
-  },
-  iconRight: {
-    width: 30,
-    height: 30,
-    position: 'absolute',
-    top: 0,
-    right: 20,
-    backgroundColor: lightGrey,
-  },
-  unreadBadge: {
-    backgroundColor: red,
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 0,
-    height: 20,
-    borderRadius: 10,
-    overflow: 'hidden',
-    top: -6,
-    right: 45,
-    position: 'absolute',
-  },
-  unreadText: {
-    marginHorizontal: 7,
-    color: 'white',
-    textAlign: 'center',
-    justifyContent: 'center',
-    fontSize: 12,
-    fontWeight: '200',
-    // fontFamily: 'Rooney Sans',
-  },
-
-  iconCenter: {
-    width: 30,
-    height: 30,
-    marginTop: 2,
-  },
-
-  modal: {
-    // flex: 1,
-    // alignSelf: 'center',
-    width: 200,
-  },
-  modalButton: {
-    flex: 1,
-    height: 50,
-    // padding: 13,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  modalText: {
-    flex: 0,
-    textAlign: 'center',
-    fontSize: 20,
-    fontFamily: 'Rooney Sans',
-    marginTop: 5,
-  },
-  modalSubText: {
-    flex: 0,
-    textAlign: 'center',
-    fontSize: 13,
-    fontWeight: '500',
-    fontFamily: 'Rooney Sans',
-    marginTop: 4,
-  },
-  modalLightSubText: {
-    flex: 0,
-    textAlign: 'center',
-    fontSize: 12,
-    fontWeight: '400',
-    fontFamily: 'Rooney Sans',
-    marginTop: 1,
-  },
-  modalRow: {
-    flexDirection: 'row',
-    marginHorizontal: 16,
-  },
-  modalCol: {
-    flexDirection: 'column',
-    flex: 0,
-  },
-  modalIcon: {
-    width: 22,
-    height: 22,
-    marginVertical: 2,
-    tintColor: black,
-  },
-  modalSeparator: {
-    height: 1,
-    backgroundColor: '#eee',
-  },
-  modalSeparatorWithText: {
-    borderTopWidth: 1,
-    borderTopColor: '#eee',
-    position: 'relative',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  modalSeparatorText: {
-    position: 'absolute',
-    top: -8,
-    left: 80,
-    width: 40,
-    textAlign: 'center',
-    fontSize: 14,
-    fontWeight: '400',
-    fontFamily: 'Rooney Sans',
-    backgroundColor: 'white',
-  },
-});
 
 function mapStateToProps(state) {
   return {

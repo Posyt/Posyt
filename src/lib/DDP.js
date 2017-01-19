@@ -227,7 +227,6 @@ class DDP {
         this.authToken = null;
         this.authTokenExpires = null;
         store.dispatch(loginFailure(error));
-        bugsnag.notify(error);
 
         reject(error);
       });
@@ -252,7 +251,6 @@ class DDP {
       }).catch((err) => {
         if (global.__DEV__) console.log('Log out err', err);
         store.dispatch(logoutFailure(err));
-        bugsnag.notify(err);
         reject(err);
       });
     });
@@ -310,8 +308,12 @@ class DDP {
   }
 
   _addOidToDDPClientEJSON() {
-    // if (global.__DEV__) console.log('DDP oid type exists:', this._ddpClient.EJSON._getTypes().oid);
-    this._ddpClient.EJSON.addType('oid', (oid) => oid);
+    // if (global.__DEV__) console.log('DDP oid type exists:', !!this._ddpClient.EJSON._getTypes().oid);
+    try {
+      if (!this._ddpClient.EJSON._getTypes().oid) this._ddpClient.EJSON.addType('oid', (oid) => oid);
+    } catch (err) {
+      if (global.__DEV__) console.warn('DDP oid error:', err);
+    }
   }
 }
 
