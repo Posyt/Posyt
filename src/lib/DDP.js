@@ -290,10 +290,10 @@ class DDP {
       autoReconnect: true,
       autoReconnectTimer: 10000,
       maintainCollections: true,
-      ddpVersion: 'pre2',  // ['1', 'pre2', 'pre1'] available
+      ddpVersion: '1',  // ['1', 'pre2', 'pre1'] available
       // Use a full url instead of a set of `host`, `port` and `ssl`
       // url: 'wss://example.com/websocket'
-      // socketConstructor: WebSocket // Another constructor to create new WebSockets
+      socketConstructor: WebSocket, // Another constructor to create new WebSockets
     });
     this.collections = this._ddpClient.collections;
     this._addOidToDDPClientEJSON();
