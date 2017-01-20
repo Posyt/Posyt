@@ -60,3 +60,8 @@ If you like the new update please support Posyt by leaving a rating in the App S
 - Add a switch to toggle all feeds on/off
 ### internal
 - change codepush installMode
+
+
+## v1.0.5
+### internal
+- codepush seems to be fixed in production. TestFlight gets production codepush updates
