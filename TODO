@@ -64,6 +64,8 @@
 ✔ add sentry error tracking @done(2017-01-14 12:54)
 ☐ swiping the left edge on cards or the right edge on conversations should be a shortcut to show the settings modal
 ☐ force touch preview
+☐ enter username modal save button is hidden sometimes - (john)
+☐ crash after phone login sometimes - (john)
 ☐ fix code-push - updates are not getting synced to devices, staging is not automated
 ☐ fix digits in production - the keys / bundle ids might be off
 ☐ don't register taps on fast swipes - sometimes the browser opens on a fast swipe
