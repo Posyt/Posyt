@@ -76,7 +76,7 @@
 ☐ make sure add a username modal always shows if no username
 ☐ don't force open the app store in iOS branch links - show the website if you don't have the app
 ☐ force touch preview
-☐ add a [gif] tag to the bottom right of gifs 
+☐ add a [gif] tag to the bottom right of gifs
 
 Staging
 ✔ meteor server @done(2016-12-13 21:57)
@@ -124,7 +124,7 @@ Eventually
 ☐ use ML to detect spam with https://www.detextion.io/ or something similar
 ☐ switch website frontend to next.js and add some apollo graphql schemas to the backend api for serving the website
 ☐ enable dynamic user specific beta releases https://github.com/Microsoft/react-native-code-push#dynamic-deployment-assignment
-☐ hide status bar in landscape videos
+✔ hide status bar in landscape videos @done(2017-01-21 15:07)
 
 Maybe
 ☐ swtich node-ddp-client and maybe minimongo-cache out for react-native-meteor

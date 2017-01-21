@@ -77,7 +77,11 @@ If you like the new update please support Posyt by leaving a rating in the App S
 - Add logo and version number to settings dialog
 
 
-## 1.1
+## 1.0.5.2
+- Hide status bar in browser and videos
+
+
+## 1.1 [pending]
 ### internal
 - change title `Posyt - Share News & Ideas, Meet People, Chat` to `Posyt - Share News & Ideas, Meet People, Anonymous Chat`
 - change keywords `amino,a` to `meetup`
