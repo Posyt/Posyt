@@ -75,3 +75,9 @@ If you like the new update please support Posyt by leaving a rating in the App S
 ## v1.0.5.1
 - Add shortcut to settings dialog: swipe offscreen beyond the cards and conversations tabs
 - Add logo and version number to settings dialog
+
+
+## 1.1
+### internal
+- change title `Posyt - Share News & Ideas, Meet People, Chat` to `Posyt - Share News & Ideas, Meet People, Anonymous Chat`
+- change keywords `amino,a` to `meetup`
