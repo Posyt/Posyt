@@ -78,7 +78,8 @@ If you like the new update please support Posyt by leaving a rating in the App S
 
 
 ## 1.0.5.2
-- Hide status bar in browser and videos
+- Hide status bar in browser and videos #YumBeautifulFullScreenVideoAndBrowsing
+- Make the username save button easier to press on smaller screens
 
 
 ## 1.1 [pending]
