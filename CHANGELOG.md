@@ -68,4 +68,5 @@ If you like the new update please support Posyt by leaving a rating in the App S
 
 
 ## v1.0.6
-- add shortcut to settings dialog: swipe offscreen beyond the cards and conversations tabs
+- Add shortcut to settings dialog: swipe offscreen beyond the cards and conversations tabs
+- Add logo and version number to settings dialog
