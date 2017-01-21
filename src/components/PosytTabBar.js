@@ -12,6 +12,7 @@ import {
 import { connect } from 'react-redux';
 import pluralize from 'pluralize';
 import { DigitsManager } from 'react-native-fabric-digits';
+import DeviceInfo from 'react-native-device-info';
 import FBSDK from 'react-native-fbsdk';
 import _ from 'lodash';
 import segment from '../lib/segment';
@@ -332,6 +333,11 @@ class PosytTabBar extends React.Component {
               <Text style={[styles.modalSubText]}>{numMessages}</Text>
               <Text style={styles.modalLightSubText}>{pluralize('Message', numMessages)}</Text>
             </View>
+          </View>
+          <View style={styles.modalSeparator}/>
+          <View style={[styles.modalRow, { marginHorizontal: 0, paddingVertical: 4, alignItems: 'center', justifyContent: 'center' }]}>
+            <Image source={require('../../assets/images/posyt_logo.png')} style={{ width: 34, height: 17, marginRight: -2, opacity: 0.15 }} />
+            <Text style={[styles.modalSubText, { opacity: 0.4, fontWeight: '400' }]}> · {DeviceInfo.getVersion()}</Text>
           </View>
         </PosytModal>
       );
