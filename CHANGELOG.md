@@ -1,3 +1,8 @@
+### versioning key
+`0`.0 - major version - typically involving the addition of a BIG new feature or UI overhaul
+0.`0` - minor version - app store release betweeen major versions
+0.0.`0` - codepush version - only put in the codepush description
+
 ## v1.0
 After a much too long hiatus we're back!
 
@@ -62,11 +67,11 @@ If you like the new update please support Posyt by leaving a rating in the App S
 - change codepush installMode
 
 
-## v1.0.5
+## v1.0.5.0
 ### internal
 - codepush seems to be fixed in production. TestFlight gets production codepush updates
 
 
-## v1.0.6
+## v1.0.5.1
 - Add shortcut to settings dialog: swipe offscreen beyond the cards and conversations tabs
 - Add logo and version number to settings dialog
