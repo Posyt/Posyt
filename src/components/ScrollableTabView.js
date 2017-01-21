@@ -82,10 +82,8 @@ const ScrollableTabView = React.createClass({
   renderTabBar(props) {
     if (this.props.renderTabBar === false) {
       return null;
-    } else if (this.props.renderTabBar) {
-      return React.cloneElement(this.props.renderTabBar(), props);
     } else {
-      return <PosytTabBar {...props} />;
+      return <PosytTabBar {...props} ref="tabBar" />;
     }
   },
 
@@ -149,8 +147,13 @@ const ScrollableTabView = React.createClass({
   _onMomentumScrollBeginAndEnd(e) {
     const offsetX = e.nativeEvent.contentOffset.x;
     const page = Math.round(offsetX / this.state.container.width);
+    const pageAsFloat = this.state.scrollValue._value;
     if (this.state.currentPage !== page) {
       this._updateSelectedPage(page);
+    } else if (pageAsFloat < -0.1) {
+      this.refs.tabBar.getWrappedInstance().showPosytModal('left');
+    } else if (pageAsFloat > 1.1) {
+      this.refs.tabBar.getWrappedInstance().showPosytModal('right');
     }
   },
 

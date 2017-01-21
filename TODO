@@ -62,7 +62,7 @@
 ✔ switch feeds array on user to disabledFeeds. This way new feeds will be auto enabled without requiring a migration @done(2017-01-08 17:48)
 
 ✔ add sentry error tracking @done(2017-01-14 12:54)
-☐ swiping the left edge on cards or the right edge on conversations should be a shortcut to show the settings modal
+✔ swiping the left edge on cards or the right edge on conversations should be a shortcut to show the settings modal @done(2017-01-20 21:09)
 ☐ force touch preview
 ☐ enter username modal save button is hidden sometimes - (john)
 ☐ crash after phone login sometimes - (john)
@@ -121,6 +121,7 @@ Eventually
 ☐ use ML to detect spam with https://www.detextion.io/ or something similar
 ☐ switch website frontend to next.js and add some apollo graphql schemas to the backend api for serving the website
 ☐ enable dynamic user specific beta releases https://github.com/Microsoft/react-native-code-push#dynamic-deployment-assignment
+☐ hide status bar in landscape videos
 
 Maybe
 ☐ swtich node-ddp-client and maybe minimongo-cache out for react-native-meteor

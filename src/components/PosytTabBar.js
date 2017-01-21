@@ -219,6 +219,10 @@ class PosytTabBar extends React.Component {
     ).start();
   }
 
+  showPosytModal = (direction) => {
+    this.refs.posytModal.show(direction);
+  }
+
   loginWithFacebook = () => {
     loginWithFacebook();
   }
@@ -461,4 +465,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(PosytTabBar);
+export default connect(mapStateToProps, null, null, { withRef: true })(PosytTabBar);

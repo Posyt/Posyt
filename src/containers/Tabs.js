@@ -45,7 +45,6 @@ class Tabs extends React.Component {
       <View style={styles.corners}>
         <View style={styles.container}>
           <ScrollableTabView
-            renderTabBar={() => <PosytTabBar />}
             onChangeTab={(tab) => this.onChangeTab(tab)}
           >
             <ConnectScreen tabLabel="documents" />

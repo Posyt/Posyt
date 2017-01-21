@@ -65,3 +65,7 @@ If you like the new update please support Posyt by leaving a rating in the App S
 ## v1.0.5
 ### internal
 - codepush seems to be fixed in production. TestFlight gets production codepush updates
+
+
+## v1.0.6
+- add shortcut to settings dialog: swipe offscreen beyond the cards and conversations tabs
