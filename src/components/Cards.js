@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import moment from 'moment';
 import {
   popTopCard,
   unpopLastCard,
@@ -286,7 +287,6 @@ class Cards extends React.Component {
   swipe(props, time, action, reason) {
     this.currentProps = null;
     this.currentTime = null;
-    // TODO: show posyt modals explaining each direction the first time you swipe it
     if (action === 'like') this.requestPushNotificationPermissions();
     const { cards, startedReadingAt } = props;
     const card = cards[0];
@@ -336,7 +336,9 @@ class Cards extends React.Component {
 
   async requestPushNotificationPermissions() {
     const permission = await AsyncStorage.getItem('push/permission');
-    if (permission === null) {
+    const hasPermission = !!permission && permission.split('|')[0] === 'true';
+    const shouldAsk = !permission || moment().subtract((hasPermission ? 1 : 5), 'days').isAfter(new Date(permission.split('|')[1]), 'day');
+    if (!hasPermission && shouldAsk) {
       segment.track('Card Swipe - Push Permission 1 - Requested');
       Alert.alert(
         'Notify me when I match with someone',
@@ -353,6 +355,11 @@ class Cards extends React.Component {
           } },
         ],
       );
+    } else if (hasPermission && shouldAsk) {
+      // Make sure that the API has the latest deviceToken
+      // This should not show the user another prompt if they have given permission
+      AsyncStorage.setItem('push/permission', 'true|'+(new Date).toString());
+      PushNotificationIOS.requestPermissions();
     }
   }
 

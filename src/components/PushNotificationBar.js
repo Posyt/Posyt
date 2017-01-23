@@ -19,6 +19,7 @@ import {
 import {
   showConversation,
 } from '../lib/actions';
+import { ddp } from '../lib/DDP';
 
 const { width } = Dimensions.get('window');
 
@@ -142,18 +143,20 @@ class PushNotificationBar extends React.Component {
   componentWillMount() {
     this.handleOpenFromPush();
     PushNotificationIOS.addEventListener('notification', this.onNotification);
+    PushNotificationIOS.addEventListener('register', this.onRegister);
     // NOTE: COMMENT OUT: TESTING ONLY:
-    // if (global.__DEV__) PushNotificationIOS.requestPermissions();
+    // if (global.__DEV__) PushNotificationIOS.requestPermissions().then(console.log).catch(console.log);
     // if (global.__DEV__) renderTestNotifications();
   }
 
   componentWillUnmount() {
     PushNotificationIOS.removeEventListener('notification', this.onNotification);
+    PushNotificationIOS.removeEventListener('register', this.onRegister);
   }
 
-  onNotification(notification) {
-    // if (global.__DEV__) console.log('PushNotification:', notification);
-    const data = notification && notification.getData();
+  onNotification = (notification) => {
+    const data = notification && JSON.parse(notification.getData().ejson);
+    if (global.__DEV__) console.log('PushNotification:', notification, data);
     // Don't show notifications if you're already viewing that conversation
     if (data && data.conversationId && data.conversationId !== this.props.conversationId) {
       const notificationWithId = _.assignIn(notification, {
@@ -168,8 +171,21 @@ class PushNotificationBar extends React.Component {
     }
   }
 
+  onRegister = (deviceToken) => {
+    const options = {
+      token: { apn: deviceToken },
+      appName: 'Posyt',
+      userId: ddp.userId,
+    };
+    ddp.call('raix:push-update', [options]).then(() => {
+      if (global.__DEV__) console.log('raix:push-update success', deviceToken);
+    }).catch(() => {
+      if (global.__DEV__) console.log('raix:push-update failure', deviceToken);
+    });
+  }
+
   onPressNotification(notification) {
-    const data = notification && notification.getData();
+    const data = notification && JSON.parse(notification.getData().ejson);
     if (data && data.conversationId && data.conversationId !== this.props.conversationId) {
       this.props.dispatch(showConversation(data.conversationId));
     }
@@ -230,7 +246,7 @@ class PushNotificationBar extends React.Component {
         <StatusBar hidden={false} />
         {notifications.map((notification, i) => {
           const message = notification.getMessage();
-          const data = notification.getData();
+          const data = JSON.parse(notification.getData().ejson);
           const anim = {
             transform: notification.pan.getTranslateTransform(),
             opacity: notification.opacity,
