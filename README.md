@@ -21,7 +21,7 @@ The default: (remember to update the CHANGELOG...)
 NOTE: DO NOT change the version or build in xcode!!!! codepush will not be able to update anything but the active version in the app store
 NOTE: release-react will bundle the main.jsbundle as well, so you don't need to run react-native bundle
 
-	code-push release-react Posyt ios -m --des "1.0.5.2" --rollout "100%" -s main.jsbundle.map
+	code-push release-react Posyt ios -m --des "1.0.5.3" --rollout "100%" -s main.jsbundle.map
 
 Test on device then promote to production:
 
