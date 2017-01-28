@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
   text: {
     position: 'relative',
-    flex: 3,
+    flex: 2,
     paddingTop: 20,
   },
   title: {
