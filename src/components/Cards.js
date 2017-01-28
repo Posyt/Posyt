@@ -298,7 +298,7 @@ class Cards extends React.Component {
       expandedTime: this.calculateExpandedTime(props),
     };
     if (action === 'flag') attrs.reason = reason;
-    segment.track(`Card Swipe ${_.startCase(action)}`, { _type: card._type, _id: card._id, action, readTime: attrs.readTime, expandedTime: attrs.expandedTime, reason });
+    segment.track(`Card Swipe ${_.startCase(action)}`, { _type: card._type, _id: card._id, action, readTime: attrs.readTime, expandedTime: attrs.expandedTime, reason, title: card.title, content: card.content });
     ddp.call('users/swipe', [attrs]).catch(err => {
       if (global.__DEV__) console.log('Swipe Error:', err);
       // TODO: show a subtle toast over the activity bar
