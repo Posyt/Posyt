@@ -25,7 +25,7 @@ export const bugsnagKey = (global.__DEV__ ? 'bf9abc670731967f0941a94d7fb82ee0' :
  * sources
  */
 
-export const sources = _.sortBy([
+export const sources = _.shuffle([
   'Medium',
   'Hacker News',
   'Imgur',

@@ -2,19 +2,21 @@ import React from 'react';
 import {
   StyleSheet,
   View,
+  Text,
   SegmentedControlIOS,
   Image,
   TouchableOpacity,
   Alert,
   Switch,
   ScrollView,
+  Animated,
 } from 'react-native';
 import { connect } from 'react-redux';
 import segment from '../lib/segment';
 import _ from 'lodash';
 import LinearGradient from 'react-native-linear-gradient';
 import {
-  lightBlack,
+  black,
   blue,
   lightGrey,
   lightGreyRGB,
@@ -30,14 +32,39 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     overflow: 'hidden',
   },
+  top: {
+    flexDirection: 'row',
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 5,
+  },
   segmentedControl: {
-    marginLeft: 10,
-    marginRight: 10,
-    height: 24,
+    flex: 2,
+    height: 26,
+  },
+  feedsButton: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 5,
+  },
+  feedsButtonText: {
+    fontFamily: 'Rooney Sans',
+    fontWeight: '500',
+    fontSize: 14,
+    color: black,
+  },
+  feedsButtonChevron: {
+    marginLeft: 6,
+    marginTop: 1,
+    width: 12,
+    height: 12,
+    transform: [{ rotate: '-180deg' }],
+    tintColor: black,
   },
   feeds: {
     position: 'relative',
-    marginTop: 5,
+    overflow: 'hidden',
   },
   feedsScrollView: {
     flexDirection: 'row',
@@ -49,12 +76,12 @@ const styles = StyleSheet.create({
   },
   feedIconWrap: {
     position: 'relative',
-    width: 30,
-    height: 30,
+    width: 36,
+    height: 36,
   },
   feedIcon: {
-    width: 30,
-    height: 30,
+    width: 36,
+    height: 36,
   },
   feedIconOverlay: {
     position: 'absolute',
@@ -63,19 +90,23 @@ const styles = StyleSheet.create({
     tintColor: lightGrey,
     opacity: 0.6,
   },
+  feedsSwitch: {
+    marginTop: 3,
+    transform: [{ scale: 0.8 }],
+  },
   feedsGradientLeft: {
     position: 'absolute',
     left: 0,
     top: 0,
     bottom: 0,
-    width: 30,
+    width: 20,
   },
   feedsGradientRight: {
     position: 'absolute',
     right: 0,
     top: 0,
     bottom: 0,
-    width: 30,
+    width: 20,
   },
 });
 
@@ -83,8 +114,26 @@ class CardsFilter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      feedsHeight: new Animated.Value(0),
       sources: [...allSources],
     };
+    this.showFeeds = false;
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (!this.props.currentUser || !nextProps.currentUser ||
+      this.props.currentUser.profile.disabledSources !== nextProps.currentUser.profile.disabledSources) {
+      const disabledSources = _.get(nextProps, 'currentUser.profile.disabledSources', []);
+      this.setState({ sources: _.difference(allSources, disabledSources) });
+    }
+  }
+
+  showHideFeeds = () => {
+    Animated.timing(
+      this.state.feedsHeight,
+      { toValue: this.showFeeds ? 0 : 40, duration: 200 }
+    ).start();
+    this.showFeeds = !this.showFeeds;
   }
 
   togglePosyts = () => {
@@ -122,27 +171,40 @@ class CardsFilter extends React.Component {
     });
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (!this.props.currentUser || !nextProps.currentUser ||
-      this.props.currentUser.profile.disabledSources !== nextProps.currentUser.profile.disabledSources) {
-      const disabledSources = _.get(nextProps, 'currentUser.profile.disabledSources', []);
-      this.setState({ sources: _.difference(allSources, disabledSources) });
-    }
-  }
-
   render() {
-    const { sources, scrollY } = this.state;
+    const { feedsHeight, sources } = this.state;
     const toggledAny = sources.length > 0;
+
+    const feedsScale = feedsHeight.interpolate({
+      inputRange: [0, 40],
+      outputRange: [0, 1],
+    });
+
+    const chevronRotate = feedsHeight.interpolate({
+      inputRange: [0, 40],
+      outputRange: ['-180deg', '0deg'],
+    });
 
     return (
       <View style={styles.container}>
-        <SegmentedControlIOS
-          style={styles.segmentedControl}
-          tintColor={lightBlack}
-          values={['New', 'Hot', 'Popular']}
-          selectedIndex={1}
-        />
-        <View style={styles.feeds}>
+        <View style={styles.top}>
+          <SegmentedControlIOS
+            style={styles.segmentedControl}
+            tintColor={black}
+            values={['New', 'Trending']}
+            selectedIndex={1}
+            onValueChange={() => {}}
+          />
+          <TouchableOpacity style={styles.feedsButton} onPress={this.showHideFeeds}>
+            <View style={{ flexDirection: 'row' }}>
+              <Text style={styles.feedsButtonText}>
+                Feeds
+              </Text>
+              <Animated.Image source={require('../../assets/images/chevron_down.png')} style={[styles.feedsButtonChevron, { transform: [{ rotate: chevronRotate }] }]} />
+            </View>
+          </TouchableOpacity>
+        </View>
+        <Animated.View style={[styles.feeds, { height: feedsHeight, transform: [{ scale: feedsScale }] }]}>
           <ScrollView
             style={styles.feedsScrollView}
             horizontal
@@ -162,7 +224,7 @@ class CardsFilter extends React.Component {
                 </TouchableOpacity>
               )
             })}
-            <Switch onValueChange={this.toggleAll} value={toggledAny} onTintColor={blue} style={{ transform: [{scale: 0.7}] }} />
+            <Switch onValueChange={this.toggleAll} value={toggledAny} onTintColor={blue} style={styles.feedsSwitch} />
           </ScrollView>
           <LinearGradient
             start={[1, 0]}
@@ -178,7 +240,7 @@ class CardsFilter extends React.Component {
             style={styles.feedsGradientRight}
             pointerEvents="none"
           />
-        </View>
+        </Animated.View>
       </View>
     );
   }
