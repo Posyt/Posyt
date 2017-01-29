@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   },
   segmentedControl: {
     flex: 2,
-    height: 26,
+    height: 24,
   },
   feedsButton: {
     flex: 1,
