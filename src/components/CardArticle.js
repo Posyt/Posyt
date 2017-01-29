@@ -158,7 +158,7 @@ ArticleImage.propTypes = {
 
 function titleComp(article) {
   const title = articleTitle(article);
-  return title && <Text style={styles.title}>{title}</Text>;
+  return title && <Text style={styles.title} numberOfLines={4}>{title}</Text>;
 }
 
 function descriptionComp(article) {

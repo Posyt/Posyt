@@ -27,7 +27,7 @@ import loginWithFacebook from '../lib/loginWithFacebook';
 import { ddp } from '../lib/DDP';
 import PosytModal from './PosytModal';
 import UsernameModal from './UsernameModal';
-import FeedsModal from './FeedsModal';
+// import FeedsModal from './FeedsModal';
 import PointsModal from './PointsModal';
 import InviteModal from './InviteModal';
 import { promptForFeedback } from '../lib/feedback';
@@ -274,28 +274,13 @@ class PosytTabBar extends React.Component {
     if (loggedIn) {
       posytModal = (
         <PosytModal key="posytModal" ref="posytModal" style={styles.modal}>
-          <TouchableHighlight style={styles.modalButton} underlayColor={'#f5f5f5'} onPress={() => {
+          {/* <TouchableHighlight style={styles.modalButton} underlayColor={'#f5f5f5'} onPress={() => {
               this.refs.posytModal.hide("left", () => this.refs.feedsModal.getWrappedInstance().show("right"));
               segment.screen('Viewed Feeds Modal');
           }}>
             <Text style={styles.modalText}>News Feeds</Text>
-          </TouchableHighlight>
-          <View style={styles.modalSeparator} />
-          <View style={styles.modalCol}>
-            <Text style={[styles.modalSubText, { marginTop: 10, marginBottom: -10, fontWeight: '400' }]}>Feedback</Text>
-            <View style={styles.modalRow}>
-              <TouchableOpacity style={styles.modalButton} onPress={() => { this.refs.posytModal.hide("top", () => promptForFeedback()) }}>
-                <Image source={require('../../assets/images/apple.png')} style={[styles.modalIcon]}/>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.modalButton} onPress={() => { this.refs.posytModal.hide("left", () => openURL("https://twitter.com/posytapp")) }}>
-                <Image source={require('../../assets/images/twitter.png')} style={[styles.modalIcon]}/>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.modalButton} onPress={() => { this.refs.posytModal.hide("left", () => openURL("https://www.facebook.com/posytapp/")) }}>
-                <Image source={require('../../assets/images/facebook.png')} style={[styles.modalIcon]}/>
-              </TouchableOpacity>
-            </View>
-          </View>
-          <View style={styles.modalSeparator} />
+          </TouchableHighlight> */}
+          {/* <View style={styles.modalSeparator} /> */}
           <TouchableHighlight style={styles.modalButton} underlayColor={'#f5f5f5'} onPress={() => {
               this.refs.posytModal.hide("left", () => this.refs.pointsModal.getWrappedInstance().show("right"));
               segment.screen('Viewed Points Modal');
@@ -332,6 +317,21 @@ class PosytTabBar extends React.Component {
             <View style={[styles.modalCol, { marginTop: 0, flex: 1 }]}>
               <Text style={[styles.modalSubText]}>{numMessages}</Text>
               <Text style={styles.modalLightSubText}>{pluralize('Message', numMessages)}</Text>
+            </View>
+          </View>
+          <View style={styles.modalSeparator} />
+          <View style={styles.modalCol}>
+            <Text style={[styles.modalSubText, { marginTop: 10, marginBottom: -10, fontWeight: '400' }]}>Feedback</Text>
+            <View style={styles.modalRow}>
+              <TouchableOpacity style={styles.modalButton} onPress={() => { this.refs.posytModal.hide("top", () => promptForFeedback()) }}>
+                <Image source={require('../../assets/images/apple.png')} style={[styles.modalIcon]}/>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.modalButton} onPress={() => { this.refs.posytModal.hide("left", () => openURL("https://twitter.com/posytapp")) }}>
+                <Image source={require('../../assets/images/twitter.png')} style={[styles.modalIcon]}/>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.modalButton} onPress={() => { this.refs.posytModal.hide("left", () => openURL("https://www.facebook.com/posytapp/")) }}>
+                <Image source={require('../../assets/images/facebook.png')} style={[styles.modalIcon]}/>
+              </TouchableOpacity>
             </View>
           </View>
           <View style={styles.modalSeparator}/>
@@ -399,8 +399,8 @@ class PosytTabBar extends React.Component {
       </PosytModal>
       ,
       <UsernameModal key="usernameModal" ref="usernameModal" />
-      ,
-      <FeedsModal key="feedsModal" ref="feedsModal" />
+      // ,
+      // <FeedsModal key="feedsModal" ref="feedsModal" />
       ,
       <InviteModal key="inviteModal" ref="inviteModal" />
       ,

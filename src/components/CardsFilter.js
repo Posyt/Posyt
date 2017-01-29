@@ -10,6 +10,7 @@ import {
   Switch,
   ScrollView,
   Animated,
+  PixelRatio,
 } from 'react-native';
 import { connect } from 'react-redux';
 import segment from '../lib/segment';
@@ -17,6 +18,7 @@ import _ from 'lodash';
 import LinearGradient from 'react-native-linear-gradient';
 import {
   black,
+  grey,
   blue,
   lightGrey,
   lightGreyRGB,
@@ -25,6 +27,9 @@ import {
 } from '../lib/constants';
 import { ddp } from '../lib/DDP';
 import bugsnag from '../lib/bugsnag';
+
+const iconSize = 36;
+const iconMarginRight = 5;
 
 const styles = StyleSheet.create({
   container: {
@@ -65,6 +70,10 @@ const styles = StyleSheet.create({
   feeds: {
     position: 'relative',
     overflow: 'hidden',
+    // backgroundColor: 'white',
+    // borderTopWidth: 1 / PixelRatio.get(),
+    // borderBottomWidth: 1 / PixelRatio.get(),
+    // borderColor: '#ddd',
   },
   feedsScrollView: {
     flexDirection: 'row',
@@ -72,16 +81,16 @@ const styles = StyleSheet.create({
     paddingRight: 10,
   },
   feedButton: {
-    marginRight: 5,
+    marginRight: iconMarginRight,
   },
   feedIconWrap: {
     position: 'relative',
-    width: 36,
-    height: 36,
+    width: iconSize,
+    height: iconSize,
   },
   feedIcon: {
-    width: 36,
-    height: 36,
+    width: iconSize,
+    height: iconSize,
   },
   feedIconOverlay: {
     position: 'absolute',
@@ -128,12 +137,19 @@ class CardsFilter extends React.Component {
     }
   }
 
+  onChangeOrder = (order) => {
+    // TODO: send to user on server
+    // TODO: make sure to pull the default order off the user
+    segment.track(`Change Order To ${order}`);
+  }
+
   showHideFeeds = () => {
     Animated.timing(
       this.state.feedsHeight,
-      { toValue: this.showFeeds ? 0 : 40, duration: 200 }
+      { toValue: this.showFeeds ? 0 : iconSize, duration: 200 }
     ).start();
     this.showFeeds = !this.showFeeds;
+    segment.track(`Toggle Feeds ${this.showFeeds ? 'Open' : 'Closed'}`);
   }
 
   togglePosyts = () => {
@@ -176,12 +192,12 @@ class CardsFilter extends React.Component {
     const toggledAny = sources.length > 0;
 
     const feedsScale = feedsHeight.interpolate({
-      inputRange: [0, 40],
+      inputRange: [0, iconSize],
       outputRange: [0, 1],
     });
 
     const chevronRotate = feedsHeight.interpolate({
-      inputRange: [0, 40],
+      inputRange: [0, iconSize],
       outputRange: ['-180deg', '0deg'],
     });
 
@@ -193,7 +209,7 @@ class CardsFilter extends React.Component {
             tintColor={black}
             values={['New', 'Trending']}
             selectedIndex={1}
-            onValueChange={() => {}}
+            onValueChange={this.onChangeOrder}
           />
           <TouchableOpacity style={styles.feedsButton} onPress={this.showHideFeeds}>
             <View style={{ flexDirection: 'row' }}>
@@ -209,6 +225,7 @@ class CardsFilter extends React.Component {
             style={styles.feedsScrollView}
             horizontal
             showsHorizontalScrollIndicator={false}
+            snapToInterval={iconSize + iconMarginRight}
           >
             <TouchableOpacity key='Posyt' onPress={this.togglePosyts} style={styles.feedButton}>
               <Image source={require('../../assets/images/feed_posyt.png')} style={styles.feedIcon} />
@@ -218,8 +235,8 @@ class CardsFilter extends React.Component {
               return (
                 <TouchableOpacity key={source} onPress={() => this.toggle(source)} style={styles.feedButton}>
                   <View style={styles.feedIconWrap}>
-                    <Image source={sourcesIcons[source]} style={styles.feedIcon} blurRadius={active ? 0 : 4} />
-                    <Image source={sourcesIcons[source]} style={[styles.feedIcon, styles.feedIconOverlay, active && { opacity: 0 }]} blurRadius={active ? 0 : 4} />
+                    <Image source={sourcesIcons[source]} style={styles.feedIcon} blurRadius={active ? 0 : 2} />
+                    <Image source={sourcesIcons[source]} style={[styles.feedIcon, styles.feedIconOverlay, active && { opacity: 0 }]} blurRadius={active ? 0 : 2} />
                   </View>
                 </TouchableOpacity>
               )
