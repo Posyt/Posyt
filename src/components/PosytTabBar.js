@@ -321,7 +321,7 @@ class PosytTabBar extends React.Component {
           </View>
           <View style={styles.modalSeparator} />
           <View style={styles.modalCol}>
-            <Text style={[styles.modalSubText, { marginTop: 10, marginBottom: -10, fontWeight: '400' }]}>Contact Posyt</Text>
+            <Text style={[styles.modalSubText, { marginTop: 10, marginBottom: -10, fontWeight: '200' }]}>Tell us how we're doing</Text>
             <View style={styles.modalRow}>
               <TouchableOpacity style={styles.modalButton} onPress={() => { this.refs.posytModal.hide("top", () => promptForFeedback()) }}>
                 <Image source={require('../../assets/images/apple.png')} style={[styles.modalIcon]}/>
