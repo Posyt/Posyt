@@ -25,7 +25,7 @@ export const bugsnagKey = (global.__DEV__ ? 'bf9abc670731967f0941a94d7fb82ee0' :
  * sources
  */
 
-export const sources = _.sortBy([
+export const sources = _.shuffle([
   'Medium',
   'Hacker News',
   'Imgur',
@@ -34,6 +34,15 @@ export const sources = _.sortBy([
   'New York Times',
   'Dribbble',
 ]);
+export const sourcesIcons = {
+  'Medium': require(`../../assets/images/feed_medium.png`),
+  'Hacker News': require(`../../assets/images/feed_hacker_news.png`),
+  'Imgur': require(`../../assets/images/feed_imgur.png`),
+  'Product Hunt': require(`../../assets/images/feed_product_hunt.png`),
+  'The Verge': require(`../../assets/images/feed_the_verge.png`),
+  'New York Times': require(`../../assets/images/feed_new_york_times.png`),
+  'Dribbble': require(`../../assets/images/feed_dribbble.png`),
+};
 
 /*
  * colors
@@ -50,6 +59,7 @@ export const pink = '#FA7EF5';
 export const black = '#2B2B2B';
 export const lightBlack = '#555555';
 export const lightGrey = '#f5f5f5';
+export const lightGreyRGB = '245,245,245';
 export const grey = '#CCCCCF';
 
 export const appleBlue = '#0076FF';

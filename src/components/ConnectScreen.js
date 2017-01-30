@@ -2,6 +2,7 @@
 
 import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
+import CardsFilter from '../components/CardsFilter'
 import Cards from '../components/Cards'
 import Compose from '../components/Compose'
 
@@ -9,6 +10,7 @@ class ConnectScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        <CardsFilter />
         <View style={styles.cards}>
           <Cards />
         </View>

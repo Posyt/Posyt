@@ -61,6 +61,8 @@
 ✔ don't autolike on share @done(2017-01-08 01:15)
 ✔ switch feeds array on user to disabledFeeds. This way new feeds will be auto enabled without requiring a migration @done(2017-01-08 17:48)
 
+
+☐ fix universal app links https://dev.branch.io/getting-started/universal-linking-validator/guide/
 ✔ add sentry error tracking @done(2017-01-14 12:54)
 ✔ swiping the left edge on cards or the right edge on conversations should be a shortcut to show the settings modal @done(2017-01-20 21:09)
 ✔ enter username modal save button is hidden sometimes - (john) @done(2017-01-21 16:17)
