@@ -138,9 +138,15 @@ class CardsFilter extends React.Component {
   }
 
   onChangeOrder = (order) => {
-    // TODO: send to user on server
+    ddp.call('users/sortLeadsBy/set', [order.toLowerCase()]).catch((err) => {
+      if (global.__DEV__) console.log('Error setting feeds:', err);
+      // this.setState({ sources }); // rollback
+      Alert.alert('That\'s weird', 'We could not save this change to the server. Please try again later. The server is probably undergoing maintinence.')
+      bugsnag.notify(err);
+    }).then(() => {
+      segment.track(`Change Order To ${order}`);
+    });
     // TODO: make sure to pull the default order off the user
-    segment.track(`Change Order To ${order}`);
   }
 
   showHideFeeds = () => {
@@ -189,6 +195,7 @@ class CardsFilter extends React.Component {
 
   render() {
     const { feedsHeight, sources } = this.state;
+    const { currentUser } = this.props;
     const toggledAny = sources.length > 0;
 
     const feedsScale = feedsHeight.interpolate({
@@ -208,7 +215,7 @@ class CardsFilter extends React.Component {
             style={styles.segmentedControl}
             tintColor={black}
             values={['New', 'Trending']}
-            selectedIndex={1}
+            selectedIndex={{ new: 0, trending: 1 }[_.get(currentUser, 'profile.sortLeadsBy', 'trending')]}
             onValueChange={this.onChangeOrder}
           />
           <TouchableOpacity style={styles.feedsButton} onPress={this.showHideFeeds}>

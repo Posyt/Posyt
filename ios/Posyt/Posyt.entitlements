@@ -10,10 +10,10 @@
 		<string>applinks:post-alternate.app.link</string>
 		<string>applinks:posyt.com</string>
 		<string>applinks:pos.yt</string>
+		<string>applinks:www.posyt.com</string>
 	</array>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>$(AppIdentifierPrefix)com.posyt.PosytTest</string>
 		<string>$(AppIdentifierPrefix)com.posyt.PosytApp</string>
 	</array>
 </dict>
