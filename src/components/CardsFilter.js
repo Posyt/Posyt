@@ -208,6 +208,8 @@ class CardsFilter extends React.Component {
       outputRange: ['-180deg', '0deg'],
     });
 
+    const numActiveFeeds = sources.length + 1
+
     return (
       <View style={styles.container}>
         <View style={styles.top}>
@@ -221,7 +223,7 @@ class CardsFilter extends React.Component {
           <TouchableOpacity style={styles.feedsButton} onPress={this.showHideFeeds}>
             <View style={{ flexDirection: 'row' }}>
               <Text style={styles.feedsButtonText}>
-                Feeds
+                {numActiveFeeds} Feed{numActiveFeeds === 1 ? '' : 's'}
               </Text>
               <Animated.Image source={require('../../assets/images/chevron_down.png')} style={[styles.feedsButtonChevron, { transform: [{ rotate: chevronRotate }] }]} />
             </View>

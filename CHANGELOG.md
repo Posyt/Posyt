@@ -93,6 +93,10 @@ If you like the new update please support Posyt by leaving a rating in the App S
   - Add icons for each news feed
 
 
+## 1.0.5.5
+- Add active feeds count
+
+
 ## 1.1 [pending]
 ### internal
 - change title `Posyt - Share News & Ideas, Meet People, Chat` to `Posyt - Share News & Ideas, Meet People, Anonymous Chat`
