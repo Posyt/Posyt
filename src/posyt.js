@@ -3,7 +3,7 @@ import React from 'react';
 import {
   AppRegistry,
 } from 'react-native';
-import { Provider } from 'react-redux';
+import { ApolloProvider } from 'react-apollo';
 import codePush from 'react-native-code-push';
 import crashlytics from 'react-native-fabric-crashlytics';
 import DeviceInfo from 'react-native-device-info';
@@ -14,6 +14,7 @@ import {
 } from './lib/constants';
 import './lib/bugsnag';
 import { store } from './lib/store';
+import { apolloClient } from './lib/apolloClient';
 import { setPlatform } from './lib/actions';
 import segment from './lib/segment';
 
@@ -33,9 +34,9 @@ export default function posyt(platform) {
 
     render() {
       return (
-        <Provider store={store}>
+        <ApolloProvider store={store} client={apolloClient}>
           <App />
-        </Provider>
+        </ApolloProvider>
       );
     }
   }

@@ -6,6 +6,7 @@ import cards from './cardsReducer';
 import conversations from './conversationsReducer';
 import chat from './chatReducer';
 import deepLink from './deepLinkReducer';
+import { apolloClient } from '../lib/apolloClient';
 
 import { combineReducers } from 'redux';
 
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   conversations,
   chat,
   deepLink,
+  apollo: apolloClient.reducer(),
 });
 
 export default rootReducer;

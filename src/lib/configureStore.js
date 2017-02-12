@@ -5,6 +5,7 @@ import createLogger from 'redux-logger';
 import Reactotron from 'reactotron-react-native';
 import createReactotronEnhancer from 'reactotron-redux';
 import rootReducer from '../reducers/index';
+import { apolloClient } from './apolloClient';
 
 const reactotronEnhancer = createReactotronEnhancer(Reactotron);
 
@@ -14,6 +15,7 @@ const logger = createLogger({
 
 const middleware = applyMiddleware(
   thunk,
+  apolloClient.middleware(),
   // logger // NOTE: logger must be last // NOTE: this is noisy
 );
 
@@ -23,8 +25,7 @@ const middlewareAndDevTools = compose(
   // devTools()
 );
 
-const createStoreWithMiddleware =
-  (global.__DEV__ ? middlewareAndDevTools : middleware)(createStore);
+const createStoreWithMiddleware = (global.__DEV__ ? middlewareAndDevTools : middleware)(createStore);
 
 export default function configureStore(initialState) {
   const store = createStoreWithMiddleware(rootReducer, initialState);
