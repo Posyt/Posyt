@@ -5,9 +5,10 @@ import { shadeColor } from './utils';
  * urls
  */
 
-export const posytDomain = (global.__DEV__ ? '10.0.1.87' : 'www.posyt.com');
+export const posytDomain = (global.__DEV__ ? 'localhost' : 'www.posyt.com');
 export const posytUri = (global.__DEV__ ? `http://${posytDomain}:3000` : `https://${posytDomain}`);
 export const posytWsUri = (global.__DEV__ ? `ws://${posytDomain}:3000/websocket` : `wss://${posytDomain}/websocket`);
+export const posytGraphQLUri = (global.__DEV__ ? `http://${posytDomain}:3000/graphql` : `https://${posytDomain}/graphql`);
 export const posytPort = (global.__DEV__ ? 3000 : 443);
 export const posytSSL = (global.__DEV__ ? false : true);
 

@@ -67,7 +67,9 @@
 ✔ swiping the left edge on cards or the right edge on conversations should be a shortcut to show the settings modal @done(2017-01-20 21:09)
 ✔ enter username modal save button is hidden sometimes - (john) @done(2017-01-21 16:17)
 ☐ tapping a push outside the app should open the app to that conversation
+☐ replace posty icon in header with posyt logotype for better brand recognition
 ☐ crash after phone login sometimes - (john)
+☐ invert the CHANGELOG.md to put the newest version first
 ✔ fix code-push - STILL NOT WORKING :( - updates are not getting synced to devices, staging is not automated @done(2017-01-21 13:42)
 ✔ fix digits in production - the keys / bundle ids might be off @done(2017-01-20 23:46)
 ☐ don't register taps on fast swipes - sometimes the browser opens on a fast swipe
