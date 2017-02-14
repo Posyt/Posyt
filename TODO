@@ -62,6 +62,17 @@
 ✔ switch feeds array on user to disabledFeeds. This way new feeds will be auto enabled without requiring a migration @done(2017-01-08 17:48)
 
 
+☐ don't let username modal be dismissed without being filled in
+☐ add ref=posyt to all links make sure to use the correct ? or & depending on existing query params
+☐ allow text selection in messages, cards and bubbles. This should include "copy" and "google" and "duck duck go" buttons
+☐ show number of messages next to conversation
+☐ show start date of conversation
+☐ show attribution of last message on conversation | "me: Hi guy" | "danny: sup bro"
+☐ have unique programatically generated user icons / profile pics. Maybe just a color gradient and angle. Maybe have a simple UI to customize your gradient. A bunch of sliders next to a color and a + button at the bottom to add a new color to the mix. Sliding across the color in x and y dimensions could change the color. Make sure that all colors stay bright and complementary of each other.
+☐ show low res article image (< 1/2 card width) in a smaller format that does not take up the whole width. Maybe top left corner with text wrapping around the image like a newspaper
+✔ fix conversationsSetLastRead getting null user ids https://ui.kadira.io/apps/c5K4uP2N8Hh79Xk72/errors/overview?selection=a79dd2d3e2a28b86fea66e3065295220&range=28800000 @done(2017-01-31 15:06)
+☐ sometimes messages get stuck in "sending..." requiring a hard reset to send anything. It might be related message/create using Meteor.userId() instead of this.userId. Now that's fixed keep an eye on it to see if that happens again.
+☐ read receipts can be slow to propogate
 ☐ fix universal app links https://dev.branch.io/getting-started/universal-linking-validator/guide/
 ✔ add sentry error tracking @done(2017-01-14 12:54)
 ✔ swiping the left edge on cards or the right edge on conversations should be a shortcut to show the settings modal @done(2017-01-20 21:09)
@@ -82,6 +93,10 @@
 ☐ add a [gif] tag to the bottom right of gifs
 ☐ reduce all analytics tracking event names to 40 chars or less for facebook
 ☐ limit push notifications to 3 on screen at once
+☐ add search to chat / conversations
+☐ posyted links should be turned into articles as well as posyts and the two should be connected in the backend, and a preview of the article should show up in the posyt app UI - this still has some kinks, but it's a way to make it look less like all the articles are coming from bots
+☐ realm local OFFLINE database | cache | reduce server queries | sync offline swipes, posyts, messages when back online
+☐ ENCRYPTION
 
 Staging
 ✔ meteor server @done(2016-12-13 21:57)
