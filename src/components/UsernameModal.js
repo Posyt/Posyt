@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, Text, TextInput, TouchableHighlight } from 'react-native';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 import {
   black,
   red,
@@ -68,14 +70,14 @@ class UsernameModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: props.currentUser && props.currentUser.username || "",
+      username: props.data.me && props.data.me.username || "",
       available: undefined,
     };
     this.show = this.show.bind(this);
   }
 
   show(direction) {
-    this.setState({ username: this.props.currentUser && this.props.currentUser.username || "" })
+    this.setState({ username: this.props.data.me && this.props.data.me.username || "" })
     this.refs.usernameModal.show(direction)
   }
 
@@ -100,9 +102,9 @@ class UsernameModal extends React.Component {
   }
 
   ctaText() {
-    const { currentUser } = this.props;
+    const { data: { me } } = this.props;
     const { username, available, error, saving, saved } = this.state;
-    if (saved || (currentUser && currentUser.username === username)) return 'Saved';
+    if (saved || (me && me.username === username)) return 'Saved';
     if (saving) return 'Saving...';
     if (error) return error;
     if (username.length < 1) return 'Too short';
@@ -115,22 +117,22 @@ class UsernameModal extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!this.props.currentUser || !nextProps.currentUser || this.props.currentUser.username !== nextProps.currentUser.username) this.setState({ username: nextProps.currentUser && nextProps.currentUser.username || "" })
+    if (!this.props.data.me || !nextProps.data.me || this.props.data.me.username !== nextProps.data.me.username) this.setState({ username: nextProps.data.me && nextProps.data.me.username || "" })
   }
 
   render() {
-    const { loggedIn, currentUser } = this.props;
+    const { data: { loading, me } } = this.props;
     const { username } = this.state;
     const valid = this.ctaText() === 'Save';
 
-    const step = currentUser && currentUser.username ? null : 'Last Step';
-    const title = currentUser && currentUser.username ? 'Change Username' : 'Pick a Username';
-    const subTitle = currentUser && currentUser.username ?
+    const step = me && me.username ? null : 'Last Step';
+    const title = me && me.username ? 'Change Username' : 'Pick a Username';
+    const subTitle = me && me.username ?
       'It\'s your only public detail' : 'It\'s your only public detail\nYou can change it later';
 
     return (
       <PosytModal ref="usernameModal" style={styles.modal}
-        alwaysVisible={loggedIn && currentUser && !currentUser.username}
+        alwaysVisible={!loading && me && (!me.username || !me.username.length)}
         onShow={() => this.refs.username.focus()}
       >
         <View style={[styles.modalButton, { height: (step ? 90 : 60), paddingHorizontal: 5 }]}>
@@ -161,11 +163,21 @@ class UsernameModal extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    loggedIn: state.auth.loggedIn,
-    currentUser: state.auth.currentUser,
-  };
-}
+// function mapStateToProps(state) {
+//   return {
+//     loggedIn: state.auth.loggedIn,
+//     currentUser: state.auth.currentUser,
+//   };
+// }
+//
+// export default connect(mapStateToProps, null, null, { withRef: true })(UsernameModal)
 
-export default connect(mapStateToProps, null, null, { withRef: true })(UsernameModal)
+const Query = gql`
+  query {
+    me {
+      username
+    }
+  }
+`;
+
+export default graphql(Query, { withRef: true })(UsernameModal);
