@@ -1,7 +1,6 @@
 import './lib/ReactotronConfig'; // NOTE this makes sure Reactotron is initialized first
 import React from 'react';
 import {
-  AsyncStorage,
   AppRegistry,
 } from 'react-native';
 import { ApolloProvider } from 'react-apollo';
@@ -31,13 +30,6 @@ export default function posyt(platform) {
       store.dispatch(setPlatform(platform));
       const debug = false; // global.__DEV__;
       segment.setupWithConfiguration(segmentWriteKey, debug);
-    }
-
-    componentDidMount() {
-      AsyncStorage.getItem('loginToken').then(token => {
-        global.authToken = token;
-        apolloClient.resetStore();
-      });
     }
 
     render() {

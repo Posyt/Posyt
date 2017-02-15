@@ -11,11 +11,10 @@ const networkInterface = createNetworkInterface({
 });
 
 networkInterface.use([{
-  applyMiddleware(req, next) {
+  async applyMiddleware(req, next) {
     if (!req.options.headers) req.options.headers = {};
-    // console.log(global.authToken)
-    const authToken = '52KIpAUrC-ZUQhY6iellioVTq37FTffZ4_LMGu705SY';
-    if (authToken) req.options.headers.authorization = authToken;
+    const token = await AsyncStorage.getItem('loginToken');
+    req.options.headers.authorization = token;
     next();
   }
 }]);

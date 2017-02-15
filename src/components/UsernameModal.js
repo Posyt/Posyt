@@ -122,7 +122,6 @@ class UsernameModal extends React.Component {
 
   render() {
     const { data: { loading, me } } = this.props;
-    console.log(">>>>>>>>>>", me)
     const { username } = this.state;
     const valid = this.ctaText() === 'Save';
 
@@ -133,7 +132,7 @@ class UsernameModal extends React.Component {
 
     return (
       <PosytModal ref="usernameModal" style={styles.modal}
-        alwaysVisible={!loading && me && (!me.username || !m.username.length)}
+        alwaysVisible={!loading && me && (!me.username || !me.username.length)}
         onShow={() => this.refs.username.focus()}
       >
         <View style={[styles.modalButton, { height: (step ? 90 : 60), paddingHorizontal: 5 }]}>
@@ -173,7 +172,7 @@ class UsernameModal extends React.Component {
 //
 // export default connect(mapStateToProps, null, null, { withRef: true })(UsernameModal)
 
-const mapGraphQLToProps = gql`
+const Query = gql`
   query {
     me {
       username
@@ -181,4 +180,4 @@ const mapGraphQLToProps = gql`
   }
 `;
 
-export default graphql(mapGraphQLToProps, { withRef: true })(UsernameModal);
+export default graphql(Query, { withRef: true })(UsernameModal);
