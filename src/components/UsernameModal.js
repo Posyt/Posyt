@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, View, Text, TextInput, TouchableHighlight } from 'react-native';
-// import { connect } from 'react-redux';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import {
@@ -9,10 +8,10 @@ import {
   lightRed,
   appleGrey,
 } from '../lib/constants';
-import { ddp } from '../lib/DDP';
 import PosytModal from './PosytModal';
 import segment from '../lib/segment';
 import bugsnag from '../lib/bugsnag';
+import { apolloClient } from '../lib/apolloClient';
 
 const styles = StyleSheet.create({
   modal: {
@@ -83,22 +82,30 @@ class UsernameModal extends React.Component {
 
   save(valid) {
     if (!valid) return this.refs.usernameModal.shake();
-    this.setState({ error: null, saving: true })
-    ddp.call("users/username/set", [this.state.username]).catch(err => {
-      this.setState({ error: "Invalid", saving: false });
-      bugsnag.notify(err);
-    }).then(res => {
+    this.setState({ error: null, saving: true });
+    this.props.setUsername({ variables: { username: this.state.username } }).then(({ data }) => {
       this.setState({ error: null, saving: false, saved: true });
       segment.track('Changed Username');
+      this.props.data.refetch();
       this.refs.usernameModal.hide();
-    });
+    }).catch((error) => {
+      this.setState({ error: 'Invalid', saving: false });
+      bugsnag.notify(error);
+    })
   }
 
   onChangeText(text) {
     this.setState({ username: text, available: undefined, error: null, saved: false })
-    ddp.call("users/username/available", [text]).then((res) => {
-      this.setState({ available: res })
-    })
+    apolloClient.query({
+      query: gql`
+        query IsUsernameAvailable($username: String!){
+          isUsernameAvailable(username: $username)
+        }
+      `,
+      variables: { username: text },
+    }).then(({ data: { isUsernameAvailable } }) => {
+      this.setState({ available: isUsernameAvailable });
+    });
   }
 
   ctaText() {
@@ -163,21 +170,23 @@ class UsernameModal extends React.Component {
   }
 }
 
-// function mapStateToProps(state) {
-//   return {
-//     loggedIn: state.auth.loggedIn,
-//     currentUser: state.auth.currentUser,
-//   };
-// }
-//
-// export default connect(mapStateToProps, null, null, { withRef: true })(UsernameModal)
-
 const Query = gql`
   query {
     me {
+      id
+      username
+    }
+  }
+`;
+const setUsername = gql`
+  mutation setUsername($username: String!) {
+    setUsername(username: $username) {
+      id
       username
     }
   }
 `;
 
-export default graphql(Query, { withRef: true })(UsernameModal);
+export default graphql(Query, { withRef: true })(
+  graphql(setUsername, { name: 'setUsername', withRef: true })(UsernameModal)
+);

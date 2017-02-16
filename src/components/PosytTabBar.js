@@ -290,7 +290,7 @@ class PosytTabBar extends React.Component {
           <View style={styles.modalSeparator}/>
           <View style={[{ flexDirection: 'row' }]}>
             <TouchableHighlight style={[styles.modalButton, { height: 38, flex: 3 }]} underlayColor={'#f5f5f5'} onPress={() => {
-                this.refs.posytModal.hide("left", () => this.refs.usernameModal.getWrappedInstance().show("right"));
+                this.refs.posytModal.hide("left", () => this.refs.usernameModal.getWrappedInstance().getWrappedInstance().show("right"));
                 segment.screen('Viewed Username Modal');
             }}>
               <Text style={styles.modalSubText}>{currentUser && currentUser.username}</Text>
